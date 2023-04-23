@@ -34,7 +34,7 @@ export const Navbar = () => {
 
   const logOut = () => {
     signOut(auth);
-    Navigate("/login");
+    navigate("/login");
   };
 
   return (
@@ -46,17 +46,17 @@ export const Navbar = () => {
             : " flex justify-between m-auto p-10 py-12 h-[60px] text-white font-thin text-xl cursor-pointer"
         }
       >
-        <div className="text-5xl font-light flex flex-row gap-3">
+        <div className="text-4xl font-light flex flex-row gap-3">
           <div>
             <Link className=" border-gray-600" to="/">
-              <span className="text-orange-900 text-6xl border-b">B</span>
+              <span className="text-orange-900 text-5xl border-b">B</span>
               asketball
-              <span className="text-orange-900 text-6xl border-b">F</span>it
+              <span className="text-orange-900 text-5xl border-b">F</span>it
             </Link>
           </div>
 
           <img
-            className="w-[41px] h-[41px] rounded-full m-auto my-6"
+            className="w-[34px] h-[34px] rounded-full m-auto my-4"
             src="https://img.freepik.com/free-vector/hand-drawn-basket-ball_1034-756.jpg?w=1480&t=st=1681697574~exp=1681698174~hmac=8dfed6fc68ade2c3cdf9c06ed620f53c23f907846785c2e3951b191b3f083b96"
           />
         </div>
@@ -208,7 +208,7 @@ export const Navbar = () => {
                           onClick={() => navigate("/ProfilePage")}
                           className="w-[48px] h-[48px] rounded-3xl"
                           src={currentUser.photoURL}
-                          referrerpolicy="no-referrer"
+                          referrerPolicy="no-referrer"
                         />
                       </div>
                       <div className="m-auto">
