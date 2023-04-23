@@ -7,9 +7,9 @@ export const Navbar = () => {
     <div className="border-b">
    
       <div className="flex justify-between px-4 bg-slate-900">
-      <span className="py-3">{currentUser?.displayName}</span>
+      <span className="py-5 underline">{currentUser?.displayName}</span>
 
-        <img className="w-[60px] h-[60px] rounded-full" src={currentUser?.photoURL}/>
+        <img className="w-[60px] h-[60px] rounded-full" src={currentUser?.photoURL ?? ""}/>
 
       </div>
     </div>

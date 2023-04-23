@@ -207,7 +207,7 @@ export const Navbar = () => {
                         <img
                           onClick={() => navigate("/ProfilePage")}
                           className="w-[48px] h-[48px] rounded-3xl"
-                          src={currentUser.photoURL}
+                          src={currentUser.photoURL ?? ""}
                           referrerPolicy="no-referrer"
                         />
                       </div>
@@ -285,7 +285,7 @@ export const Navbar = () => {
                             <img
                               onClick={() => navigate("/ProfilePage")}
                               className="w-[40px] h-[40px] rounded-full"
-                              src={currentUser.photoURL}
+                              src={currentUser.photoURL ?? ""}
                             />
                           </div>
                           <div className="m-auto">
