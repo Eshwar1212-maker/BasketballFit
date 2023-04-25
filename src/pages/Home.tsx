@@ -26,13 +26,13 @@ export const Home = () => {
 
   return (
     <div className="text-white">
-      <div className="max-w-[800px] mt-[-96px] w-full h-screen mx-auto text-center flex flex-col justify-center">
-        <h1 className="border-b font-headerFonts text-center text-white md:text-5xl sm-text-6xl text-4xl md:py-6">
+      <div className="max-w-[800px] mt-[-60px] w-full h-screen m-auto text-center flex flex-col justify-center">
+        <h1 className="border-b font-headerFonts text-center text-white md:text-[44px] sm-text-6xl text-2xl md:py-6">
           Welcome To BasketballFit!
         </h1>
-        <p className="text-[50px] font-bold">
+        <p className="text-[39px]">
           The all in one platform for you and your team to{" "}
-          <span className="text-slate-400 text-[57px] font-bold">
+          <span className="text-slate-400 text-[59px]">
             <Typed
               strings={["  level up your game"]}
               typeSpeed={40}

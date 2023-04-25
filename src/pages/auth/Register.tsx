@@ -23,6 +23,9 @@ const Register = () => {
 
   const signIn = async () => {
     const result = await signInWithPopup(auth, provider);
+    await setDoc(doc(db, "userChats", result.user.uid), {});
+    navigate("/");
+    console.log(result.user);
   };
 
   const handleSubmit = async (e: any) => {
@@ -67,7 +70,6 @@ const Register = () => {
               navigate("/workouts");
             } catch (err) {
               console.log(err);
-              setError((err as Error).message);
               setErr(true);
               setLoading(false);
             }

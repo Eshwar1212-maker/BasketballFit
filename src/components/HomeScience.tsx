@@ -20,7 +20,8 @@ const Science = () => {
             </h1>
             <br />
             Scientific based workouts that have stood the test of time, proven
-            tested by the worlds best players
+            tested by the worlds best players. Use our workout calender to track what workouts 
+            you need to get done each day so you can stay as explosive as possible. 
           </p>
           <Link to="/traininghome">
             <button

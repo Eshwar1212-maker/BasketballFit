@@ -8,13 +8,17 @@ import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { Fragment } from "react";
-import { FcSettings } from "react-icons/fc";
-import { AiOutlineMessage, AiFillHome } from "react-icons/ai";
+import { AiOutlineMessage, AiFillHome, AiTwotoneMessage } from "react-icons/ai";
 import { Navigate } from "react-router-dom";
 import { CgGym } from "react-icons/cg";
 import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 import { IoIosNotifications } from "react-icons/io";
+import {
+  BiMessageRoundedDetail,
+  BiMessageSquareDetail,
+  BiMessageRounded,
+} from "react-icons/bi";
 
 interface Nav {
   nav: boolean;
@@ -42,8 +46,8 @@ export const Navbar = () => {
       <div
         className={
           currentUser
-            ? "flex justify-between m-auto p-10 py-12 h-[60px] cursor-pointer"
-            : " flex justify-between m-auto p-10 py-12 h-[60px] text-white font-thin text-xl cursor-pointer"
+            ? "flex justify-between m-auto p-5 py-8 h-[10px] cursor-pointer"
+            : " flex justify-between m-auto p-4 py-8 h-[10px] text-white font-thin text-md cursor-pointer"
         }
       >
         <div className="text-4xl font-light flex flex-row gap-3">
@@ -61,14 +65,14 @@ export const Navbar = () => {
           />
         </div>
         <div>
-          <ul className="hidden lg:flex flex-row gap-8">
+          <ul className="hidden lg:flex flex-row gap-6 px-10">
             <li
               onClick={() => {
                 setTheme(!theme);
               }}
               className=""
             >
-              {theme ? <BsFillMoonFill size={28} /> : <BsSunFill size={28} />}
+              {theme ? <BsFillMoonFill size={22} /> : <BsSunFill size={28} />}
             </li>
             {!currentUser && (
               <>
@@ -85,13 +89,13 @@ export const Navbar = () => {
               </>
             )}
 
-            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline my-[-4px]">
+            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline]">
               <Menu as="div" className="relative inline-block text-left">
                 <div className=" border-gray-600 ">
-                  <Menu.Button className="flex">
+                  <Menu.Button className=" gap-0 flex">
                     <CgGym size={30} />
                     <div className="m-auto">
-                      <IoIosArrowDropdown size={24} />
+                      <IoIosArrowDropdown size={22} />
                     </div>
                   </Menu.Button>
                 </div>
@@ -104,21 +108,11 @@ export const Navbar = () => {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-1 flex flex-col gap-2 pl-[120px] ">
-                      <Menu.Item>
-                        <li className="border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 underline">
-                          <Link to="/WorkoutsPage">Workouts</Link>
-                        </li>
-                      </Menu.Item>
-                      <Menu.Item>
-                        <Link className="text-[19px] text-black" to="/">
-                          Home
-                        </Link>
-                      </Menu.Item>
+                  <Menu.Items className="absolute right-0 z-10 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-3 flex flex-col pl-[60px] ">
                       <Menu.Item>
                         <Link
-                          className="text-[19px] text-black"
+                          className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl"
                           to="/WorkoutsPage"
                         >
                           My Workouts
@@ -126,7 +120,7 @@ export const Navbar = () => {
                       </Menu.Item>
                       <Menu.Item>
                         <Link
-                          className="text-[19px] text-black"
+                          className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl"
                           to="/WorkoutsPage"
                         >
                           Weight Lifting
@@ -135,18 +129,19 @@ export const Navbar = () => {
                     </div>
                   </Menu.Items>
                 </Transition>
+                Workouts
               </Menu>
-              <p>Workouts</p>
+              {/* <p className="mb-[-12px]">Workouts</p> */}
             </li>
             {currentUser && (
-              <li className="border-b border-gray-600 transition ease-in-out delay-150 underline my-[-4px]">
+              <li className="border-b border-gray-600 transition ease-in-out delay-150 underline ">
                 <Menu as="div" className="relative inline-block text-left">
                   <div className=" border-gray-600 transition ease-in-out delay-150 duration-300 ...">
                     <Menu.Button className="flex">
                       <div>
-                        <AiOutlineMessage
+                        <BiMessageRounded
                           onClick={() => navigate("/ChatPage")}
-                          size={30}
+                          size={24}
                         />{" "}
                       </div>
 
@@ -164,15 +159,15 @@ export const Navbar = () => {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className=" text-black absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1 flex flex-col gap-2 pl-[120px]">
+                    <Menu.Items className=" text-black absolute right-0 z-10 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div className="py-1 flex flex-col pl-[50px]">
                         <Menu.Item>
-                          <Link className="text-[19px]" to="/ChatPage">
+                          <Link className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl" to="/ChatPage">
                             Individual Chats
                           </Link>
                         </Menu.Item>
                         <Menu.Item>
-                          <Link className="text-[19px]" to="/ChatRooms">
+                          <Link className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl" to="/ChatRooms">
                             Chat Rooms
                           </Link>
                         </Menu.Item>
@@ -184,19 +179,19 @@ export const Navbar = () => {
               </li>
             )}
 
-            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline my-[-4px]">
+            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline">
               <Link to="/">
-                <AiFillHome className="w-[60px]" size={36} />
+                <AiFillHome className="w-[60px]" size={31} />
               </Link>
               <p className="pl-2">Home</p>
             </li>
-            <li className="">
+            {/* <li className="">
               {" "}
-              <IoIosNotifications className="w-[80px] my-[-4px]" size={48} />
+              <IoIosNotifications className="w-[80px] my-[-4px]" size={37} />
               <p className="underline my-[-13px] py-1 text-[15px]">
                 Notifications
               </p>
-            </li>
+            </li> */}
             {currentUser && (
               <li>
                 <Menu as="div" className="relative inline-block text-left">
@@ -226,7 +221,7 @@ export const Navbar = () => {
                     leaveTo="transform opacity-0 scale-95"
                   >
                     <Menu.Items className="text-black absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1 flex flex-col gap-2 pl-[120px]">
+                      <div className="py-1 flex flex-col gap-2 pl-[60px]">
                         <Menu.Item>
                           <li
                             className="text-[19px]"
@@ -260,18 +255,26 @@ export const Navbar = () => {
                     : "ease-in-out duration-500 fixed left-[-100%]"
                 }
               >
-                <Link className="p-4 border-b border-gray-600" to="/">
-                  Home
+                        <Link
+                          className="p-4 border-b border-gray-600" 
+                          to="/WorkoutsPage"
+                        >
+                          My Workouts
+                        </Link>
+                        <Link
+                          className="p-4 border-b border-gray-600" 
+                          to="/WorkoutsPage"
+                        >
+                          Weight Lifting
+                        </Link>
+                <Link className="p-4 border-b border-gray-600" to="/ChatPage">
+                  Individual Chats
                 </Link>
-                <Link className="p-4 border-b border-gray-600" to="/chat">
-                  Messages
+
+                <Link className="p-4 border-b border-gray-600" to="/ChatRooms">
+                  Chat Rooms
                 </Link>
-                <Link
-                  className="p-4 border-b border-gray-600"
-                  to="/WorkoutsPage"
-                >
-                  Workouts
-                </Link>
+
                 <Link className="p-4 border-b border-gray-600" to="/Gyms">
                   Gyms
                 </Link>
@@ -316,7 +319,6 @@ export const Navbar = () => {
                         </Menu.Items>
                       </Transition>
                     </Menu>
-                    <p className="text-[300px]">Account</p>
                   </li>
                 )}
               </motion.ul>
