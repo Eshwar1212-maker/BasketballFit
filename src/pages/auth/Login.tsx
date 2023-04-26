@@ -35,37 +35,41 @@ export const Login = () => {
         muted
       />
 
-      <div className="bg-blue-50 flex flex-col py-[270px] items-center absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
-        <form onSubmit={handleSubmit} className="w-[230px] mx-auto mb-11">
+      <div className="bg-blue-50 flex flex-col py-[140px] md:py-[100px] items-center absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
+        <form onSubmit={handleSubmit} className="border-2 p-3 rounded-lg bg-white text-black">
+        <h1 className="text-black font-bold text-sm text-[11px] ">Email</h1>
+
           <input
             type="email"
             placeholder="email"
-            className="block w-full rounded-xl mb-2 border text-black h-[50px] text-xl"
+            className="block w-full rounded-xl mb-1 border text-black h-[40px] text-sm"
           />
+                  <h1 className="text-black font-bold text-sm text-[11px] ">Password</h1>
+
           <input
             type="password"
             placeholder="password"
-            className="block w-full rounded-xl mb-2 border text-black h-[50px] text-xl"
+            className="block w-full rounded-xl mb-1 border text-black h-[40px] text-sm"
           />
-          <button className="bg-blue-900 text-white block w-full font-first h-[46px] rounded-xl">
+          <button className="bg-blue-900 text-white block w-full font-first h-[43px] rounded-xl">
             <Link to="/register">Login</Link>
           </button>
-          <p>Or log in with google</p>
+          <p className="text-[12px]">Or</p>
           <a
             onClick={signIn}
             href="#_"
             className="relative inline-block text-lg group"
           >
-            <span className="w-[230px] relative z-10 block px-3 py-2 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+            <span className="w-[230px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
               <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
               <span className="absolute left-0 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 w-[400px] bg-gray-900 group-hover:-rotate-180 ease"></span>
               <span className="relative text-xl">
-                <FcGoogle className="m-auto" size={40} />
+                <FcGoogle className="m-auto" size={33} />
               </span>
             </span>
           </a>
 
-          <p>
+          <p className="text-[12px]">
             Dont have an account?
             <span className="cursor-pointer underline">
               <Link to="/register">Register</Link>

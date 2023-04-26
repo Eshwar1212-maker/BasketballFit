@@ -10,29 +10,34 @@ export const ChatRooms = () => {
   const roomInputRef = useRef<HTMLInputElement | null>(null);
 
   return (
-    <div className="flex justify-center py-[75px]">
-   {room ? <><ChatGroup room={room}/></> :<div className="bg-slate-800 h-[700px] w-[1400px] rounded-2xl border-2 border-r-4 border-slate-400">
-      <div className="text-center py-[200px] flex flex-col max-w-[600px] m-auto">
+    <div className="flex justify-center py-[75px] m-auto h-[80vh] ">
+   {room ? <><ChatGroup room={room}/></> :<div className=" w-[1500px] bg-cover bg-center bg-no-repeat rounded-2xl border-2 border-r-4 bg-[url('https://wp.usatodaysports.com/wp-content/uploads/sites/92/2018/12/bensimmons_phone1.jpg')]">
+      <div className="text-center py-[300px] flex flex-col max-w-[700px] m-auto bg-opacity-20">
         <h1 className="text-3xl pb-6">Create group chats with your friends or team</h1>
-      <h2 className="text-xl pb-2">Enter room name</h2>
-        <input ref={roomInputRef} className="rounded-2xl text-2xl h-[50px] text-center text-black" placeholder="Room name..." />
-        <button 
+      <h2 className="text-xl">Create a new chat room or enter an existing one</h2>
+      <div className="flex flex-row border-2 borser-white rounded-2xl my-2">
+      <input ref={roomInputRef} className="m-auto rounded-2xl text-xl h-[40px] text-center w-5/6 text-black" placeholder="Room name..." />
+
+      <button 
         onClick={() => setRoom(roomInputRef.current?.value || "")}
-        className="text-3xl bg-slate-400 w-[200px] rounded-xl font-medium 
-                 mx-auto my-6 py-3 text-black transition ease-in-out delay-150 hover:scale-80 hover:bg-slate-500 duration-300 ...">Enter chat</button>
+        className="w-1/6
+        text-white group p-2 rounded-xl flex items-center hover:bg-red-800 hover:border-red-800 text-[25px]">Enter </button>
+      </div>
+      
         <button 
         onClick={() => setSendLink(!sendLink)}
-        className="text-xl bg-slate-400 w-[200px] rounded-xl font-medium 
-                 mx-auto my-6 py-3 text-black transition ease-in-out delay-150 hover:scale-80 hover:bg-slate-500 duration-300 ...">Send Room link to friend</button>
-    { sendLink && <><input placeholder="Email... " className="rounded-2xl w-[300px] h-[45px] text-black m-auto text-center text-xl"/>
+        className="text-xlw-[200px] rounded-xl font-medium 
+                 mx-auto py-3transition ease-in-out delay-150 hover:scale-80 duration-300 ... underline">Send Room link to friend</button>
+    { sendLink && <><input placeholder="Email... " className="rounded-2xl w-[300px] h-[45px]  m-auto text-center text-xl"/>
                 <button 
                 onClick={() => setSendLink(!sendLink)}
                 className="text-md bg-slate-400 w-[110px] rounded-xl font-medium 
-                 mx-auto my-3 py-2 text-black transition ease-in-out delay-150 hover:scale-80 hover:bg-slate-600 duration-300 hover:text-white ...">Send</button></>   }
-      </div>
-      
-    </div>}
+                 mx-auto py-2transition ease-in-out delay-150 hover:scale-80 duration-300 hover:text-white ...">Send</button></> 
+      }
 
+      </div>
+    </div>
+    }
   </div>
   )
 }

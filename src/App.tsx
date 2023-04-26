@@ -10,11 +10,11 @@ import { AuthContext } from "./context/AuthContext";
 import { ProfilePage } from "./pages/Profile/ProfilePage";
 import Register from "./pages/auth/Register";
 import { Login } from "./pages/auth/Login";
-import { ChatGroup } from "./components/chatRooms/ChatGroup";
+
+
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser);
 
   return (
     <Router>
@@ -34,7 +34,6 @@ function App() {
             <Route path="/ChatPage" element={<ChatPage />} />
             <Route path="/ChatRooms" element={<ChatRooms />} />
             <Route path="/ProfilePage" element={<ProfilePage />} />
-            <Route path="ChatGroup" element={<ChatGroup/>}/>
           </>
         )}
 

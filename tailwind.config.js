@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'messaging': "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7m8hlZ0WjTEsHUkGg2NRfrW4omekZqn98xf5SiDJFXbQwm3NR9qPRpLoXrheDOkRd2YDXTj0xrDw&usqp=CAU&ec=48665701')"
+      }
+    },
   },
   screens: {
     xs: "480px",

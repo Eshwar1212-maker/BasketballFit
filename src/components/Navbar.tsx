@@ -50,12 +50,12 @@ export const Navbar = () => {
             : " flex justify-between m-auto p-4 py-8 h-[10px] text-white font-thin text-md cursor-pointer"
         }
       >
-        <div className="text-4xl font-light flex flex-row gap-3">
+        <div className="text-2xl font-light flex flex-row gap-3">
           <div>
             <Link className=" border-gray-600" to="/">
-              <span className="text-orange-900 text-5xl border-b">B</span>
+              <span className="text-orange-900 text-3xl border-b">B</span>
               asketball
-              <span className="text-orange-900 text-5xl border-b">F</span>it
+              <span className="text-orange-900 text-3xl border-b">F</span>it
             </Link>
           </div>
 
@@ -64,16 +64,10 @@ export const Navbar = () => {
             src="https://img.freepik.com/free-vector/hand-drawn-basket-ball_1034-756.jpg?w=1480&t=st=1681697574~exp=1681698174~hmac=8dfed6fc68ade2c3cdf9c06ed620f53c23f907846785c2e3951b191b3f083b96"
           />
         </div>
-        <div>
-          <ul className="hidden lg:flex flex-row gap-6 px-10">
-            <li
-              onClick={() => {
-                setTheme(!theme);
-              }}
-              className=""
-            >
-              {theme ? <BsFillMoonFill size={22} /> : <BsSunFill size={28} />}
-            </li>
+        <div className="">
+
+          <ul className="flex flex-row gap-6 px-[80px] rounded-lg">
+        
             {!currentUser && (
               <>
                 <li className="border-b hover:bg-red-800 p-3 rounded-md">
@@ -86,123 +80,47 @@ export const Navbar = () => {
                     Log in
                   </Link>
                 </li>
+                <li className="border-b hover:bg-red-800 p-3 rounded-lg">
+                  <Link className="text-md" to="/workouts">
+                    Workouts
+                  </Link>
+                </li>
+                <li className="border-b hover:bg-red-800 p-3 rounded-lg">
+                  <Link className="text-md" to="/">
+                    Home
+                  </Link>
+                </li>
               </>
             )}
+            
+           {currentUser && (
+            <ul className="flex gap-4">
+             <Link className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..." to="/ChatRooms">
+                    Messaging
+                  </Link>
+       
+            <li
+             className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+              Forums</li>
+              <li 
+            className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                    <Link className="text-md" to="/workouts">
+                    Workouts
+                  </Link></li>
 
-            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline]">
-              <Menu as="div" className="relative inline-block text-left">
-                <div className=" border-gray-600 ">
-                  <Menu.Button className=" gap-0 flex">
-                    <CgGym size={30} />
-                    <div className="m-auto">
-                      <IoIosArrowDropdown size={22} />
-                    </div>
-                  </Menu.Button>
-                </div>
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="absolute right-0 z-10 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                    <div className="py-3 flex flex-col pl-[60px] ">
-                      <Menu.Item>
-                        <Link
-                          className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl"
-                          to="/WorkoutsPage"
-                        >
-                          My Workouts
-                        </Link>
-                      </Menu.Item>
-                      <Menu.Item>
-                        <Link
-                          className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl"
-                          to="/WorkoutsPage"
-                        >
-                          Weight Lifting
-                        </Link>
-                      </Menu.Item>
-                    </div>
-                  </Menu.Items>
-                </Transition>
-                Workouts
-              </Menu>
-              {/* <p className="mb-[-12px]">Workouts</p> */}
-            </li>
-            {currentUser && (
-              <li className="border-b border-gray-600 transition ease-in-out delay-150 underline ">
+                 <Link className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..." to="/">
+                    Home
+                  </Link>
+              <li className="border-b">
                 <Menu as="div" className="relative inline-block text-left">
-                  <div className=" border-gray-600 transition ease-in-out delay-150 duration-300 ...">
+                  <div className={" border-gray-600 "}>
                     <Menu.Button className="flex">
-                      <div>
-                        <BiMessageRounded
-                          onClick={() => navigate("/ChatPage")}
-                          size={24}
-                        />{" "}
-                      </div>
-
-                      <div className="m-auto">
-                        <IoIosArrowDropdown size={24} />
-                      </div>
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className=" text-black absolute right-0 z-10 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1 flex flex-col pl-[50px]">
-                        <Menu.Item>
-                          <Link className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl" to="/ChatPage">
-                            Individual Chats
-                          </Link>
-                        </Menu.Item>
-                        <Menu.Item>
-                          <Link className="text-[19px] text-black hover: hover:text-slate-400 hover:rounded-2xl" to="/ChatRooms">
-                            Chat Rooms
-                          </Link>
-                        </Menu.Item>
-                      </div>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-                <p>Messages</p>
-              </li>
-            )}
-
-            <li className="border-b border-gray-600 transition ease-in-out delay-150 underline">
-              <Link to="/">
-                <AiFillHome className="w-[60px]" size={31} />
-              </Link>
-              <p className="pl-2">Home</p>
-            </li>
-            {/* <li className="">
-              {" "}
-              <IoIosNotifications className="w-[80px] my-[-4px]" size={37} />
-              <p className="underline my-[-13px] py-1 text-[15px]">
-                Notifications
-              </p>
-            </li> */}
-            {currentUser && (
-              <li>
-                <Menu as="div" className="relative inline-block text-left">
-                  <div className={" border-gray-600 hover:-translate-y-1 "}>
-                    <Menu.Button className="flex my-[-10px]">
                       <div>
                         {" "}
                         <img
                           onClick={() => navigate("/ProfilePage")}
-                          className="w-[48px] h-[48px] rounded-3xl"
-                          src={currentUser.photoURL ?? ""}
+                          className="w-[42px] h-[42px] rounded-3xl"
+                          src={currentUser?.photoURL ?? ""}
                           referrerPolicy="no-referrer"
                         />
                       </div>
@@ -240,10 +158,14 @@ export const Navbar = () => {
                     </Menu.Items>
                   </Transition>
                 </Menu>
-                <p className="my-[-10px] underline">Account</p>
+                <p className="text-sm">Account</p>
               </li>
-            )}
+              </ul>
+              )}
+              
+            
           </ul>
+       
           <div onClick={() => setNav(!nav)} className="lg:hidden">
             <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
             {nav && (
@@ -251,75 +173,66 @@ export const Navbar = () => {
                 variants={variants}
                 className={
                   nav
-                    ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
+                    ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] -z-20 h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
                     : "ease-in-out duration-500 fixed left-[-100%]"
                 }
               >
-                        <Link
-                          className="p-4 border-b border-gray-600" 
-                          to="/WorkoutsPage"
-                        >
-                          My Workouts
-                        </Link>
-                        <Link
-                          className="p-4 border-b border-gray-600" 
-                          to="/WorkoutsPage"
-                        >
-                          Weight Lifting
-                        </Link>
-                <Link className="p-4 border-b border-gray-600" to="/ChatPage">
-                  Individual Chats
+                <Link
+                  className="p-4 border-b border-gray-600"
+                  to="/register"
+                >
+                 Register
+                </Link>
+                <Link
+                  className="p-4 border-b border-gray-600"
+                  to="/login"
+                >
+                 Log in
+                </Link>
+                <Link
+                  className="p-4 border-b border-gray-600"
+                  to="/"
+                >
+                  Home
                 </Link>
 
-                <Link className="p-4 border-b border-gray-600" to="/ChatRooms">
-                  Chat Rooms
-                </Link>
-
-                <Link className="p-4 border-b border-gray-600" to="/Gyms">
-                  Gyms
-                </Link>
                 {currentUser && (
-                  <li>
-                    <Menu as="div" className="relative inline-block text-left">
-                      <div className={" border-gray-600 hover:-translate-y-1"}>
-                        <Menu.Button className="flex">
-                          <div>
-                            {" "}
-                            <img
-                              onClick={() => navigate("/ProfilePage")}
-                              className="w-[40px] h-[40px] rounded-full"
-                              src={currentUser.photoURL ?? ""}
-                            />
-                          </div>
-                          <div className="m-auto">
-                            <IoIosArrowDropdown size={24} />
-                          </div>
-                        </Menu.Button>
-                      </div>
-                      <Transition
-                        as={Fragment}
-                        enter="transition ease-out duration-100"
-                        enterFrom="transform opacity-0 scale-95"
-                        enterTo="transform opacity-100 scale-100"
-                        leave="transition ease-in duration-75"
-                        leaveFrom="transform opacity-100 scale-100"
-                        leaveTo="transform opacity-0 scale-95"
-                      >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                          <div className="py-1 flex flex-col gap-2 pl-[120px]">
-                            <Menu.Item>
-                              <li onClick={logOut}>Log Out</li>
-                            </Menu.Item>
-                            <Menu.Item>
-                              <Link className="text-sm" to="/ProfilePage">
-                                Edit Account
-                              </Link>
-                            </Menu.Item>
-                          </div>
-                        </Menu.Items>
-                      </Transition>
-                    </Menu>
-                  </li>
+                  <>
+                        <Link
+                  className="p-4 border-b border-gray-600"
+                  to="/WorkoutsPage"
+                >
+                  My Workouts
+                </Link>
+                    <Link
+                      className="p-4 border-b border-gray-600"
+                      to="/ChatPage"
+                    >
+                      Individual Chats
+                    </Link>
+
+                    <Link
+                      className="p-4 border-b border-gray-600"
+                      to="/ChatRooms"
+                    >
+                      Chat Rooms
+                    </Link>
+                    <Link className="p-4 border-b border-gray-600" to="/Gyms">
+                      Gyms
+                    </Link>
+
+                    <Link className="p-4 border-b border-gray-600" to="/Gyms">
+                      Profile
+                    </Link>
+
+                    <Link
+                      onClick={() => signOut(auth)}
+                      className="p-4 border-b border-gray-600"
+                      to="/Gyms"
+                    >
+                      Log Out
+                    </Link>
+                  </>
                 )}
               </motion.ul>
             )}

@@ -6,13 +6,14 @@ import {getStorage} from "firebase/storage"
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBu5yBT8T8G2wCw_HLCqaB0DghuwTN-MNQ",
-  authDomain: "capstone-ec476.firebaseapp.com",
+  apiKey:import.meta.env.VITE_API_KEY,
+  authDomain:"capstone-ec476.firebaseapp.com",
   projectId: "capstone-ec476",
-  storageBucket: "capstone-ec476.appspot.com",
-  messagingSenderId: "92545002195",
-  appId: "1:92545002195:web:e1fac7ad0be2113aed0226"
+  storageBucket:import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId:import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId:import.meta.env.VITE_APP_ID
 };
+
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth()

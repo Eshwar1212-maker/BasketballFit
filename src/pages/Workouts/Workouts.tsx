@@ -1,3 +1,10 @@
+import React from 'react'
+
 export const Workouts = () => {
-  return <div>Workouts</div>;
-};
+  return (
+    <div>
+      <div></div>
+    </div>
+  )
+}
+
