@@ -8,17 +8,8 @@ import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { Fragment } from "react";
-import { AiOutlineMessage, AiFillHome, AiTwotoneMessage } from "react-icons/ai";
-import { Navigate } from "react-router-dom";
-import { CgGym } from "react-icons/cg";
-import { BsFillMoonFill, BsSunFill } from "react-icons/bs";
 import { motion } from "framer-motion";
-import { IoIosNotifications } from "react-icons/io";
-import {
-  BiMessageRoundedDetail,
-  BiMessageSquareDetail,
-  BiMessageRounded,
-} from "react-icons/bi";
+
 
 interface Nav {
   nav: boolean;
@@ -64,10 +55,8 @@ export const Navbar = () => {
             src="https://img.freepik.com/free-vector/hand-drawn-basket-ball_1034-756.jpg?w=1480&t=st=1681697574~exp=1681698174~hmac=8dfed6fc68ade2c3cdf9c06ed620f53c23f907846785c2e3951b191b3f083b96"
           />
         </div>
-        <div className="">
-
+        <div className="hidden lg:block">
           <ul className="flex flex-row gap-6 px-[80px] rounded-lg">
-        
             {!currentUser && (
               <>
                 <li className="border-b hover:bg-red-800 p-3 rounded-md">
@@ -92,118 +81,115 @@ export const Navbar = () => {
                 </li>
               </>
             )}
-            
-           {currentUser && (
-            <ul className="flex gap-4">
-             <Link className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..." to="/ChatRooms">
-                    Messaging
-                  </Link>
-       
-            <li
-             className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-              Forums</li>
-              <li 
-            className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                    <Link className="text-md" to="/workouts">
+
+            {currentUser && (
+              <ul className="flex gap-4">
+                <Link
+                  className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                  to="/ChatRooms"
+                >
+                  Messaging
+                </Link>
+
+                <li className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                  Forums
+                </li>
+                <li className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                  <Link className="text-md" to="/workouts">
                     Workouts
-                  </Link></li>
-
-                 <Link className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..." to="/">
-                    Home
                   </Link>
-              <li className="border-b">
-                <Menu as="div" className="relative inline-block text-left">
-                  <div className={" border-gray-600 "}>
-                    <Menu.Button className="flex">
-                      <div>
-                        {" "}
-                        <img
-                          onClick={() => navigate("/ProfilePage")}
-                          className="w-[42px] h-[42px] rounded-3xl"
-                          src={currentUser?.photoURL ?? ""}
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-                      <div className="m-auto">
-                        <IoIosArrowDropdown size={24} />
-                      </div>
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="text-black absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                      <div className="py-1 flex flex-col gap-2 pl-[60px]">
-                        <Menu.Item>
-                          <li
-                            className="text-[19px]"
-                            onClick={() => signOut(auth)}
-                          >
-                            Log Out
-                          </li>
-                        </Menu.Item>
+                </li>
 
-                        <Menu.Item>
-                          <Link className="text-[19px]" to="/ProfilePage">
-                            Profile
-                          </Link>
-                        </Menu.Item>
-                      </div>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-                <p className="text-sm">Account</p>
-              </li>
+                <Link
+                  className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                  to="/"
+                >
+                  Home
+                </Link>
+                <li className="border-b">
+                  <Menu as="div" className="relative inline-block text-left">
+                    <div className={" border-gray-600 "}>
+                      <Menu.Button className="flex">
+                        <div>
+                          {" "}
+                          <img
+                            onClick={() => navigate("/ProfilePage")}
+                            className="w-[42px] h-[42px] rounded-3xl"
+                            src={currentUser?.photoURL ?? ""}
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
+                        <div className="m-auto">
+                          <IoIosArrowDropdown size={24} />
+                        </div>
+                      </Menu.Button>
+                    </div>
+                    <Transition
+                      as={Fragment}
+                      enter="transition ease-out duration-100"
+                      enterFrom="transform opacity-0 scale-95"
+                      enterTo="transform opacity-100 scale-100"
+                      leave="transition ease-in duration-75"
+                      leaveFrom="transform opacity-100 scale-100"
+                      leaveTo="transform opacity-0 scale-95"
+                    >
+                      <Menu.Items className="text-black absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <div className="py-1 flex flex-col gap-2 pl-[60px]">
+                          <Menu.Item>
+                            <li
+                              className="text-[19px]"
+                              onClick={() => signOut(auth)}
+                            >
+                              Log Out
+                            </li>
+                          </Menu.Item>
+
+                          <Menu.Item>
+                            <Link className="text-[19px]" to="/ProfilePage">
+                              Profile
+                            </Link>
+                          </Menu.Item>
+                        </div>
+                      </Menu.Items>
+                    </Transition>
+                  </Menu>
+                  <p className="text-sm">Account</p>
+                </li>
               </ul>
-              )}
-              
-            
+            )}
           </ul>
-       
-          <div onClick={() => setNav(!nav)} className="lg:hidden">
+
+         
+        </div>
+        <div onClick={() => setNav(!nav)} className=" lg:hidden">
             <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
             {nav && (
               <motion.ul
                 variants={variants}
                 className={
                   nav
-                    ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] -z-20 h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
+                    ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] z-20 h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
                     : "ease-in-out duration-500 fixed left-[-100%]"
                 }
               >
-                <Link
-                  className="p-4 border-b border-gray-600"
-                  to="/register"
-                >
-                 Register
+                <Link className="p-4 border-b border-gray-600" to="/register">
+                  Register
                 </Link>
-                <Link
-                  className="p-4 border-b border-gray-600"
-                  to="/login"
-                >
-                 Log in
+                <Link className="p-4 border-b border-gray-600" to="/login">
+                  Log in
                 </Link>
-                <Link
-                  className="p-4 border-b border-gray-600"
-                  to="/"
-                >
+                <Link className="p-4 border-b border-gray-600" to="/">
                   Home
                 </Link>
 
                 {currentUser && (
                   <>
-                        <Link
-                  className="p-4 border-b border-gray-600"
-                  to="/WorkoutsPage"
-                >
-                  My Workouts
-                </Link>
+                    <Link
+                      className="p-4 border-b border-gray-600"
+                      to="/WorkoutsPage"
+                    >
+                      My Workouts
+                    </Link>
                     <Link
                       className="p-4 border-b border-gray-600"
                       to="/ChatPage"
@@ -237,7 +223,6 @@ export const Navbar = () => {
               </motion.ul>
             )}
           </div>
-        </div>
       </div>
     </div>
   );

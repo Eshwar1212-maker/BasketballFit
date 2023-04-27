@@ -35,8 +35,11 @@ export const Login = () => {
         muted
       />
 
-      <div className="bg-blue-50 flex flex-col py-[140px] md:py-[100px] items-center absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
-        <form onSubmit={handleSubmit} className="border-2 p-3 rounded-lg bg-white text-black">
+      <div className="bg-blue-50 flex gap-3 flex-col md:py-[170px] items-center absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
+      <span className="text-2xl font-bold block mb-4">
+          Login
+        </span>
+        <form onSubmit={handleSubmit} className="border-2 p-2 rounded-lg bg-white text-black w-[400px] h-[260px] flex justify-center flex-col">
         <h1 className="text-black font-bold text-sm text-[11px] ">Email</h1>
 
           <input
@@ -54,13 +57,20 @@ export const Login = () => {
           <button className="bg-blue-900 text-white block w-full font-first h-[43px] rounded-xl">
             <Link to="/register">Login</Link>
           </button>
-          <p className="text-[12px]">Or</p>
+          <p className="text-[12px] py-2">
+            Dont have an account?
+            <span className="cursor-pointer underline">
+              <Link to="/register">Register</Link>
+            </span>
+          </p>
+        </form>
+        <p className="text-[12px]">Or</p>
           <a
             onClick={signIn}
             href="#_"
             className="relative inline-block text-lg group"
           >
-            <span className="w-[230px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+            <span className="w-[400px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
               <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
               <span className="absolute left-0 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 w-[400px] bg-gray-900 group-hover:-rotate-180 ease"></span>
               <span className="relative text-xl">
@@ -68,14 +78,6 @@ export const Login = () => {
               </span>
             </span>
           </a>
-
-          <p className="text-[12px]">
-            Dont have an account?
-            <span className="cursor-pointer underline">
-              <Link to="/register">Register</Link>
-            </span>
-          </p>
-        </form>
       </div>
     </div>
   );
