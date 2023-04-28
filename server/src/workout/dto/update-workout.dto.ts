@@ -1,5 +1,5 @@
 import { BaseWorkoutDto } from './base-workout.dto';
 
-export class UpdateTodoDto extends BaseWorkoutDto {
+export class UpdateWorkoutDto extends BaseWorkoutDto {
   completedAt: Date;
 }

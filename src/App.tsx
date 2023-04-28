@@ -9,6 +9,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { ProfilePage } from "./pages/Profile/ProfilePage";
 import Register from "./pages/auth/Register";
+import { UsersWorkouts } from "./pages/Workouts/UsersWorkouts";
 import { Login } from "./pages/auth/Login";
 
 
@@ -34,6 +35,8 @@ function App() {
             <Route path="/ChatPage" element={<ChatPage />} />
             <Route path="/ChatRooms" element={<ChatRooms />} />
             <Route path="/ProfilePage" element={<ProfilePage />} />
+            <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
+
           </>
         )}
 

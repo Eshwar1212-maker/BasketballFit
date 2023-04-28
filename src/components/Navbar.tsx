@@ -186,7 +186,7 @@ export const Navbar = () => {
                   <>
                     <Link
                       className="p-4 border-b border-gray-600"
-                      to="/WorkoutsPage"
+                      to="/UsersWorkouts"
                     >
                       My Workouts
                     </Link>
