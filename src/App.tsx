@@ -45,8 +45,6 @@ function App() {
             </>
           )}
 
-          <Route path="/workouts" element={<Workouts />} />
-          <Route path="/gyms" element={<Gyms />} />
         </Routes>
       </Suspense>
     </Router>

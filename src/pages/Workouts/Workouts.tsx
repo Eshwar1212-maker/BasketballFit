@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card } from "../../components/workouts/card";
 import { useNavigate } from "react-router-dom";
+import { Workout } from "../../components/workouts/Workout";
 
  const Workouts = () => {
   const [workouts, setWorkouts] = useState([])
@@ -42,9 +42,9 @@ import { useNavigate } from "react-router-dom";
         </div>
         <div className="border-2 border-slate-900 my-3 w-[760px] m-auto rounded-full"></div>
         <div className="w-[400px] m-auto border-none flex flex-col gap-2">
-        <Card name="Bench Press" reps={3} sets={4} />
-        <Card name="Bench Press" reps={3} sets={4} />
-        <Card name="Bench Press" reps={3} sets={4} />
+        <Workout name="Bench Press" reps={3} sets={4} />
+        <Workout name="Bench Press" reps={3} sets={4} />
+        <Workout name="Bench Press" reps={3} sets={4} />
 
         </div>
         <button 

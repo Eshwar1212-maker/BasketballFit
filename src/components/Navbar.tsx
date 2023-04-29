@@ -42,7 +42,7 @@ export const Navbar = () => {
         }
       >
         <div className="text-2xl font-light flex flex-row gap-3">
-          <div>
+          <div className="text-black">
             <Link className=" border-gray-600" to="/">
               <span className="text-orange-900 text-3xl border-b">B</span>
               asketball
@@ -56,25 +56,20 @@ export const Navbar = () => {
           />
         </div>
         <div className="hidden lg:block">
-          <ul className="flex flex-row gap-6 px-[80px] rounded-lg">
+          <ul className="flex flex-row gap-6 px-[80px] rounded-lg text-black text-xl">
             {!currentUser && (
               <>
-                <li className="border-b hover:bg-red-800 p-3 rounded-md">
+                <li className="border-b hover:bg-red-800 p-3 rounded-md hover:text-white">
                   <Link className="text-md " to="/register">
                     Register
                   </Link>
                 </li>
-                <li className="border-b hover:bg-red-800 p-3 rounded-lg">
+                <li className="border-b hover:bg-red-800 p-3 rounded-lg hover:text-white">
                   <Link className="text-md" to="/login">
                     Log in
                   </Link>
                 </li>
-                <li className="border-b hover:bg-red-800 p-3 rounded-lg">
-                  <Link className="text-md" to="/workouts">
-                    Workouts
-                  </Link>
-                </li>
-                <li className="border-b hover:bg-red-800 p-3 rounded-lg">
+                <li className="border-b hover:bg-red-800 p-3 rounded-lg hover:text-white">
                   <Link className="text-md" to="/">
                     Home
                   </Link>
@@ -95,7 +90,7 @@ export const Navbar = () => {
                   Forums
                 </li>
                 <li className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                  <Link className="text-md" to="/workouts">
+                  <Link className="text-md" to="/UsersWorkouts">
                     Workouts
                   </Link>
                 </li>
