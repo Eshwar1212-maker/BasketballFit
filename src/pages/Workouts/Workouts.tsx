@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Card } from "../../components/workouts/card";
 import { useNavigate } from "react-router-dom";
 
-export const Workouts = () => {
+ const Workouts = () => {
   const [workouts, setWorkouts] = useState([])
   const navigate = useNavigate()
 
@@ -56,3 +56,4 @@ export const Workouts = () => {
     </div>
   );
 };
+export default Workouts

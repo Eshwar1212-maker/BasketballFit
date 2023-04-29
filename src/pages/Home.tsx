@@ -20,7 +20,7 @@ import {
   scroller,
 } from "react-scroll";
 
-export const Home = () => {
+const Home = () => {
   const { currentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ export const Home = () => {
             <Typewriter
               onInit={(typewriter) => {
                 typewriter.pauseFor(2300).typeString("level up your game")
-                .pauseFor(5000)
+                .pauseFor(11000)
                 .deleteAll().pauseFor(3000)
                 .typeString("level up your game")
                 .pauseFor(10000)
@@ -135,3 +135,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home

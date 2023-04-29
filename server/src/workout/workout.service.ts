@@ -16,17 +16,35 @@ constructor(
 async findAll(): Promise<Workout[]> {
 return await this.model.find().exec();
 }
+async getUserWorkoutsByDate(firebaseUserId: string, date: string) {
+    console.log('Date:', date);
+    const allUserWorkouts = await this.model.find({ firebaseUserId: firebaseUserId }).exec();
+    console.log('All user workouts:', allUserWorkouts);
+    const result = await this.model.find({ firebaseUserId: firebaseUserId, date: date }).exec();
+    console.log('Result:', result);
+    return result;
+  }
+  async deleteAllUserWorkouts(firebaseUserId: string): Promise<any> {
+    return await this.model.deleteMany({ firebaseUserId }).exec();
+  }
+  
+  async create(firebaseUserId: string, createWorkoutDto: CreateWorkoutDto) {
+    const workout = new this.model({
+      ...createWorkoutDto,
+      firebaseUserId,
+    });
+    return await workout.save();
+  }
+  
 
 async findOne(id: string): Promise<Workout> {
 return await this.model.findById(id).exec();
 }
+async getUserWorkouts(firebaseUserId: string) {
+    return await this.model.find({ firebaseUserId: firebaseUserId }).exec();
+  }
+  
 
-async create(createWorkoutDto: CreateWorkoutDto): Promise<Workout> {
-return await new this.model({
-...createWorkoutDto,
-createdAt: new Date(),
-}).save();
-}
 
 async update(id: string, updateWorkoutDto: UpdateWorkoutDto): Promise<Workout> {
 return await this.model.findByIdAndUpdate(id, updateWorkoutDto).exec();

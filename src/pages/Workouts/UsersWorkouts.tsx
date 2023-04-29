@@ -4,11 +4,9 @@ import { Card } from '../../components/workouts/card'
 import { months } from '../../utils/calender'
 import dayjs from 'dayjs'
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
-
 import cn from '../../utils/cn'
 
-export const UsersWorkouts = () => {
-
+const UsersWorkouts = () => {
   console.log(generateDate());
   const [workouts, setWorkouts] = useState<any[]>([])
   const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -17,7 +15,6 @@ export const UsersWorkouts = () => {
   const [selectDate, setSelectDate] = useState(currentDate);
 
   useEffect(() => {
-
     fetch('http://localhost:3001/workouts')
       .then((res) => res.json())
       .then((data) => {
@@ -25,32 +22,17 @@ export const UsersWorkouts = () => {
         console.log(data);
 
       })
-
-
   }, [])
-
-
-
   const addWorkoutSubmit = (e: any) => {
     e.preventDefault()
 
   }
-
-
+  console.log(selectDate.toDate().toDateString());
+  
 
   return (
-    <div className='flex sm:flex-col py-[150px] md:flex md:flex-row gap-20 cursor-pointer'>
-      <div className='w-1/5 px-7'>
-        <h1 className='text-sm md:text-base'>Drag and drop from your workouts to your calendar</h1>
-        <input
-          placeholder='Search your workouts'
-          className='border-2 border-black rounded-2xl w-full text-[18px] my-4' />
-        <div className='flex justify-between'>
-          <p>Bench Press</p>
-          <button>Add</button>
-        </div>
-      </div>
-      <div className='w-2/5'>
+    <div className='flex sm:flex-col py-[150px] md:flex md:flex-row gap-20 cursor-pointer justify-center'>
+      <div className=''>
         <h1 className='text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
         <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl h-fit p-4'>
           <div className='flex justify-between pb-3'>
@@ -111,7 +93,7 @@ export const UsersWorkouts = () => {
           </div>
         </div>
       </div>
-      <div className='w-1/5 px-5'>
+      <div className=' px-5'>
       <h1>{selectDate.toDate().toDateString()}</h1>
 
         <h1 className='text-gray-400 text-lg'>No tasks for today</h1>
@@ -129,3 +111,4 @@ export const UsersWorkouts = () => {
     </div>
   )
 }
+export default UsersWorkouts

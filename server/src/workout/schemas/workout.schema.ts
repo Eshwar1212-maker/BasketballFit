@@ -18,15 +18,16 @@ export class Workout {
   reps: number;
 
   @Prop()
-  completedAt?: Date;
+  createdAt: Date;
 
   @Prop({ required: true })
-  createdAt: Date;
+  date: string;
 
   @Prop()
   deletedAt?: Date;
+
   @Prop({required: true})
-  firebaseUserId?: string;
+  firebaseUserId: string;
 }
 
 export const WorkoutSchema = SchemaFactory.createForClass(Workout);

@@ -7,7 +7,7 @@ import { signInWithPopup } from "firebase/auth";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 
-export const Login = () => {
+ const Login = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e: any) => {
@@ -82,3 +82,6 @@ export const Login = () => {
     </div>
   );
 };
+
+
+export default Login

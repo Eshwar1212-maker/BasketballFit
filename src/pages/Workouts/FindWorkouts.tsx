@@ -1,10 +1,9 @@
+import React from 'react'
 
-export const FindWorkouts = () => {
+const FindWorkouts = () => {
   return (
-    <div>
-        <div>
-            
-        </div>
-    </div>
+    <div>FindWorkouts</div>
   )
 }
+
+export default FindWorkouts

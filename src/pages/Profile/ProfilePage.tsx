@@ -1,10 +1,10 @@
 import { signOut } from "firebase/auth";
-
+import { auth } from "../../firebase";
 
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-export const ProfilePage = () => {
+const ProfilePage = () => {
   const { currentUser } = useContext(AuthContext);
 
   return (
@@ -34,3 +34,4 @@ export const ProfilePage = () => {
     </div>
   );
 };
+  export default ProfilePage

@@ -3,7 +3,7 @@ import { ChatGroup } from "../../components/chatRooms/ChatGroup";
 
 
 
-export const ChatRooms = () => {
+const ChatRooms = () => {
 
   const [room, setRoom] = useState("")
   const [sendLink, setSendLink] = useState(false)
@@ -41,3 +41,4 @@ export const ChatRooms = () => {
   </div>
   )
 }
+export default ChatRooms

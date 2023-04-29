@@ -1,18 +1,23 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { ChatPage } from "./pages/Chat/ChatPage";
-import { Gyms } from "./pages/Gyms/Gyms";
-import { Workouts } from "./pages/Workouts/Workouts";
-import { Home } from "./pages/Home";
-import { ChatRooms } from "./pages/Chat/ChatRooms";
-import { useContext } from "react";
+import { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
-import { ProfilePage } from "./pages/Profile/ProfilePage";
-import Register from "./pages/auth/Register";
-import { UsersWorkouts } from "./pages/Workouts/UsersWorkouts";
-import { Login } from "./pages/auth/Login";
+import LazyLoader from "./components/LazyLoader";
 
+const Home = lazy(() => import("./pages/Home"));
+const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
+const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
+const Workouts = lazy(() =>
+  new Promise<{ default: React.ComponentType }>((resolve) => {
+    setTimeout(() => resolve(import("./pages/Workouts/Workouts")), );
+  })
+);
 
+const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
+const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage"));
+const Register = lazy(() => import("./pages/auth/Register"));
+const UsersWorkouts = lazy(() => import("./pages/Workouts/UsersWorkouts"));
+const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {
   const { currentUser } = useContext(AuthContext);
@@ -20,29 +25,30 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <Routes>
-        {!currentUser && (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/" element={<Home />}></Route>
-          </>
-        )}
+      <Suspense fallback={<LazyLoader />}>
+        <Routes>
+          {!currentUser && (
+            <>
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/" element={<Home />}></Route>
+            </>
+          )}
 
-        {currentUser && (
-          <>
-            <Route path="/" element={<Home />} />
-            <Route path="/ChatPage" element={<ChatPage />} />
-            <Route path="/ChatRooms" element={<ChatRooms />} />
-            <Route path="/ProfilePage" element={<ProfilePage />} />
-            <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
+          {currentUser && (
+            <>
+              <Route path="/" element={<Home />} />
+              <Route path="/ChatPage" element={<ChatPage />} />
+              <Route path="/ChatRooms" element={<ChatRooms />} />
+              <Route path="/ProfilePage" element={<ProfilePage />} />
+              <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
+            </>
+          )}
 
-          </>
-        )}
-
-        <Route path="/workouts" element={<Workouts />} />
-        <Route path="/gyms" element={<Gyms />} />
-      </Routes>
+          <Route path="/workouts" element={<Workouts />} />
+          <Route path="/gyms" element={<Gyms />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
