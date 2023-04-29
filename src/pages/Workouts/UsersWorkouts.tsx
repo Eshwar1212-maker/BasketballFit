@@ -6,8 +6,34 @@ import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import cn from '../../utils/cn'
 import { Workout } from '../../components/workouts/Workout';
 import { AuthContext } from '../../context/AuthContext';
+import { AiOutlinePlusSquare, AiOutlineCloseCircle } from 'react-icons/ai'
+import { Modal } from '../../components/Modal';
+import { Backdrop } from '../../components/Backdrop';
+import { motion } from 'framer-motion';
 
 
+const dropIn = {
+  hidden: {
+    y: "-100vh",
+    opacity: 0
+
+  },
+  visible: {
+    y: "0",
+    opacity: 1,
+    transition: {
+      duration: 0.1,
+      type: "spring",
+      damping: 25,
+      stiffness: 500
+    }
+
+  },
+  exit: {
+    y: "100vh",
+    opacity: 0
+  }
+}
 const UsersWorkouts = () => {
   const { currentUser } = useContext(AuthContext)
 
@@ -20,6 +46,12 @@ const UsersWorkouts = () => {
   const [workoutName, setWorkoutName] = useState("")
   const [workoutReps, setWorkoutReps] = useState(0)
   const [workoutSets, setWorkoutSets] = useState(0)
+  const [modalOpen, setModalIsOpen] = useState(false)
+
+  const close = () => setModalIsOpen(!modalOpen)
+  const open = () => setModalIsOpen(true)
+
+
 
   useEffect(() => {
     fetch(`http://localhost:3001/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
@@ -27,7 +59,7 @@ const UsersWorkouts = () => {
       .then((data) => {
         setSelectedWorkouts(data);
       })
-      console.log("Workouts from this user: " + selectedWorkouts);
+    console.log("Workouts from this user: " + selectedWorkouts);
 
   }, [selectDate]);
   // use the selectedWorkouts array to render the workouts on the calendar UI
@@ -39,7 +71,7 @@ const UsersWorkouts = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          title:workoutName, reps:workoutReps, sets:workoutSets
+          title: workoutName, reps: workoutReps, sets: workoutSets
           , date: selectDate.toDate().toDateString()
         }),
       })
@@ -54,7 +86,9 @@ const UsersWorkouts = () => {
 
     }
     let newItem = {}
-    setSelectedWorkouts([...selectedWorkouts, {title:workoutName, reps:workoutReps, sets:workoutSets}])
+    setSelectedWorkouts([...selectedWorkouts, { title: workoutName, reps: workoutReps, sets: workoutSets }])
+    setModalIsOpen(false)
+
   };
   console.log(selectDate.toDate().toDateString());
 
@@ -123,44 +157,95 @@ const UsersWorkouts = () => {
         </div>
       </div>
       <div className=' px-5'>
-        <h1>{selectDate.toDate().toDateString()}</h1>
+        <h1 className='underline pb-2 text-center text-blue-900 font-bold text-xl'>{selectDate.toDate().toDateString()}</h1>
 
-        <h1 className='text-gray-400 text-lg'>No tasks for today</h1>
-        <div>
+        {selectedWorkouts.length === 0 &&
+          (
+            <div className='text-gray-400 text-lg py-[59px]'>
+              Take all the rest you need today {currentUser?.displayName}
+              <img className='w-[370px] h-[380px] py-10 rounded-[270px]' src='https://i0.wp.com/sportsmedicineweekly.com/wp-content/uploads/2021/07/tips-for-better-sleep.png?fit=1080%2C600&ssl=1' />
+            </div>
+
+          )
+        }        <div>
           {selectedWorkouts.map((workout: any) => (
             <Workout key={workout.id} name={workout.title} reps={workout.reps} sets={workout.sets} />
           ))}
         </div>
-        <div className=''>
-          <form onSubmit={handleSubmit} className='flex flex-col text-center md:fixed bottom-3 h-[380px] w-96'>
-            <input
-              value={workoutName}
-              onChange={(e) => setWorkoutName(e.target.value)}
-              name="title"
-              className='text-center border-slate-600 border-2 rounded-2xl p-1'
-              placeholder='Workout name' />
-            <input
-              type='number'
-              value={workoutReps}
-              onChange={(e) => setWorkoutReps(e.target.valueAsNumber)}
-              name="reps"
-              className='text-center border-slate-600 border-2 rounded-2xl p-1'
-              placeholder='Workout reps' />
-            <input
-              type='number'
-              value={workoutSets}
-              onChange={(e) => setWorkoutSets(e.target.valueAsNumber)}
-              name="sets"
-              className='text-center border-slate-600 border-2 rounded-2xl p-1'
-              placeholder='Workout sets' />
-            <button
-              type="submit"
-              className='border-2 rounded-2xl bg-slate-500 text-white border-slate-600 hover:rounded-2xl mt-4'>
-              Add workout</button>
-          </form>
+        {modalOpen &&
+          <Backdrop
+          >
+            <motion.div
+              className="m-auto pb-0 pl-[2rem] flex flex-col items-center line-clamp-3"
+              onClick={(e) => e.stopPropagation()}
+              variants={dropIn}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <form onSubmit={handleSubmit} className="flex flex-col max-w-[600px] bg-slate-50 p-10 rounded-xl gap-3 text-xl text-center font-bold">
+                <label>Workout Name</label>
+                <input
+                  value={workoutName}
+                  type='text'
+                  className="rounded-md text-center p-2 border-2 border-black"
+                  placeholder="Enter name..."
+                  onChange={(e) => setWorkoutName(e.target.value)}
+                />
+
+                <label> Reps</label>
+                <input
+                  value={workoutReps}
+                  type='number'
+                  className="rounded-md text-center p-2 border-2 border-black"
+                  placeholder="Enter reps..."
+                  onChange={(e) => setWorkoutReps(e.target.valueAsNumber)}
+
+                />
+                <label> Sets</label>
+                <input
+                  value={workoutSets}
+                  type='number'
+                  className="rounded-md text-center p-2 border-2 border-black"
+                  placeholder="Enter sets..."
+                  onChange={(e) => setWorkoutSets(e.target.valueAsNumber)}
+
+                />
+                <label> Weight(optional)</label>
+                <input
+                  type='number'
+
+                  className="rounded-md text-center p-2 border-2 border-black"
+                  placeholder="Enter weight..." />
+                <label>Notes(optional)</label>
+                <input
+                  className="rounded-md text-center h-20 border-2 border-black"
+                  placeholder="Enter description..." />
+                <button className="p-3 rounded-md bg-slate-600 text-white hover:bg-slate-400">Add Workout</button>
+              </form>
+            </motion.div>
+          </Backdrop>}
+
+        <div className='pb-11'>
+          {
+            modalOpen ?
+              <AiOutlineCloseCircle
+                className='fixed bottom-4 h-[50px] mb-11 rounded-full bg-slate-100 w-fit hi-fit cursor-pointer'
+                onClick={close}
+                size={20} /> :
+              (
+                <>
+                  <AiOutlinePlusSquare
+                    className='fixed bottom-4 h-[400px] cursor-pointer  ml-[170px]'
+                    onClick={close}
+                    size={40} />
+                  <h1 className='fixed bottom-4 h-[170px] cursor-pointer  ml-[150px]'>Add Workout</h1>
+
+                </>
+              )
+          }
         </div>
       </div>
-
     </div>
   )
 }

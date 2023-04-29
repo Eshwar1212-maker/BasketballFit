@@ -41,12 +41,12 @@ export const Navbar = () => {
             : " flex justify-between m-auto p-4 py-8 h-[10px] text-white font-thin text-md cursor-pointer"
         }
       >
-        <div className="text-2xl font-light flex flex-row gap-3">
+        <div className="text-3xl font-light flex flex-row gap-3">
           <div className="text-black">
             <Link className=" border-gray-600" to="/">
-              <span className="text-orange-900 text-3xl border-b">B</span>
+              <span className="text-orange-900 text-4xl border-b font-semibold">B</span>
               asketball
-              <span className="text-orange-900 text-3xl border-b">F</span>it
+              <span className="text-orange-900 text-4xl border-b font-semiblack">F</span>it
             </Link>
           </div>
 
@@ -76,27 +76,25 @@ export const Navbar = () => {
                 </li>
               </>
             )}
-
             {currentUser && (
-              <ul className="flex gap-4">
+              <ul className="flex gap-5 text-[16px]">
                 <Link
-                  className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
                   to="/ChatRooms"
                 >
                   Messaging
                 </Link>
 
-                <li className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   Forums
                 </li>
-                <li className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   <Link className="text-md" to="/UsersWorkouts">
                     Workouts
                   </Link>
                 </li>
-
                 <Link
-                  className="p-4 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
                   to="/"
                 >
                   Home

@@ -29,10 +29,14 @@ const Community = () => {
           <p>
             Create private group chats with either your team so you can stay in
             contact with eachother throughout your games and practices, or just
-            your friends that you play pickup with!
+            your friends that you play pickup with! Join our forums, so you can 
+            talk with other hoopers about whatever is on your mind about basketball, whether 
+            your struggling through a slump, or want to share an accomplishment, theres always 
+            someone who will listen!
           </p>
           {true ? (
-            <Link to="/forum">
+            <div className="flex gap-9">
+                   <Link to="/GroupChats">
               <button
                 className="
         bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
@@ -42,6 +46,19 @@ const Community = () => {
                 Group Chats
               </button>
             </Link>
+            <Link to="/forums">
+              <button
+                className="
+        bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
+        text-black transition ease-in-out delay-150 hover:-translate-y-1
+        hover:scale-80 hover:bg-slate-500 duration-300 ..."
+              >
+                Forums
+              </button>
+            </Link>
+            </div>
+     
+            
           ) : (
             <button
               onClick={signIn}

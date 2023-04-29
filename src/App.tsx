@@ -9,14 +9,19 @@ const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
 const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
 const Workouts = lazy(() =>
   new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/Workouts")), );
+    setTimeout(() => resolve(import("./pages/Workouts/Workouts")),2000 );
   })
 );
 
 const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
 const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage"));
 const Register = lazy(() => import("./pages/auth/Register"));
-const UsersWorkouts = lazy(() => import("./pages/Workouts/UsersWorkouts"));
+const UsersWorkouts = lazy(() =>
+  new Promise<{ default: React.ComponentType }>((resolve) => {
+    setTimeout(() => resolve(import("./pages/Workouts/UsersWorkouts")),2000 );
+  })
+);
+
 const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {

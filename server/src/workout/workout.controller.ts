@@ -35,10 +35,6 @@ export class WorkoutController {
   async getUserWorkoutsByDate(@Param('firebaseUserId') firebaseUserId: string, @Param('date') date: string) {
     return this.service.getUserWorkoutsByDate(firebaseUserId, date);
   }
-  @Delete('user/:firebaseUserId')
-  async deleteAllUserWorkouts(@Param('firebaseUserId') firebaseUserId: string) {
-    return this.service.deleteAllUserWorkouts(firebaseUserId);
-  }
   @Get()
   async index() {
     return await this.service.findAll();

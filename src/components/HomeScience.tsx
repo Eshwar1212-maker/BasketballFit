@@ -16,12 +16,11 @@ const Science = () => {
         <div className="flex flex-col justify-center">
           <p className="font-serif p-4">
             <h1 className="md:text-4xl sm:text-3xl text-2xl font-bold py-2">
-              Workouts approved by the best
+              Let us track your workouts
             </h1>
             <br />
-            Scientific based workouts that have stood the test of time, proven
-            tested by the worlds best players. Use our workout calender to track what workouts 
-            you need to get done each day so you can stay as explosive as possible. 
+            Let us make it easier for you when it comes to tracking. Use our calender for both skill workouts, and weight lifting 
+            workouts, where we will track everything for you, so you can program your progress. 
           </p>
           <Link to="/traininghome">
             <button
