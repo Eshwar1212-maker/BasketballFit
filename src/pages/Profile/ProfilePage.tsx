@@ -1,6 +1,5 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -16,7 +15,6 @@ const ProfilePage = () => {
             src={currentUser?.photoURL}
           />
           <h1 className="text-xl">{currentUser?.displayName}</h1>
-
           <p className="mb-4 text-sm">
             Currently logged in as {currentUser?.email}
           </p>
@@ -30,7 +28,6 @@ const ProfilePage = () => {
           <button className="underline">Edit displayname</button>
         </div>
       </div>
- 
     </div>
   );
 };

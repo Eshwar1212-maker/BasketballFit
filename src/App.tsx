@@ -9,19 +9,18 @@ const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
 const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
 const Workouts = lazy(() =>
   new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/Workouts")),2000 );
+    setTimeout(() => resolve(import("./pages/Workouts/Workouts")),1000 );
   })
 );
-
+const Forum = lazy(() => import("./pages/Forum"));
 const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
 const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage"));
 const Register = lazy(() => import("./pages/auth/Register"));
 const UsersWorkouts = lazy(() =>
   new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/UsersWorkouts")),2000 );
+    setTimeout(() => resolve(import("./pages/Workouts/UsersWorkouts")),1000 );
   })
 );
-
 const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {
@@ -47,6 +46,8 @@ function App() {
               <Route path="/ChatRooms" element={<ChatRooms />} />
               <Route path="/ProfilePage" element={<ProfilePage />} />
               <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
+              <Route path="/Forum" element={<Forum />} />
+
             </>
           )}
 

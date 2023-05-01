@@ -7,7 +7,6 @@ import cn from '../../utils/cn'
 import { Workout } from '../../components/workouts/Workout';
 import { AuthContext } from '../../context/AuthContext';
 import { AiOutlinePlusSquare, AiOutlineCloseCircle } from 'react-icons/ai'
-import { Modal } from '../../components/Modal';
 import { Backdrop } from '../../components/Backdrop';
 import { motion } from 'framer-motion';
 
@@ -16,7 +15,6 @@ const dropIn = {
   hidden: {
     y: "-100vh",
     opacity: 0
-
   },
   visible: {
     y: "0",
@@ -27,7 +25,6 @@ const dropIn = {
       damping: 25,
       stiffness: 500
     }
-
   },
   exit: {
     y: "100vh",
@@ -36,7 +33,6 @@ const dropIn = {
 }
 const UsersWorkouts = () => {
   const { currentUser } = useContext(AuthContext)
-
   console.log(generateDate());
   const [selectedWorkouts, setSelectedWorkouts] = useState<any[]>([])
   const days = ["S", "M", "T", "W", "T", "F", "S"];
@@ -44,14 +40,13 @@ const UsersWorkouts = () => {
   const [today, setToday] = useState<any>(currentDate);
   const [selectDate, setSelectDate] = useState(currentDate);
   const [workoutName, setWorkoutName] = useState("")
-  const [workoutReps, setWorkoutReps] = useState(0)
-  const [workoutSets, setWorkoutSets] = useState(0)
+  const [workoutReps, setWorkoutReps] = useState<number | null>(null);
+  const [workoutSets, setWorkoutSets] = useState<number | null>(null);
+  const [weight, setWeight] = useState<number | null>(null);
   const [modalOpen, setModalIsOpen] = useState(false)
-
+  const [description, setDescription] = useState("")
+  const [completedWorkoutsDays, setCompletedWorkoutsDays] = useState<Set<string>>(new Set());
   const close = () => setModalIsOpen(!modalOpen)
-  const open = () => setModalIsOpen(true)
-
-
 
   useEffect(() => {
     fetch(`http://localhost:3001/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
@@ -60,37 +55,56 @@ const UsersWorkouts = () => {
         setSelectedWorkouts(data);
       })
     console.log("Workouts from this user: " + selectedWorkouts);
+    console.log("Date in fetch " + selectDate.toDate().toDateString());
+    
 
   }, [selectDate]);
   // use the selectedWorkouts array to render the workouts on the calendar UI
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const date = selectDate.toDate().toDateString(); // use selected date from state
+    const workoutData: any = {
+      title: workoutName,
+      reps: workoutReps,
+      sets: workoutSets,
+      firebaseUserId: currentUser?.uid,
+      date: selectDate.toDate().toDateString(),
+      month: selectDate.format("MMMM"),
+      description: description
+    };
+    if (weight !== null) {
+      workoutData.weight = weight;
+    }
+
     try {
       fetch(`http://localhost:3001/workouts/${currentUser?.uid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          title: workoutName, reps: workoutReps, sets: workoutSets
-          , date: selectDate.toDate().toDateString()
-        }),
+        body: JSON.stringify(workoutData),
       })
         .then((res) => res.json())
         .then((data) => {
           console.log('Workout posted successfully:', data);
-
         })
         .catch((error) => console.error('Error posting workout:', error));
     } catch (error) {
       console.log(error);
-
     }
-    let newItem = {}
-    setSelectedWorkouts([...selectedWorkouts, { title: workoutName, reps: workoutReps, sets: workoutSets }])
-    setModalIsOpen(false)
-
+    setSelectedWorkouts([...selectedWorkouts, { title: workoutName, reps: workoutReps, sets: workoutSets, weight: weight, description: description }]);
+    setModalIsOpen(false);
+    setWorkoutName("");
+    setWorkoutReps(0);
+    setWorkoutSets(0);
+    setWeight(null);
+    setDescription("");
   };
+
   console.log(selectDate.toDate().toDateString());
+
+  const updateDelete = (workoutId: string) => {
+    const updatedWorkouts = selectedWorkouts.filter((workout) => workout._id !== workoutId);
+    setSelectedWorkouts(updatedWorkouts);
+  };
+
 
 
   return (
@@ -115,7 +129,6 @@ const UsersWorkouts = () => {
                 size={25} />
             </h1>
           </div>
-
           <div className='w-full grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
             {days.map((day, index) => {
               return <h1 key={index}>{day}</h1>;
@@ -158,19 +171,35 @@ const UsersWorkouts = () => {
       </div>
       <div className=' px-5'>
         <h1 className='underline pb-2 text-center text-blue-900 font-bold text-xl'>{selectDate.toDate().toDateString()}</h1>
-
         {selectedWorkouts.length === 0 &&
           (
             <div className='text-gray-400 text-lg py-[59px]'>
-              Take all the rest you need today {currentUser?.displayName}
+              Rest is important, take all of it need today {currentUser?.displayName}
               <img className='w-[370px] h-[380px] py-10 rounded-[270px]' src='https://i0.wp.com/sportsmedicineweekly.com/wp-content/uploads/2021/07/tips-for-better-sleep.png?fit=1080%2C600&ssl=1' />
             </div>
-
           )
         }        <div>
-          {selectedWorkouts.map((workout: any) => (
-            <Workout key={workout.id} name={workout.title} reps={workout.reps} sets={workout.sets} />
-          ))}
+          {selectedWorkouts.map((workout) => {
+            if (workout && workout.title) {
+              return (
+
+                <Workout
+                  onDeleteWorkout={updateDelete}
+                  key={workout.id}
+                  title={workout.title}
+                  reps={workout.reps}
+                  sets={workout.sets}
+                  weight={workout.weight}
+                  description={workout.description}
+                  _id={workout._id}
+                  firebaseUserId={workout.firebaseUserId}
+                  date={workout.date}
+                  month={workout.month}
+                />
+              );
+            }
+            return null;
+          })}
         </div>
         {modalOpen &&
           <Backdrop
@@ -183,7 +212,7 @@ const UsersWorkouts = () => {
               animate="visible"
               exit="exit"
             >
-              <form onSubmit={handleSubmit} className="flex flex-col max-w-[600px] bg-slate-50 p-10 rounded-xl gap-3 text-xl text-center font-bold">
+              <form onSubmit={handleSubmit} className="flex flex-col w-[400px] bg-slate-50 p-10 rounded-xl gap-3 text-xl text-center font-bold">
                 <label>Workout Name</label>
                 <input
                   value={workoutName}
@@ -195,7 +224,7 @@ const UsersWorkouts = () => {
 
                 <label> Reps</label>
                 <input
-                  value={workoutReps}
+                  value={workoutReps !== null ? workoutReps : ''}
                   type='number'
                   className="rounded-md text-center p-2 border-2 border-black"
                   placeholder="Enter reps..."
@@ -204,28 +233,30 @@ const UsersWorkouts = () => {
                 />
                 <label> Sets</label>
                 <input
-                  value={workoutSets}
+                  value={workoutSets !== null ? workoutSets : ''}
                   type='number'
                   className="rounded-md text-center p-2 border-2 border-black"
                   placeholder="Enter sets..."
                   onChange={(e) => setWorkoutSets(e.target.valueAsNumber)}
-
                 />
                 <label> Weight(optional)</label>
                 <input
                   type='number'
-
+                  value={weight !== null ? weight : ''}
+                  onChange={(e) => setWeight(e.target.valueAsNumber)}
                   className="rounded-md text-center p-2 border-2 border-black"
                   placeholder="Enter weight..." />
                 <label>Notes(optional)</label>
                 <input
                   className="rounded-md text-center h-20 border-2 border-black"
-                  placeholder="Enter description..." />
-                <button className="p-3 rounded-md bg-slate-600 text-white hover:bg-slate-400">Add Workout</button>
+                  placeholder="Example: Make sure form is good"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
+                <button className="p-3 rounded-md bg-slate-600 text-white hover:bg-slate-400">Add workout</button>
               </form>
             </motion.div>
           </Backdrop>}
-
         <div className='pb-11'>
           {
             modalOpen ?
@@ -234,14 +265,13 @@ const UsersWorkouts = () => {
                 onClick={close}
                 size={20} /> :
               (
-                <>
+                <div className={selectedWorkouts.length === 0 ? 'cursor-pointer my-[0px]' : 'cursor-pointer my-[100px]'}>
                   <AiOutlinePlusSquare
-                    className='fixed bottom-4 h-[400px] cursor-pointer  ml-[170px]'
-                    onClick={close}
+                    className={selectedWorkouts.length === 0 ? 'cursor-pointer ml-[159px]' : 'cursor-pointer ml-[159px]'} 
+                    onClick={close} 
                     size={40} />
-                  <h1 className='fixed bottom-4 h-[170px] cursor-pointer  ml-[150px]'>Add Workout</h1>
-
-                </>
+                  <h1 className=' cursor-pointer ml-[99px]'>Add a workout for today</h1>
+                </div>
               )
           }
         </div>

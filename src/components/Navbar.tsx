@@ -20,8 +20,6 @@ export const Navbar = () => {
     open: { opacity: 1, x: 0 },
     closed: { opacity: 0, x: "-100%" },
   };
-  const [isOpen, setIsOpen] = useState(false);
-
   const [nav, setNav] = useState(false);
   const [theme, setTheme] = useState(false);
   const { currentUser } = useContext(AuthContext);
@@ -76,8 +74,18 @@ export const Navbar = () => {
                 </li>
               </>
             )}
+            
             {currentUser && (
               <ul className="flex gap-5 text-[16px]">
+                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                  Gyms
+                </li>
+                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                  <Link
+                      className="p-3 border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                      to="/Forum"
+                  >Forums</Link>
+                </li>
                 <Link
                   className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
                   to="/ChatRooms"
@@ -85,9 +93,7 @@ export const Navbar = () => {
                   Messaging
                 </Link>
 
-                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                  Forums
-                </li>
+
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   <Link className="text-md" to="/UsersWorkouts">
                     Workouts
@@ -152,70 +158,70 @@ export const Navbar = () => {
             )}
           </ul>
 
-         
+
         </div>
         <div onClick={() => setNav(!nav)} className=" lg:hidden">
-            <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
-            {nav && (
-              <motion.ul
-                variants={variants}
-                className={
-                  nav
-                    ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] z-20 h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
-                    : "ease-in-out duration-500 fixed left-[-100%]"
-                }
-              >
-                <Link className="p-4 border-b border-gray-600" to="/register">
-                  Register
-                </Link>
-                <Link className="p-4 border-b border-gray-600" to="/login">
-                  Log in
-                </Link>
-                <Link className="p-4 border-b border-gray-600" to="/">
-                  Home
-                </Link>
+          <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
+          {nav && (
+            <motion.ul
+              variants={variants}
+              className={
+                nav
+                  ? "pt-[100px] flex flex-col fixed left-0 top-0 w-[60%] z-20 h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 text-white"
+                  : "ease-in-out duration-500 fixed left-[-100%]"
+              }
+            >
+              <Link className="p-4 border-b border-gray-600" to="/register">
+                Register
+              </Link>
+              <Link className="p-4 border-b border-gray-600" to="/login">
+                Log in
+              </Link>
+              <Link className="p-4 border-b border-gray-600" to="/">
+                Home
+              </Link>
 
-                {currentUser && (
-                  <>
-                    <Link
-                      className="p-4 border-b border-gray-600"
-                      to="/UsersWorkouts"
-                    >
-                      My Workouts
-                    </Link>
-                    <Link
-                      className="p-4 border-b border-gray-600"
-                      to="/ChatPage"
-                    >
-                      Individual Chats
-                    </Link>
+              {currentUser && (
+                <>
+                  <Link
+                    className="p-4 border-b border-gray-600"
+                    to="/UsersWorkouts"
+                  >
+                    My Workouts
+                  </Link>
+                  <Link
+                    className="p-4 border-b border-gray-600"
+                    to="/ChatPage"
+                  >
+                    Individual Chats
+                  </Link>
 
-                    <Link
-                      className="p-4 border-b border-gray-600"
-                      to="/ChatRooms"
-                    >
-                      Chat Rooms
-                    </Link>
-                    <Link className="p-4 border-b border-gray-600" to="/Gyms">
-                      Gyms
-                    </Link>
+                  <Link
+                    className="p-4 border-b border-gray-600"
+                    to="/ChatRooms"
+                  >
+                    Chat Rooms
+                  </Link>
+                  <Link className="p-4 border-b border-gray-600" to="/Gyms">
+                    Gyms
+                  </Link>
 
-                    <Link className="p-4 border-b border-gray-600" to="/Gyms">
-                      Profile
-                    </Link>
+                  <Link className="p-4 border-b border-gray-600" to="/Gyms">
+                    Profile
+                  </Link>
 
-                    <Link
-                      onClick={() => signOut(auth)}
-                      className="p-4 border-b border-gray-600"
-                      to="/Gyms"
-                    >
-                      Log Out
-                    </Link>
-                  </>
-                )}
-              </motion.ul>
-            )}
-          </div>
+                  <Link
+                    onClick={() => signOut(auth)}
+                    className="p-4 border-b border-gray-600"
+                    to="/Gyms"
+                  >
+                    Log Out
+                  </Link>
+                </>
+              )}
+            </motion.ul>
+          )}
+        </div>
       </div>
     </div>
   );

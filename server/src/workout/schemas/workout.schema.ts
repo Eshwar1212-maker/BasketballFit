@@ -19,14 +19,14 @@ export class Workout {
 
   @Prop()
   createdAt: Date;
+  
+  @Prop({ required: true, type: Date })
+  date: Date;
+  
+  @Prop()
+  weight?: number;
 
   @Prop({ required: true })
-  date: string;
-
-  @Prop()
-  deletedAt?: Date;
-
-  @Prop({required: true})
   firebaseUserId: string;
 }
 

@@ -4,4 +4,5 @@ export class BaseWorkoutDto {
   resp: number;
   date: string;
   description?: string;
+  weight?: number;
 }

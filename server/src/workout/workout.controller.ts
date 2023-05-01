@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  Patch
 } from '@nestjs/common';
 import { CreateWorkoutDto } from './dto/create-workout.dto';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -35,6 +36,13 @@ export class WorkoutController {
   async getUserWorkoutsByDate(@Param('firebaseUserId') firebaseUserId: string, @Param('date') date: string) {
     return this.service.getUserWorkoutsByDate(firebaseUserId, date);
   }
+  @Get('user/:firebaseUserId/month/:month')
+  async getUserWorkoutsByMonth(@Param('firebaseUserId') firebaseUserId: string, @Param('month') month: string, @Param('year') year: string) {
+    console.log('getUserWorkoutsByMonth called with:', firebaseUserId, month, year);
+    return this.service.getUserWorkoutsByMonth(firebaseUserId, `${year}-${month}`);
+  }
+  
+
   @Get()
   async index() {
     return await this.service.findAll();
@@ -52,4 +60,12 @@ export class WorkoutController {
   async delete(@Param('id') id: string) {
     return await this.service.delete(id);
   }
+  @Patch(':id')
+  async partialUpdate(
+    @Param('id') id: string,
+    @Body() updateWorkoutDto: UpdateWorkoutDto,
+  ) {
+    return await this.service.partialUpdate(id, updateWorkoutDto);
+  }
+
 }
