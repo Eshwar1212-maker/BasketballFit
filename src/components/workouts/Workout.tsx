@@ -14,7 +14,7 @@ interface Workout {
 }
 
 
-export const Workout = ({reps, sets, _id, onDeleteWorkout, description, weight, title }: Workout) => {
+export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight, title }: Workout) => {
   console.log("this is the id " + _id);
   const handleDelete = () => {
     fetch(`http://localhost:3001/workouts/${_id}`, {
@@ -33,7 +33,8 @@ export const Workout = ({reps, sets, _id, onDeleteWorkout, description, weight, 
       });
   }
   return (
-    <div className={"flex justify-between gap-1 border-black border-b-2 flex-col"}>
+    <div>
+ <div className={"flex justify-between gap-1 border-black border-b-2 flex-col"}>
       <div>
         <div>
           <p className=''>{title}</p>
@@ -43,14 +44,18 @@ export const Workout = ({reps, sets, _id, onDeleteWorkout, description, weight, 
             <p className='text-sm pb-1'>Weight:{weight}</p>
             <p className='text-sm pb-1'>Reps:{reps}</p>
             <p className='text-sm pb-1'>Sets:{sets}</p>
-            <AiFillEdit size={24} />
             <AiOutlineDelete onClick={handleDelete} size={24} />
+            <input type='checkbox' />
           </div>
         </div>
       </div>
       <div>
-        <p className='text-sm font-semibold pb-2'>{description}</p>
+        <p className='text-sm pb-2'>{description}</p>
       </div>
+   
     </div>
+    <div></div>
+    </div>
+   
   )
 }

@@ -1,27 +1,18 @@
 import { AuthContext } from "../context/AuthContext";
 import { auth } from "../firebase";
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import HomeScience from "../components/HomeScience";
 import Community from "../components/Community";
 import { motion } from "framer-motion";
 import { signOut } from "firebase/auth";
+import { Backdrop } from "../components/Backdrop";
 import Typewriter from "typewriter-effect";
-
-import { Navigate } from "react-router-dom";
-import {
-  Link as LinkScroll,
-  DirectLink,
-  Element,
-  Events,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
+  const [Backdrop, setBackdrop] = useState(false)
 
   const navigate = useNavigate();
 
@@ -34,13 +25,11 @@ const Home = () => {
     navigate("/login");
   };
   const handleClickScroll = () => {
-    const element = document.getElementById("one");
+    const element = document.getElementById("homeScience");
     if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
-
   return (
     <div className="text-black">
       <div className="w-[] py-[360px] md:max-w-[1000px] md:mt-[-60px] md:w-full h-screen m-auto text-center flex flex-col justify-center">
@@ -75,7 +64,7 @@ const Home = () => {
                 <button
                   className="text-lg md:text-2xl bg-slate-400 w-[150px] md:w-[230px] rounded-xl font-medium 
                mx-auto my-6 py-3 transition ease-in-out delay-150
-                hover:-translate-y-1 hover:scale-80 hover:bg-slate-500 duration-300 ..."
+                hover:-translate-y-1 hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
                   onClick={signIn}
                 >
                   Sign In!
@@ -95,24 +84,16 @@ const Home = () => {
             </div>
           </div>
           <div className="my-6">
-            <Link
-              to="workoutsPage"
-              spy={true}
-              smooth={true}
-              offset={50}
-              duration={500}
-            >
-              <button
-                onClick={handleClickScroll}
-                className=" text-md md:text-2xl group border-2 px-6 py-3 flex items-center hover:bg-red-800 hover:border-red-800"
-              >
-                <span className="group-hover:rotate-90 duration-300">
-                  <HiArrowNarrowRight className="ml-3" />
-                </span>
-                Why us?
-              </button>
-            </Link>
-          </div>
+        <button
+          onClick={handleClickScroll}
+          className=" text-md md:text-2xl group border-2 px-6 py-3 flex items-center hover:text-white hover:bg-red-800 hover:border-red-800"
+        >
+          <span className="group-hover:rotate-90 duration-300">
+            <HiArrowNarrowRight className="ml-3" />
+          </span>
+          Why us?
+        </button>
+      </div>
         </div>
         <motion.div
           initial={{ opacity: -10, scale: 0.5 }}
@@ -127,7 +108,9 @@ const Home = () => {
         </motion.div>
       </div>
 
-      <HomeScience />
+      <div id="homeScience">
+        <HomeScience />
+      </div>
 
       <div id="one">
         <Community />

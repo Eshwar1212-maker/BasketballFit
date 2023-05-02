@@ -74,7 +74,7 @@ export const Navbar = () => {
                 </li>
               </>
             )}
-            
+
             {currentUser && (
               <ul className="flex gap-5 text-[16px]">
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
@@ -82,8 +82,8 @@ export const Navbar = () => {
                 </li>
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   <Link
-                      className="p-3 border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
-                      to="/Forum"
+                    className="p-3 border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                    to="/Forum"
                   >Forums</Link>
                 </li>
                 <Link
@@ -106,59 +106,22 @@ export const Navbar = () => {
                   Home
                 </Link>
                 <li className="border-b">
-                  <Menu as="div" className="relative inline-block text-left">
-                    <div className={" border-gray-600 "}>
-                      <Menu.Button className="flex">
-                        <div>
-                          {" "}
-                          <img
-                            onClick={() => navigate("/ProfilePage")}
-                            className="w-[42px] h-[42px] rounded-3xl"
-                            src={currentUser?.photoURL ?? ""}
-                            referrerPolicy="no-referrer"
-                          />
-                        </div>
-                        <div className="m-auto">
-                          <IoIosArrowDropdown size={24} />
-                        </div>
-                      </Menu.Button>
+                  <div className={" border-gray-600 "}>
+                    <div>
+                      {" "}
+                      <img
+                        onClick={() => navigate("/ProfilePage")}
+                        className="w-[42px] h-[42px] rounded-3xl"
+                        src={currentUser?.photoURL ?? ""}
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
-                    <Transition
-                      as={Fragment}
-                      enter="transition ease-out duration-100"
-                      enterFrom="transform opacity-0 scale-95"
-                      enterTo="transform opacity-100 scale-100"
-                      leave="transition ease-in duration-75"
-                      leaveFrom="transform opacity-100 scale-100"
-                      leaveTo="transform opacity-0 scale-95"
-                    >
-                      <Menu.Items className="text-black absolute right-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                        <div className="py-1 flex flex-col gap-2 pl-[60px]">
-                          <Menu.Item>
-                            <li
-                              className="text-[19px]"
-                              onClick={() => signOut(auth)}
-                            >
-                              Log Out
-                            </li>
-                          </Menu.Item>
-
-                          <Menu.Item>
-                            <Link className="text-[19px]" to="/ProfilePage">
-                              Profile
-                            </Link>
-                          </Menu.Item>
-                        </div>
-                      </Menu.Items>
-                    </Transition>
-                  </Menu>
+                  </div>
                   <p className="text-sm">Account</p>
                 </li>
               </ul>
             )}
           </ul>
-
-
         </div>
         <div onClick={() => setNav(!nav)} className=" lg:hidden">
           <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
@@ -171,15 +134,18 @@ export const Navbar = () => {
                   : "ease-in-out duration-500 fixed left-[-100%]"
               }
             >
-              <Link className="p-4 border-b border-gray-600" to="/register">
-                Register
-              </Link>
-              <Link className="p-4 border-b border-gray-600" to="/login">
-                Log in
-              </Link>
-              <Link className="p-4 border-b border-gray-600" to="/">
-                Home
-              </Link>
+              {!currentUser && <>
+                <Link className="p-4 border-b border-gray-600" to="/register">
+                  Register
+                </Link>
+                <Link className="p-4 border-b border-gray-600" to="/login">
+                  Log in
+                </Link>
+                <Link className="p-4 border-b border-gray-600" to="/">
+                  Home
+                </Link>
+              </>
+              }
 
               {currentUser && (
                 <>
@@ -189,12 +155,12 @@ export const Navbar = () => {
                   >
                     My Workouts
                   </Link>
-                  <Link
+                  {/* <Link
                     className="p-4 border-b border-gray-600"
                     to="/ChatPage"
                   >
                     Individual Chats
-                  </Link>
+                  </Link> */}
 
                   <Link
                     className="p-4 border-b border-gray-600"
@@ -206,7 +172,7 @@ export const Navbar = () => {
                     Gyms
                   </Link>
 
-                  <Link className="p-4 border-b border-gray-600" to="/Gyms">
+                  <Link className="p-4 border-b border-gray-600" to="/ProfilePage">
                     Profile
                   </Link>
 

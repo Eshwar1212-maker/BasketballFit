@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
-import { signInWithPopup } from "firebase/auth";
-
-const Community = () => {
+const Community = ({toggleForm}: any) => {
   const goToForum = () => {};
   const signIn = async () => {};
+  const {currentUser} = useContext(AuthContext)
 
   return (
     <div className="w-full bg-black py-16 px-4 text-white">
@@ -34,24 +34,24 @@ const Community = () => {
             your struggling through a slump, or want to share an accomplishment, theres always 
             someone who will listen!
           </p>
-          {true ? (
+          {currentUser ? (
             <div className="flex gap-9">
-                   <Link to="/GroupChats">
+                   <Link to="/ChatRooms">
               <button
                 className="
         bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
         text-black transition ease-in-out delay-150 hover:-translate-y-1
-        hover:scale-80 hover:bg-slate-500 duration-300 ..."
+        hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
               >
                 Group Chats
               </button>
             </Link>
-            <Link to="/forums">
+            <Link to="/Forum">
               <button
                 className="
         bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
         text-black transition ease-in-out delay-150 hover:-translate-y-1
-        hover:scale-80 hover:bg-slate-500 duration-300 ..."
+        hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
               >
                 Forums
               </button>
@@ -60,14 +60,29 @@ const Community = () => {
      
             
           ) : (
-            <button
-              onClick={signIn}
-              className="bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
-              text-black transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
-               hover:bg-slate-500 duration-300 ..."
-            >
-              Log in to continue
-            </button>
+            <div className="flex gap-9">
+                   <Link to="/register">
+              <button
+                className="
+        bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
+        text-black transition ease-in-out delay-150 hover:-translate-y-1
+        hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
+              >
+                Group Chats
+              </button>
+            </Link>
+            <Link to="/register">
+              <button
+                className="
+        bg-white w-[200px] rounded-xl font-medium mx-auto my-6 py-3
+        text-black transition ease-in-out delay-150 hover:-translate-y-1
+        hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
+              >
+                Forums
+              </button>
+            </Link>
+            </div>
+     
           )}
         </div>
       </div>

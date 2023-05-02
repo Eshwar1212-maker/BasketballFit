@@ -1,10 +1,10 @@
+import { CreatePost } from "../forum/CreatePost"
 
 const Forum = () => {
   return (
     <div>
-        <div className="py-[200px] text-center">
-            <h1>Forums</h1>
-            <p>Start a conversation</p>
+        <div className=" mt-[100px] flex justify-center items-center w-[89%] md:w-[60%] h-full border-2 border-s border-[#b7b7b7] m-auto rounded-xl">
+          <CreatePost />
         </div>
     </div>
   )

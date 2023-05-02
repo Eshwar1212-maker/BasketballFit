@@ -25,6 +25,9 @@ export class Workout {
   
   @Prop()
   weight?: number;
+  
+  @Prop()
+  completed?: boolean;
 
   @Prop({ required: true })
   firebaseUserId: string;
