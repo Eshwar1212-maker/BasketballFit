@@ -1,13 +1,13 @@
 import { useContext, useState } from 'react';
-import { Backdrop } from '../components/Backdrop';
+import { Backdrop } from '../Backdrop';
 import { AiFillCloseCircle } from 'react-icons/ai'
-import { AuthContext } from '../context/AuthContext';
-import { PostStatus } from '../context/FireStoreApi';
+import { AuthContext } from '../../context/AuthContext';
+import { PostStatus } from '../../context/FireStoreApi';
 import { useMemo } from 'react';
 import { PostCard } from './PostCard';
-import { getPosts } from '../context/FireStoreApi';
-import { getCurrentTimeStamp } from '../utils/useMoment';
-
+import { getPosts } from '../../context/FireStoreApi';
+import { getCurrentTimeStamp } from '../../utils/useMoment';
+import { getUniqueId } from '../../utils/useMoment';
 
 export const CreatePost = () => {
     const [modalOpen, setModalOpen] = useState(false)
@@ -20,17 +20,18 @@ export const CreatePost = () => {
         let object = {
             status: inputStatus,
             timeStamp: getCurrentTimeStamp('LLL'),
-            name: currentUser?.displayName
+            name: currentUser?.displayName,
+            postID: getUniqueId(),
+            userID: currentUser?.uid,
         }
         PostStatus(inputStatus, object)
         setModalOpen(!modalOpen)
         setInputStatus('')
     }
-    console.log(getCurrentTimeStamp("LLL"));
     useMemo(() => {
         getPosts(setAllPosts)
+        
     }, [])
-    console.log(allPosts);
     return (
         <div className="flex flex-col text-center">
             <div className='bg-[whitesmoke] rounded-full py-1 my-4'>

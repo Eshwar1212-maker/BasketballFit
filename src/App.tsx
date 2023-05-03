@@ -3,6 +3,7 @@ import { Navbar } from "./components/Navbar";
 import { lazy, Suspense, useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import LazyLoader from "./components/LazyLoader";
+import { ThemeContextProvider, useStateContext } from "./context/ThemeContext";
 
 const Home = lazy(() => import("./pages/Home"));
 const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
@@ -25,8 +26,11 @@ const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {
   const { currentUser } = useContext(AuthContext);
+  const { theme } = useStateContext();
 
   return (
+    <div >
+
     <Router>
       <Navbar />
       <Suspense fallback={<LazyLoader />}>
@@ -50,10 +54,11 @@ function App() {
 
             </>
           )}
-
         </Routes>
       </Suspense>
     </Router>
+    </div>
+
   );
 }
 

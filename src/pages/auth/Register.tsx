@@ -26,15 +26,13 @@ const Register = () => {
     console.log(result.user);
   };
 
-  const handleSubmitRegister = async (e: any) => {
+  const handleSubmitRegister = async (data: Formdata) => {
     setLoading(true);
-    e.preventDefault();
-    const displayName = e.target[0].value;
-    const email = e.target[1].value;
-    const password = e.target[2].value;
-    const fileInput = e.target[3];
-    const file =
-      fileInput.files && fileInput.files.length > 0 ? fileInput.files[0] : null;
+
+    const { displayName, email, password } = data;
+    
+    const fileInput = document.querySelector("#file");
+    const file = fileInput?.files && fileInput?.files.length > 0 ? fileInput?.files[0] : null;
     try {
       //Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -63,7 +61,7 @@ const Register = () => {
               await setDoc(doc(db, "userChats", res.user.uid), {});
               console.log(res.user);
 
-              navigate("/workouts");
+              navigate("/");
             } catch (err) {
               console.log(err);
               setErr(true);
@@ -135,14 +133,14 @@ const Register = () => {
           />
           {errors.email && <p className="text-orange-900">Please use a valid email </p>}
 
-          <h1 className="text-black text-[11px] font-bold">Password</h1>
+          <h1 className="text-black text-[14px] font-bold">Password</h1>
 
           <input
             required
             type="password"
             placeholder="password"
             {...register("password")}
-            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-blacktext-sm"
+            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black text-sm"
           />
           {errors.password && <p className="text-orange-900 text-sm">Please use a password with more than 6 characters</p>}
           <input
@@ -150,11 +148,12 @@ const Register = () => {
             style={{ display: "none" }}
             type="file"
             id="file"
+            name="file"
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black"
           />
+
           <label htmlFor="file" className="cursor-pointer">
-            <img src="" alt="" />
-            <span className="text-white hover:text-indigo-300 text-lg underline">
+            <span className="text-black hover:text-indigo-300 text-lg underline">
               Add a profile picture
             </span>
           </label>

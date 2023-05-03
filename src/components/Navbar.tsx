@@ -1,14 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { IoIosArrowDropdown } from "react-icons/io";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
-import { Fragment } from "react";
 import { motion } from "framer-motion";
+import {BsFillMoonStarsFill} from 'react-icons/bs'
+import { useStateContext } from "../context/ThemeContext";
 
 
 interface Nav {
@@ -21,10 +20,18 @@ export const Navbar = () => {
     closed: { opacity: 0, x: "-100%" },
   };
   const [nav, setNav] = useState(false);
-  const [theme, setTheme] = useState(false);
   const { currentUser } = useContext(AuthContext);
+  const { theme, setColor } = useStateContext();
   const navigate = useNavigate();
-
+  const toggleTheme = () => {
+    if (theme.currentColor === "light") {
+      setColor("dark");
+    } else {
+      setColor("light");
+    }
+    console.log("Theme:", theme);
+  };
+  
   const logOut = () => {
     signOut(auth);
     navigate("/login");
@@ -77,6 +84,9 @@ export const Navbar = () => {
 
             {currentUser && (
               <ul className="flex gap-5 text-[16px]">
+                   <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
+                  <BsFillMoonStarsFill size={27}/>
+                </li>
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   Gyms
                 </li>
@@ -105,6 +115,7 @@ export const Navbar = () => {
                 >
                   Home
                 </Link>
+
                 <li className="border-b">
                   <div className={" border-gray-600 "}>
                     <div>
