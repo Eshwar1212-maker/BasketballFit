@@ -9,6 +9,8 @@ import { getPosts } from '../../context/FireStoreApi';
 import { getCurrentTimeStamp } from '../../utils/useMoment';
 import { getUniqueId } from '../../utils/useMoment';
 
+
+
 export const CreatePost = () => {
     const [modalOpen, setModalOpen] = useState(false)
     const [inputStatus, setInputStatus] = useState('')
@@ -23,6 +25,7 @@ export const CreatePost = () => {
             name: currentUser?.displayName,
             postID: getUniqueId(),
             userID: currentUser?.uid,
+            photoURL: currentUser?.photoURL
         }
         PostStatus(inputStatus, object)
         setModalOpen(!modalOpen)
@@ -32,9 +35,10 @@ export const CreatePost = () => {
         getPosts(setAllPosts)
         
     }, [])
+
     return (
         <div className="flex flex-col text-center">
-            <div className='bg-[whitesmoke] rounded-full py-1 my-4'>
+            <div className='bg-[whitesmoke] rounded-full py-1 p-7 my-4'>
                 <button
                     onClick={() => setModalOpen(!modalOpen)}
                     className="w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer p-5 items-center m-3 pb-9"
@@ -52,7 +56,7 @@ export const CreatePost = () => {
                                 className="flex flex-col w-[360px] md:w-[700px] p-10 rounded-xl gap-3 text-xl text-center font-bold bg-white"
                             >
                                 <div className="flex justify-between">
-                                    <div className="cursor-pointer flex justify-end">
+                                    <div className="flex justify-end cursor-pointer">
                                         <AiFillCloseCircle
                                             onClick={() => setModalOpen(!modalOpen)}
                                             size={34}
@@ -82,7 +86,7 @@ export const CreatePost = () => {
             <div className="">
                 {allPosts.map((post) => {
                     return (
-                        <div key={post.id} className="border-[1px] border-black rounded-2xl p-3 cursor-pointer m-4 hover:bg-slate-50">
+                        <div key={post.id} className="border-[1px] border-black rounded-md p-6 cursor-pointer m-11 max-h-[330px] h-fit overflow-y-scroll">
                             <PostCard post={post}/>
                         </div>
                     );

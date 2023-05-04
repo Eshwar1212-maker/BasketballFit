@@ -11,6 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { z, ZodType } from "zod"
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod"
+import {toast} from 'react-toastify'
 
 const Register = () => {
   const [err, setErr] = useState(false);
@@ -62,6 +63,7 @@ const Register = () => {
               console.log(res.user);
 
               navigate("/");
+              toast.success("Account has been created succesfully")
             } catch (err) {
               console.log(err);
               setErr(true);

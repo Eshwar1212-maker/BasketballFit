@@ -36,11 +36,7 @@ export class WorkoutController {
   async getUserWorkoutsByDate(@Param('firebaseUserId') firebaseUserId: string, @Param('date') date: string) {
     return this.service.getUserWorkoutsByDate(firebaseUserId, date);
   }
-  @Get('user/:firebaseUserId/month/:month')
-  async getUserWorkoutsByMonth(@Param('firebaseUserId') firebaseUserId: string, @Param('month') month: string, @Param('year') year: string) {
-    console.log('getUserWorkoutsByMonth called with:', firebaseUserId, month, year);
-    return this.service.getUserWorkoutsByMonth(firebaseUserId, `${year}-${month}`);
-  }
+  
   
 
   @Get()

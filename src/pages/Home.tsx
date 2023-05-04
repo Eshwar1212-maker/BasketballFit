@@ -33,12 +33,12 @@ const Home = () => {
   return (
     <div className="text-black">
       <div className="w-[] py-[360px] md:max-w-[1000px] md:mt-[-60px] md:w-full h-screen m-auto text-center flex flex-col justify-center">
-        <h1 className="border-b font-headerFonts text-center text-5xl md:py-6">
+        <h1 className="text-5xl text-center border-b font-headerFonts md:py-6">
           Welcome To BasketballFit!
         </h1>
         <p className="text-md md:text-[49px] text-2xl">
           The all in one platform for you and your team to{" "}
-          <span className="text-slate-400 text-6xl">
+          <span className="text-6xl text-slate-400">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter.pauseFor(2300).typeString("level up your game")
@@ -53,11 +53,11 @@ const Home = () => {
             />
           </span>
         </p>
-        <p className="text-center p-8 lg:text-xl md:text-xl sm:text-sm text-xs">
+        <p className="p-8 text-xs text-center lg:text-xl md:text-xl sm:text-sm">
           Log in to join our community of athletes who want to get better at the
           game we love!
         </p>
-        <div className="flex justify-center gap-5 flex-wrap">
+        <div className="flex flex-wrap justify-center gap-5">
           <div className="">
             <div className="">
               {!currentUser ? (
@@ -75,7 +75,7 @@ const Home = () => {
                     onClick={logOut}
                     className=" md:text-xl bg-slate-300 w-[100px] rounded-xl font-medium 
                mx-auto my-6 py-4 transition ease-in-out delay-150
-                hover:-translate-y-1 hover:scale-80 hover:bg-slate-800 duration-300 ..."
+                hover:-translate-y-1 hover:scale-80 hover:bg-slate-800 duration-300 ... hover:text-white"
                   >
                     Log Out
                   </button>
@@ -86,9 +86,9 @@ const Home = () => {
           <div className="my-6">
         <button
           onClick={handleClickScroll}
-          className=" text-md md:text-2xl group border-2 px-6 py-3 flex items-center hover:text-white hover:bg-red-800 hover:border-red-800"
+          className="flex items-center px-6 py-3 border-2  text-md md:text-2xl group hover:text-white hover:bg-red-800 hover:border-red-800"
         >
-          <span className="group-hover:rotate-90 duration-300">
+          <span className="duration-300 group-hover:rotate-90">
             <HiArrowNarrowRight className="ml-3" />
           </span>
           Why us?
