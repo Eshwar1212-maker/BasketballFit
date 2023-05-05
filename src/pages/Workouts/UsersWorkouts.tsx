@@ -51,7 +51,7 @@ const UsersWorkouts = () => {
   const close = () => setModalIsOpen(!modalOpen)
 
   useEffect(() => {
-    fetch(`http://localhost:3001/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
+    fetch(`http://localhost:4000/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedWorkouts(data);
@@ -78,7 +78,7 @@ const UsersWorkouts = () => {
     }
 
     try {
-      fetch(`http://localhost:3001/workouts/${currentUser?.uid}`, {
+      fetch(`http://localhost:4000/workouts/${currentUser?.uid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(workoutData),

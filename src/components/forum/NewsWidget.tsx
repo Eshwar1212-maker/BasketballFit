@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 export const NewsWidget = () => {
-    const [showWidget, setShowWidget] = useState(false)
+    const [showWidget, setShowWidget] = useState(true)
     return (
         <div className='border-4 border-black rounded-2xl ml-[170px] w-[300px] p-4 font-bold absolute top-1/2 transform -translate-y-1/2 left-0'>
             {showWidget && <div className="flex flex-col justify-center items-center">
