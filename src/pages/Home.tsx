@@ -31,14 +31,15 @@ const Home = () => {
     }
   };
   return (
-    <div className="text-black">
-      <div className="w-[] py-[360px] md:max-w-[1000px] md:mt-[-60px] md:w-full h-screen m-auto text-center flex flex-col justify-center">
-        <h1 className="text-5xl text-center border-b font-headerFonts md:py-6">
+    <div className="">
+      <div className="m-auto py-[360px] md:max-w-[1000px] md:mt-[-60px] md:w-full h-screen md
+      ;mx-auto text-center flex flex-col justify-center">
+        <h1 className=" text-5xl md:text-5xl text-center border-b font-headerFonts md:py-6">
           Welcome To BasketballFit!
         </h1>
-        <p className="text-md md:text-[49px] text-2xl">
+        <p className="text-md md:text-[39px] text-2xl">
           The all in one platform for you and your team to{" "}
-          <span className="text-6xl text-slate-400">
+          <span className="text-4xl md:text-6xl text-slate-400">
             <Typewriter
               onInit={(typewriter) => {
                 typewriter.pauseFor(2300).typeString("level up your game")
@@ -86,7 +87,7 @@ const Home = () => {
           <div className="my-6">
         <button
           onClick={handleClickScroll}
-          className="flex items-center px-6 py-3 border-2  text-md md:text-2xl group hover:text-white hover:bg-red-800 hover:border-red-800"
+          className="flex items-center px-4 py-3 border-2  text-md md:text-2xl group hover:text-white hover:bg-red-800 hover:border-red-800"
         >
           <span className="duration-300 group-hover:rotate-90">
             <HiArrowNarrowRight className="ml-3" />

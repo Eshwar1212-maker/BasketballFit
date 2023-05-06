@@ -5,9 +5,11 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
+import { AiOutlineHome } from 'react-icons/ai'
 import { motion } from "framer-motion";
-import {BsFillMoonStarsFill} from 'react-icons/bs'
-import { useStateContext } from "../context/ThemeContext";
+import { BsFillMoonStarsFill } from 'react-icons/bs'
+import { ThemeContext } from "../context/ThemeContext";
+import { MdLightMode } from 'react-icons/md'
 
 
 interface Nav {
@@ -21,21 +23,9 @@ export const Navbar = () => {
   };
   const [nav, setNav] = useState(false);
   const { currentUser } = useContext(AuthContext);
-  const { theme, setColor } = useStateContext();
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const navigate = useNavigate();
-  const toggleTheme = () => {
-    if (theme.currentColor === "light") {
-      setColor("dark");
-    } else {
-      setColor("light");
-    }
-    console.log("Theme:", theme);
-  };
-  
-  const logOut = () => {
-    signOut(auth);
-    navigate("/login");
-  };
 
   return (
     <div>
@@ -43,11 +33,11 @@ export const Navbar = () => {
         className={
           currentUser
             ? "flex justify-between m-auto p-5 py-8 h-[10px] cursor-pointer"
-            : " flex justify-between m-auto p-4 py-8 h-[10px] text-white font-thin text-md cursor-pointer"
+            : " flex justify-between m-auto p-4 py-8 h-[10px] font-thin text-md cursor-pointer"
         }
       >
         <div className="text-3xl font-light flex flex-row gap-3">
-          <div className="text-black">
+          <div className="">
             <Link className=" border-gray-600" to="/">
               <span className="text-orange-900 text-4xl border-b font-semibold">B</span>
               asketball
@@ -61,9 +51,14 @@ export const Navbar = () => {
           />
         </div>
         <div className="hidden lg:block">
-          <ul className="flex flex-row gap-6 px-[80px] rounded-lg text-black text-xl">
+          <ul className="flex flex-row gap-6 px-[80px] rounded-lg text-xl">
             {!currentUser && (
               <>
+                {theme !== "darkMode" ? <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
+                  <BsFillMoonStarsFill size={27} />
+                </li>
+                  : <li className="p-3 border-b border-gray-600" onClick={toggleTheme}><MdLightMode size={27} /></li>
+                }
                 <li className="border-b hover:bg-red-800 p-3 rounded-md hover:text-white">
                   <Link className="text-md " to="/register">
                     Register
@@ -84,17 +79,17 @@ export const Navbar = () => {
 
             {currentUser && (
               <ul className="flex gap-5 text-[16px]">
-                   <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
-                  <BsFillMoonStarsFill size={27}/>
-                </li>
+                {<li onClick={toggleTheme} className="p-3 border-b border-gray-600">
+                  <BsFillMoonStarsFill size={27} />
+                </li>}
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   Gyms
                 </li>
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   <Link
-                    className="p-3 border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
                     to="/Forum"
-                  >Forums</Link>
+                  >Forums
+                  </Link>
                 </li>
                 <Link
                   className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
@@ -109,33 +104,41 @@ export const Navbar = () => {
                     Workouts
                   </Link>
                 </li>
-                <Link
-                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
-                  to="/"
-                >
-                  Home
-                </Link>
 
-                <li className="border-b">
-                  <div className={" border-gray-600 "}>
-                    <div>
-                      {" "}
-                      <img
-                        onClick={() => navigate("/ProfilePage")}
-                        className="w-[42px] h-[42px] rounded-3xl"
-                        src={currentUser?.photoURL ?? ""}
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  </div>
-                  <p className="text-sm">Account</p>
-                </li>
               </ul>
             )}
           </ul>
         </div>
-        <div onClick={() => setNav(!nav)} className=" lg:hidden">
-          <RxHamburgerMenu onClick={() => setNav(!nav)} size={30} />
+        {currentUser && <div className="flex gap-7 list-none">
+          <li className="flex flex-col">
+
+
+            <Link
+              className=" border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+              to="/"
+            >
+              <AiOutlineHome size={39} />
+
+              <p>Home</p>
+            </Link>
+          </li>
+          <li className="">
+            <div className={" border-gray-600 "}>
+              <div>
+                {" "}
+                <img
+                  onClick={() => navigate("/ProfilePage")}
+                  className="w-[42px] h-[42px] rounded-3xl"
+                  src={currentUser?.photoURL ?? ""}
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+            <p className="text-sm">Account</p>
+          </li>
+        </div>}
+        <div onClick={() => setNav(!nav)} className="pl-[210px] lg:hidden">
+          <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={26} />
           {nav && (
             <motion.ul
               variants={variants}
@@ -145,21 +148,31 @@ export const Navbar = () => {
                   : "ease-in-out duration-500 fixed left-[-100%]"
               }
             >
-              {!currentUser && <>
-                <Link className="p-4 border-b border-gray-600" to="/register">
-                  Register
-                </Link>
-                <Link className="p-4 border-b border-gray-600" to="/login">
-                  Log in
-                </Link>
-                <Link className="p-4 border-b border-gray-600" to="/">
-                  Home
-                </Link>
-              </>
+              {!currentUser &&
+                <ul>
+                  <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
+                    <BsFillMoonStarsFill size={27} />
+                  </li>
+                  <Link className="p-4 border-b border-gray-600" to="/register">
+                    Register
+                  </Link>
+                  <Link className="p-4 border-b border-gray-600" to="/login">
+                    Log in
+                  </Link>
+                  <Link className="p-4 border-b border-gray-600" to="/">
+                    Home
+                  </Link>
+                </ul>
               }
 
               {currentUser && (
                 <>
+                  <Link
+                    className="p-4 border-b border-gray-600"
+                    to="/"
+                  >
+                    Home
+                  </Link>
                   <Link
                     className="p-4 border-b border-gray-600"
                     to="/UsersWorkouts"

@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
-import { lazy, Suspense, useContext } from "react";
+import { lazy, Suspense, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 import LazyLoader from "./components/LazyLoader";
-import { ThemeContextProvider, useStateContext } from "./context/ThemeContext";
+import { ThemeContext } from "./context/ThemeContext";
+
 
 
 const Home = lazy(() => import("./pages/Home"));
@@ -28,15 +29,28 @@ const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {
   const { currentUser } = useContext(AuthContext);
-  const { theme } = useStateContext();
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      setTheme(storedTheme);
+    }
+  }, []);
+  const toggleTheme = () => {
+    const newTheme = theme === "lightMode" ? "darkMode" : "lightMode";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+  };
+ 
 
   return (
-    <div >
-
-    <Router>
-      <Navbar />
-      <Suspense fallback={<LazyLoader />}>
-        <Routes>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={`app ${theme}`}>
+        <Router>
+          <Navbar />
+          <Suspense fallback={<LazyLoader />}>
+          <Routes>
           {!currentUser && (
             <>
               <Route path="/login" element={<Login />} />
@@ -58,10 +72,10 @@ function App() {
             </>
           )}
         </Routes>
-      </Suspense>
-    </Router>
-    </div>
-
+          </Suspense>
+        </Router>
+      </div>
+    </ThemeContext.Provider>
   );
 }
 

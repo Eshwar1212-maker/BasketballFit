@@ -12,7 +12,7 @@ const Science = () => {
   const [toggleForm, setToggleForm] = useState(false)
   const { currentUser } = useContext(AuthContext)
   return (
-    <div className="w-full bg-white py-16 px-4 text-black" id="science">
+    <div className="w-fullpy-16 px-4" id="science">
       <div
         className="max-w-[1240px] mx-auto grid md:grid-cols-2 gap-4
         "
@@ -33,16 +33,16 @@ const Science = () => {
             so you can see whether your program needs to be adjusted based off of your perfomance on the court or in the gym.
             </p>
           {!currentUser ? <Link to="/register">   <button
-            className="bg-black w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
-            text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
+            className=" w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
+           transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
              hover:bg-slate-500 duration-300 ..."
           >
             Get Started
           </button></Link> : 
           <Link to="/UsersWorkouts">   <button
-          className="bg-black w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
-          text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
-           hover:bg-slate-500 duration-300 ..."
+          className=" w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
+      transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
+           hover:bg-slate-500 duration-300 ... hover:text-white border-black border-2"
         >
           Get Started
         </button></Link> 

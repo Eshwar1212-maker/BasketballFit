@@ -38,7 +38,7 @@ export const CreatePost = () => {
 
     return (
         <div className="flex flex-col text-center">
-            <div className='bg-[whitesmoke] rounded-full py-1 p-7 my-4'>
+            <div className=' rounded-full py-1 p-7 my-4'>
                 <button
                     onClick={() => setModalOpen(!modalOpen)}
                     className="w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer p-5 items-center m-3 pb-9"

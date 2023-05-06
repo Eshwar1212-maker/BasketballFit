@@ -1,41 +1,22 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+// ThemeContext.tsx
+import { createContext, useState } from "react";
 
-interface ThemeContextProviderProps {
-  children: ReactNode;
+interface ThemeContextType {
+  theme: string;
+  toggleTheme: () => void;
 }
 
-type Theme = {
-  currentColor: string;
+
+
+const toggleTheme = () => {
+  const [theme, setTheme] = useState("light");
+
+  const newTheme = theme === "lightMode" ? "darkMode" : "lightMode";
+  setTheme(newTheme);
+  localStorage.setItem("theme", newTheme);
 };
 
-type ThemeContext = {
-  theme: Theme;
-  setColor: any
-};
-
-const ThemeContext = createContext<ThemeContext>({
-  theme: { currentColor: "Light" },
-  setColor: () => {},
+export const ThemeContext = createContext<ThemeContextType>({
+  theme: "light",
+  toggleTheme
 });
-
-export const ThemeContextProvider: React.FC<ThemeContextProviderProps> = ({
-  children,
-}) => {
-  const [currentColor, setCurrentColor] = useState("light");
-
-  const setColor = (color: string) => {
-    setCurrentColor(color);
-    localStorage.setItem("colorMode", color);
-    // Update the theme object with the new color value
-  };
-
-
-
-  return (
-    <ThemeContext.Provider value={{currentColor , setColor }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const useStateContext = () => useContext(ThemeContext);
