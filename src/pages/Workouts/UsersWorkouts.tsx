@@ -93,11 +93,11 @@ const UsersWorkouts = () => {
     }
     setSelectedWorkouts([...selectedWorkouts, { title: workoutName, reps: workoutReps, sets: workoutSets, weight: weight, description: description }]);
     setModalIsOpen(false);
-    setWorkoutName("");
-    setWorkoutReps(0);
-    setWorkoutSets(0);
-    setWeight(null);
-    setDescription("");
+    // setWorkoutName("");
+    // setWorkoutReps(0);
+    // setWorkoutSets(0);
+    // setWeight(null);
+    // setDescription("");
   };
 
   console.log(selectDate.toDate().toDateString());

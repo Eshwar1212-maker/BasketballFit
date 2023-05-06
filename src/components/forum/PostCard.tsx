@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { LikeButton } from "./LikeButton";
 import { AiFillLike, AiFillDelete } from 'react-icons/ai';
-import { deletePost } from "../../context/FireStoreApi";
+import { deletePost } from "../../utils/FireStoreApi";
 
 
 interface PostCardProps {

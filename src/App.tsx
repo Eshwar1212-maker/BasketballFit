@@ -5,6 +5,7 @@ import { AuthContext } from "./context/AuthContext";
 import LazyLoader from "./components/LazyLoader";
 import { ThemeContextProvider, useStateContext } from "./context/ThemeContext";
 
+
 const Home = lazy(() => import("./pages/Home"));
 const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
 const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
@@ -14,6 +15,7 @@ const Workouts = lazy(() =>
   })
 );
 const Forum = lazy(() => import("./pages/Forum"));
+const MonthlyWorkouts = lazy(() => import("./components/MonthlyWorkouts"));
 const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
 const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage"));
 const Register = lazy(() => import("./pages/auth/Register"));
@@ -51,6 +53,7 @@ function App() {
               <Route path="/ProfilePage" element={<ProfilePage />} />
               <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
               <Route path="/Forum" element={<Forum />} />
+              <Route path="/MonthlyWorkouts" element={<MonthlyWorkouts />} />
 
             </>
           )}

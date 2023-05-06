@@ -2,10 +2,10 @@ import { useContext, useState } from 'react';
 import { Backdrop } from '../Backdrop';
 import { AiFillCloseCircle } from 'react-icons/ai'
 import { AuthContext } from '../../context/AuthContext';
-import { PostStatus } from '../../context/FireStoreApi';
+import { PostStatus } from '../../utils/FireStoreApi';
 import { useMemo } from 'react';
 import { PostCard } from './PostCard';
-import { getPosts } from '../../context/FireStoreApi';
+import { getPosts } from '../../utils/FireStoreApi';
 import { getCurrentTimeStamp } from '../../utils/useMoment';
 import { getUniqueId } from '../../utils/useMoment';
 

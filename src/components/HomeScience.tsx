@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import chart from "../assets/chart.png"
+
+
 
 const Science = () => {
   const navigate = useNavigate()
@@ -15,8 +18,8 @@ const Science = () => {
         "
       >
         <img
-          className="rounded-3xl w-[500px] mx-auto my-4"
-          src="https://basketballforever.com/wp-content/uploads/2020/07/Bradley-Beal.jpg"
+          className="rounded-3xl w-[500px] h-[367px] mx-auto my-4"
+          src={chart}
           alt=""
         />
         <div className="flex flex-col justify-center">
@@ -26,8 +29,9 @@ const Science = () => {
             </h1>
             <br />
             Let us make it easier for you when it comes to tracking. Use our calender for both skill workouts, and weight lifting
-            workouts, where we will track everything for you, so you can program your progress.
-          </p>
+            workouts, where we will track everything for you, and then navigate to your profile page to see what months you workout the most, 
+            so you can see whether your program needs to be adjusted based off of your perfomance on the court or in the gym.
+            </p>
           {!currentUser ? <Link to="/register">   <button
             className="bg-black w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
             text-white transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80

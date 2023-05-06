@@ -2,8 +2,8 @@ import { db } from "../firebase"
 import { Timestamp, deleteDoc, doc, orderBy, query, setDoc, where } from "firebase/firestore"
 import {addDoc, collection, onSnapshot} from 'firebase/firestore'
 import {toast} from 'react-toastify'
-import { getCurrentTimeStamp } from "../utils/useMoment"
-import { AuthContext } from "./AuthContext"
+import { getCurrentTimeStamp } from "./useMoment"
+import { AuthContext } from "../context/AuthContext"
 import { useContext } from "react"
 
 

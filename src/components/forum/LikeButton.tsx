@@ -1,12 +1,12 @@
 import { BiLike } from 'react-icons/bi';
-import { likePost } from '../../context/FireStoreApi';
+import { likePost } from '../../utils/FireStoreApi';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { getLikesByUser } from '../../context/FireStoreApi';
+import { getLikesByUser } from '../../utils/FireStoreApi';
 import { AiFillLike } from 'react-icons/ai';
 import { FaComments } from 'react-icons/fa';
-import { postComment } from '../../context/FireStoreApi';
+import { postComment } from '../../utils/FireStoreApi';
 import { getCurrentTimeStamp } from '../../utils/useMoment';
-import { getComments } from '../../context/FireStoreApi';
+import { getComments } from '../../utils/FireStoreApi';
 
 interface LikeButton {
   userId: string | undefined;

@@ -7,6 +7,7 @@ import { BsFillQuestionCircleFill } from 'react-icons/bs'
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
+import MonthlyWorkouts from "../../components/MonthlyWorkouts";
 
 type MonthToMax = {
   [key: string]: number;
@@ -65,48 +66,43 @@ const ProfilePage = () => {
         let novemberCount = 0;
         let decemberCount = 0;
 
-
         for (let i = 0; i < workouts.length; i++) {
-          // console.log(i + "index:    " + workouts[i].date);
-          // console.log(dayjs(workouts[i].date).format("MM/YYYY"));
           if (dayjs(workouts[i].date).format("MM/YYYY").includes('01/2023')) {
             januaryCount += 1;
           }
           if (dayjs(workouts[i].date).format("MM/YYYY").includes('02/2023')) {
             februaryCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('03')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('03/2023')) {
             marchCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('04/2023')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('04/2023')) {
             aprilCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('05')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('05/2023')) {
             mayCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('06')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('06/2023')) {
             juneCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('07')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('07/2023')) {
             julyCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('08')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('08/2023')) {
             augustCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('09')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('09/2023')) {
             septemberCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('10')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('10/2023')) {
             octoberCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('11')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('11/2023')) {
             novemberCount += 1;
           }
-          if (dayjs(workouts[i].date).format("MM/DD/YYYY").includes('12')) {
+          if (dayjs(workouts[i].date).format("MM/YYYY").includes('12/2023')) {
             decemberCount += 1;
           }
-
-
         }
         setJanuary(januaryCount)
         setFebruary(februaryCount)
@@ -125,50 +121,50 @@ const ProfilePage = () => {
 
   const data = [
     {
-      name: "January",
+      name: "1",
       month: january
     },
     {
-      name: "February",
+      name: "2",
       month: february
     },
     {
-      name: "March",
+      name: "3",
       month: march
     },
     {
-      name: "April",
+      name: "4",
       month: april
     },
     {
-      name: "May",
+      name: "5",
       month: may
     },
     {
-      name: "June",
+      name: "6",
       month: june
     },
     {
-      name: "July",
+      name: "7",
       month: july
     },
     {
-      name: "August",
+      name: "8",
       month: august
     },
     {
-      name: "September",
+      name: "9",
       month: september
     },
     {
-      name: "October",
+      name: "10",
       month: october
     },
     {
-      name: "November",
+      name: "11",
       month: november
     }, {
-      name: "December",
+      name: "12",
       month: december
     }
 
@@ -220,22 +216,18 @@ const ProfilePage = () => {
     function getHighestMonth() {
       for (const month in mapMonthToMax) {
         if (mapMonthToMax[month] > highestValue) {
-          console.log(month + "  " + mapMonthToMax[month]);
 
           highestMonth = month;
           highestValue = mapMonthToMax[month];
           setIntenseMonth(highestMonth)
         }
       }
-      console.log(highestMonth);
       setIntenseMonth(highestMonth)
       setIntenseMonthValue(highestValue)
-      console.log();
 
     }
     getHighestMonth()
   }, [mapMonthToMax])
-  console.log("inteseMonth:  " + intenseMonth);
 
 
 
@@ -243,20 +235,16 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-wrap justify-center">
-      <div className="w-full md:w-auto py-[100px] px-11 mx-10 md:mx-0 md:-ml-16">
-        Recent activity
-
-      </div>
       <div className="w-full md:w-auto py-[100px] flex items-center flex-col px-11 gap-11 justify-center">
         <div className="rounded-2xl border-4 border-slate-500 flex flex-col md:flex-row gap-4 w-full md:w-[600px] shadow-lg">
-          <div className="flex items-center flex-col p-3">
+          <div className="flex items-center flex-col p-3 text-center">
             <img
               className="w-[42px] h-[42px] rounded-3xl"
               src={currentUser?.photoURL ?? ""}
               referrerPolicy="no-referrer"
             />
             <h1 className="text-xl">{currentUser?.displayName}</h1>
-            <p className="mb-4 text-sm">
+            <p className="mb-4 text-[12px]">
               Currently logged in as {currentUser?.email}
             </p>
             <button
@@ -272,12 +260,28 @@ const ProfilePage = () => {
           </div>
         </div>
         <div>
+          <div>
+            
+          </div>
+        <div className="flex justify-center gap-11 py-11">
+            <h1 className="underline">Days you hit the gym each month this year</h1>
+            <p className=""><BsFillQuestionCircleFill size={25} /></p>
+          </div>
+       <div className="hidden lg:flex flex-col justify-center rounded-xl gap-11">
+        <div>
+        <MonthlyWorkouts />
+
+        </div>
+
+          <div>
+
+
           <div className="flex justify-center gap-11">
             <h1 className="underline">Intensity/Volume of your workouts each month</h1>
             <p className=""><BsFillQuestionCircleFill size={25} /></p>
           </div>
-          <div className="flex justify-center rounded-xl text-white">
-            <ResponsiveContainer width={1077} height={450}>
+          <div className="hidden lg:flex justify-center rounded-xl">
+            <ResponsiveContainer width={677} height={450}>
               <LineChart
                 data={data}
                 margin={{
@@ -327,40 +331,40 @@ const ProfilePage = () => {
           {
             allworkouts.length > 100 &&
             <p
-              className="text-md text-center max-w-[800px] mx-auto">Currently,{"        "}
-              <span className="font-bold underline">{intenseMonth}</span> {"    "}
+              className="text-md text-center max-w-[500px] mx-auto py-6">Currently,
+              <span className="font-bold underline">{intenseMonth}</span> {" "}
               is when you had the most volume and intensity for your workouts for this year. You have a total of {allworkouts.length} workouts logged with us. 
             </p>
           }
           {intenseMonthValue === 0 &&
             <>
               <p
-                className="text-md text-center max-w-[800px] mx-auto"
+                className="text-md text-center max-w-[500px] mx-auto py-6"
               >Welcome to Basketball fit {currentUser?.displayName}! Right now your chart is empty because you did not start using our calender yet!
                 add workouts to your calender. You can go over there right now, add a workout for today, and come back here and see the chart change. Volume and intensity are calculated
                 based off of how many workouts you totally do.
                 You will see over time which months you workout the hardest, and based off of your performacne on the court,
                 or just your performance in the gym, you can see what volume your body needs! Navigate here to our <span className="underline"><Link to="/UsersWorkouts">Calender</Link> </span>
-                {"  "}to get started!
+                to get started!
 
               </p>
             </>
           }
-          {allworkouts.length < 100 && allworkouts.length &&
+          {allworkouts.length < 100 ? (allworkouts.length &&
             <>
               <p
-                className="text-md text-center max-w-[800px] mx-auto">Currently,{"        "}
+                className="text-md text-center max-w-[500px] mx-auto py-6 text-sm">Currently,{"        "}
                 <span className="font-bold underline">{intenseMonth}</span> {"    "}
-                is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for a few months yet<span className="underline font-semibold">(you have only added {allworkouts.length} {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
-                see what months you have worked out the most. Use our calender for the next few months, and based off of how you feel, you can see how much volume your body needs, and
+                is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for that long yet<span className="underline font-semibold">(you have only added {allworkouts.length} {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
+                see what months you have worked out the most. Use our workout  <span className="underline"><Link to="/UsersWorkouts">calender</Link> </span> for at least few months consistently, and based off of how you feel, you can see how much volume your body needs, and
                 what months you have been working out the most based off of this chart!
               </p>
-            </>
+            </>)
+            : <></>
           }
-
         </div>
-
-
+      </div>
+      </div>
       </div>
 
     </div>
