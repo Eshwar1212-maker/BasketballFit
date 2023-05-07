@@ -16,7 +16,7 @@ export const PostCard = ({ post, id}: PostCardProps) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="py-1 w-full text-sm">
+      <div className="py-1 w-[80%] text-sm"> 
         <div className="text-right flex justify-between">
           <div>
             <img className="rounded-full h-[76px] w-[76px]" src={post.photoURL} />

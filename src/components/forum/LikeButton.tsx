@@ -70,9 +70,9 @@ export const LikeButton = ({ userId, postsId, currentUser }: LikeButton) => {
       </div>
       {!showCommentBox && (
         <>
-          <div className="mt-2 flex w-[490px]">
+          <div className="mt-2 flex w-[490px] m-auto">
             <input
-              className="w-full rounded-lg bg-gray-200 p-2 px-8 h-11"
+              className="w-full rounded-lg bg-gray-200 p-2 px-8 h-11 text-center"
               placeholder="Your thoughts?..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}

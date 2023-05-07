@@ -8,23 +8,25 @@ import { ThemeContext } from "./context/ThemeContext";
 
 
 const Home = lazy(() => import("./pages/Home"));
-const ChatPage = lazy(() => import("./pages/Chat/ChatPage"));
 const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
 const Workouts = lazy(() =>
   new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/Workouts")),1000 );
+    setTimeout(() => resolve(import("./pages/Workouts/Workouts")), 1000);
   })
 );
-const Forum = lazy(() => import("./pages/Forum"));
+const SkillWorkouts = lazy(() => import("./pages/SkillWorkouts"))
 const MonthlyWorkouts = lazy(() => import("./components/MonthlyWorkouts"));
 const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
 const ProfilePage = lazy(() => import("./pages/Profile/ProfilePage"));
 const Register = lazy(() => import("./pages/auth/Register"));
 const UsersWorkouts = lazy(() =>
   new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/UsersWorkouts")),1000 );
+    setTimeout(() => resolve(import("./pages/Workouts/UsersWorkouts")), 1000);
   })
 );
+const Forum = lazy(() => import("./pages/Forum"));
+
+
 const Login = lazy(() => import("./pages/auth/Login"));
 
 function App() {
@@ -42,7 +44,7 @@ function App() {
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
   };
- 
+
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
@@ -50,28 +52,27 @@ function App() {
         <Router>
           <Navbar />
           <Suspense fallback={<LazyLoader />}>
-          <Routes>
-          {!currentUser && (
-            <>
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/" element={<Home />}></Route>
-            </>
-          )}
+            <Routes>
+              {!currentUser && (
+                <>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/" element={<Home />}></Route>
+                </>
+              )}
 
-          {currentUser && (
-            <>
-              <Route path="/" element={<Home />} />
-              <Route path="/ChatPage" element={<ChatPage />} />
-              <Route path="/ChatRooms" element={<ChatRooms />} />
-              <Route path="/ProfilePage" element={<ProfilePage />} />
-              <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
-              <Route path="/Forum" element={<Forum />} />
-              <Route path="/MonthlyWorkouts" element={<MonthlyWorkouts />} />
-
-            </>
-          )}
-        </Routes>
+              {currentUser && (
+                <>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/ChatRooms" element={<ChatRooms />} />
+                  <Route path="/ProfilePage" element={<ProfilePage />} />
+                  <Route path="/UsersWorkouts" element={<UsersWorkouts />} />
+                  <Route path="/Forum" element={<Forum />} />
+                  <Route path="/MonthlyWorkouts" element={<MonthlyWorkouts />} />
+                  <Route path="/skills" element={<SkillWorkouts />} />
+                </>
+              )}
+            </Routes>
           </Suspense>
         </Router>
       </div>

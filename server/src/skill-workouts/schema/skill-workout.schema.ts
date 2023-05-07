@@ -2,9 +2,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type WorkoutDocument = Workout & Document;
-@Schema()
-export class Workout {
+export type SkillWorkoutDocument = SkillWorkout & Document;
+@Schema({ collection: 'skill_workouts' })
+export class SkillWorkout {
   @Prop({ required: true })
   title: string;
 
@@ -20,11 +20,8 @@ export class Workout {
   @Prop()
   createdAt: Date;
   
-  @Prop({ required: true})
-  date: string;
-
-  @Prop()
-  weight?: number;
+  @Prop({ required: true })
+  day: string;
   
   @Prop()
   completed?: boolean;
@@ -33,4 +30,4 @@ export class Workout {
   firebaseUserId: string;
 }
 
-export const WorkoutSchema = SchemaFactory.createForClass(Workout);
+export const SkillWorkoutSchema = SchemaFactory.createForClass(SkillWorkout);

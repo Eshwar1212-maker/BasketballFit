@@ -83,9 +83,6 @@ export const Navbar = () => {
                   <BsFillMoonStarsFill size={27} />
                 </li>}
                 <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                  Gyms
-                </li>
-                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                   <Link
                     to="/Forum"
                   >Forums
@@ -104,12 +101,18 @@ export const Navbar = () => {
                     Workouts
                   </Link>
                 </li>
+                <li
+                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+
+                >
+                  <Link to="/skills">Skill Workouts</Link>
+                </li>
 
               </ul>
             )}
           </ul>
         </div>
-        {currentUser && <div className="flex gap-7 list-none">
+        {currentUser && <div className="gap-7 list-none hidden lg:flex">
           <li className="flex flex-col">
 
 
@@ -122,12 +125,11 @@ export const Navbar = () => {
               <p>Home</p>
             </Link>
           </li>
-          <li className="">
+          <Link to="/ProfilePage" className="">
             <div className={" border-gray-600 "}>
               <div>
                 {" "}
                 <img
-                  onClick={() => navigate("/ProfilePage")}
                   className="w-[42px] h-[42px] rounded-3xl"
                   src={currentUser?.photoURL ?? ""}
                   referrerPolicy="no-referrer"
@@ -135,9 +137,9 @@ export const Navbar = () => {
               </div>
             </div>
             <p className="text-sm">Account</p>
-          </li>
+          </Link>
         </div>}
-        <div onClick={() => setNav(!nav)} className="pl-[210px] lg:hidden">
+        <div onClick={() => setNav(!nav)} className="pl-[380px] lg:hidden">
           <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={26} />
           {nav && (
             <motion.ul
@@ -149,7 +151,7 @@ export const Navbar = () => {
               }
             >
               {!currentUser &&
-                <ul>
+                <ul className="">
                   <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
                     <BsFillMoonStarsFill size={27} />
                   </li>
@@ -192,21 +194,10 @@ export const Navbar = () => {
                   >
                     Chat Rooms
                   </Link>
-                  <Link className="p-4 border-b border-gray-600" to="/Gyms">
-                    Gyms
-                  </Link>
-
                   <Link className="p-4 border-b border-gray-600" to="/ProfilePage">
                     Profile
                   </Link>
 
-                  <Link
-                    onClick={() => signOut(auth)}
-                    className="p-4 border-b border-gray-600"
-                    to="/Gyms"
-                  >
-                    Log Out
-                  </Link>
                 </>
               )}
             </motion.ul>

@@ -10,6 +10,11 @@ import { AiOutlinePlusSquare, AiOutlineCloseCircle } from 'react-icons/ai';
 import { Backdrop } from '../../components/Backdrop';
 import { motion } from 'framer-motion';
 import { ThemeContext } from '../../context/ThemeContext';
+import { ExerciseDropdown } from "../../components/ExerciseDropDown"
+import {exercises} from "../../utils/excercises"
+import SkillWorkouts from '../SkillWorkouts';
+
+
 
 const dropIn = {
   hidden: {
@@ -50,6 +55,8 @@ const UsersWorkouts = () => {
   const [description, setDescription] = useState("")
   const [completedWorkoutsDays, setCompletedWorkoutsDays] = useState<Set<string>>(new Set());
   const close = () => setModalIsOpen(!modalOpen)
+  const [filteredExercises, setFilteredExercises] = useState(exercises);
+
 
   useEffect(() => {
     fetch(`http://localhost:4000/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
@@ -59,7 +66,7 @@ const UsersWorkouts = () => {
       })
     console.log("Workouts from this user: " + selectedWorkouts);
     console.log("Date in fetch " + selectDate.toDate().toDateString());
-    
+
 
   }, [selectDate]);
   // use the selectedWorkouts array to render the workouts on the calendar UI
@@ -108,6 +115,15 @@ const UsersWorkouts = () => {
     setSelectedWorkouts(updatedWorkouts);
   };
 
+  const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const filterValue = e.target.value.toLowerCase();
+    setWorkoutName(filterValue);
+    const filteredArray = exercises.filter((exercise) => {
+      return exercise.toLowerCase().includes(filterValue);
+    });
+    setFilteredExercises(filteredArray);
+  };
+
 
 
   return (
@@ -115,31 +131,31 @@ const UsersWorkouts = () => {
       <div className=''>
         <h1 className='text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
         <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl h-fit p-4'>
-      {true && 
-         <div className='flex justify-between pb-3'>
-            <h1 className='text-sm underline'>
-              <GrFormPrevious
-                onClick={() => {
-                  setToday(today.month(today.month() - 1));
-                }}
-                size={25} 
-                className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
+          {true &&
+            <div className='flex justify-between pb-3'>
+              <h1 className='text-sm underline'>
+                <GrFormPrevious
+                  onClick={() => {
+                    setToday(today.month(today.month() - 1));
+                  }}
+                  size={25}
+                  className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
                 /></h1>
-            <h1 className="select-none font-semibold">
-              {months[today.month()]}, {today.year()}
-            </h1>            <h1 className='text-sm underline'>
-              <GrFormNext
-                onClick={() => {
-                  setToday(today.month(today.month() + 1));
-                }}
-                size={25} 
-                className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
+              <h1 className="select-none font-semibold">
+                {months[today.month()]}, {today.year()}
+              </h1>            <h1 className='text-sm underline'>
+                <GrFormNext
+                  onClick={() => {
+                    setToday(today.month(today.month() + 1));
+                  }}
+                  size={25}
+                  className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
 
                 />
-            </h1>
-          </div>
+              </h1>
+            </div>
           }
-               
+
           <div className='w-full grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
             {days.map((day, index) => {
               return <h1 key={index}>{day}</h1>;
@@ -223,7 +239,7 @@ const UsersWorkouts = () => {
               animate="visible"
               exit="exit"
             >
-   
+
               <form onSubmit={handleSubmit} className="flex text-black flex-col w-[400px] p-7 rounded-xl gap-3 text-xl text-center font-bold bg-slate-200">
                 <label>Workout Name</label>
                 <input
@@ -231,8 +247,19 @@ const UsersWorkouts = () => {
                   type='text'
                   className="rounded-md text-center p-2 border-2 border-black"
                   placeholder="Enter name..."
-                  onChange={(e) => setWorkoutName(e.target.value)}
-                />
+                  onChange={handleFilter} />
+                <div>
+                  {workoutName.length > 0 && filteredExercises.length > 0 && (
+                    <ExerciseDropdown
+                      exercises={filteredExercises}
+                      onSelectExercise={(exercise) => {
+                        setWorkoutName(exercise);
+                        setWorkoutName(exercise);
+                        setFilteredExercises([]);
+                      }}
+                    />
+                  )}
+                </div>
 
                 <label> Reps</label>
                 <input
@@ -267,28 +294,28 @@ const UsersWorkouts = () => {
                 />
                 <button className="p-3 rounded-md bg-slate-600 hover:bg-slate-400 text-white ">Add workout</button>
                 <AiOutlineCloseCircle
-                className='mx-auto h-[30px] rounded-full w-fit hi-fit cursor-pointer'
-                onClick={close}
-                size={0} />
+                  className='mx-auto h-[30px] rounded-full w-fit hi-fit cursor-pointer'
+                  onClick={close}
+                  size={0} />
               </form>
             </motion.div>
-       
+
           </Backdrop>}
-          <div className='pb-11'>
+        <div className='pb-11'>
           {
             !modalOpen &&
-         
-                <div className={selectedWorkouts.length === 0 ? 'cursor-pointer my-[0px]' : 'cursor-pointer my-[100px]'}>
-                  <AiOutlinePlusSquare
-                    className={selectedWorkouts.length === 0 ? 'cursor-pointer ml-[159px]' : 'cursor-pointer ml-[159px]'} 
-                    onClick={close} 
-                    size={40} />
-                  <h1 className=' cursor-pointer ml-[99px]'>Add a workout for today</h1>
-                </div>
-              
+
+            <div className={selectedWorkouts.length === 0 ? 'cursor-pointer my-[0px]' : 'cursor-pointer my-[100px]'}>
+              <AiOutlinePlusSquare
+                className={selectedWorkouts.length === 0 ? 'cursor-pointer ml-[159px]' : 'cursor-pointer ml-[159px]'}
+                onClick={close}
+                size={40} />
+              <h1 className=' cursor-pointer ml-[99px]'>Add a workout for today</h1>
+            </div>
+
           }
         </div>
-      
+
       </div>
     </div>
   )

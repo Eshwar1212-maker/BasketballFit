@@ -59,31 +59,7 @@ const Home = () => {
           game we love!
         </p>
         <div className="flex flex-wrap justify-center gap-5">
-          <div className="">
-            <div className="">
-              {!currentUser ? (
-                <button
-                  className="text-lg md:text-2xl bg-slate-400 w-[150px] md:w-[230px] rounded-xl font-medium 
-               mx-auto my-6 py-3 transition ease-in-out delay-150
-                hover:-translate-y-1 hover:scale-80 hover:bg-slate-500 duration-300 ... hover:text-white"
-                  onClick={signIn}
-                >
-                  Sign In!
-                </button>
-              ) : (
-                <>
-                  <button
-                    onClick={logOut}
-                    className=" md:text-xl bg-slate-300 w-[100px] rounded-xl font-medium 
-               mx-auto my-6 py-4 transition ease-in-out delay-150
-                hover:-translate-y-1 hover:scale-80 hover:bg-slate-800 duration-300 ... hover:text-white"
-                  >
-                    Log Out
-                  </button>
-                </>
-              )}
-            </div>
-          </div>
+  
           <div className="my-6">
         <button
           onClick={handleClickScroll}

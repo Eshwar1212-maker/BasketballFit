@@ -33,16 +33,14 @@ const Science = () => {
             so you can see whether your program needs to be adjusted based off of your perfomance on the court or in the gym.
             </p>
           {!currentUser ? <Link to="/register">   <button
-            className=" w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
-           transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
-             hover:bg-slate-500 duration-300 ..."
+          className="flex items-center px-4 py-3 border-2 rounded-2xl  text-md md:text-xl group hover:text-white hover:bg-red-800 hover:border-red-800"
+
           >
             Get Started
           </button></Link> : 
           <Link to="/UsersWorkouts">   <button
-          className=" w-[200px] rounded-xl font-medium mx-auto my-6 py-3 
-      transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-80
-           hover:bg-slate-500 duration-300 ... hover:text-white border-black border-2"
+          className="flex items-center px-4 py-3 border-2 rounded-2xl  text-md md:text-xl group hover:text-white hover:bg-red-800 hover:border-red-800"
+
         >
           Get Started
         </button></Link> 
@@ -56,3 +54,12 @@ const Science = () => {
 };
 
 export default Science;
+{/* <button
+onClick={handleClickScroll}
+className="flex items-center px-4 py-3 border-2  text-md md:text-2xl group hover:text-white hover:bg-red-800 hover:border-red-800"
+>
+<span className="duration-300 group-hover:rotate-90">
+  <HiArrowNarrowRight className="ml-3" />
+</span>
+Why us?
+</button> */}

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 import MonthlyWorkouts from "../../components/MonthlyWorkouts";
+import { ThemeContext } from "../../context/ThemeContext";
 
 type MonthToMax = {
   [key: string]: number;
@@ -235,7 +236,9 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-wrap justify-center">
-      <div className="w-full md:w-auto py-[100px] flex items-center flex-col px-11 gap-11 justify-center">
+      <div 
+      className={"w-full md:w-auto py-[100px] my-9 flex items-center flex-col gap-11 justify-center border-2border-black p-4 rounded-2xl px-[70px]"}
+      >
         <div className="rounded-2xl border-4 border-slate-500 flex flex-col md:flex-row gap-4 w-full md:w-[600px] shadow-lg">
           <div className="flex items-center flex-col p-3 text-center">
             <img
@@ -263,7 +266,7 @@ const ProfilePage = () => {
           <div>
             
           </div>
-        <div className="flex justify-center gap-11 py-11">
+        <div className="flex justify-center gap-11">
             <h1 className="underline">Days you hit the gym each month this year</h1>
             <p className=""><BsFillQuestionCircleFill size={25} /></p>
           </div>

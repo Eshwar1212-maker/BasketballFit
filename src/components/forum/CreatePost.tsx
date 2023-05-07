@@ -53,7 +53,7 @@ export const CreatePost = () => {
                         >
                             <form
                                 onSubmit={handleSubmit}
-                                className="flex flex-col w-[360px] md:w-[700px] p-10 rounded-xl gap-3 text-xl text-center font-bold bg-white"
+                                className="flex flex-col w-[360px] md:w-[700px] p-10 rounded-xl gap-3 text-xl text-center font-bold bg-white text-black"
                             >
                                 <div className="flex justify-between">
                                     <div className="flex justify-end cursor-pointer">
@@ -65,7 +65,7 @@ export const CreatePost = () => {
                                 </div>
                                 <textarea
                                     onChange={(e) => setInputStatus(e.target.value)}
-                                    className="rounded-[60px] text-center border-2 border-black items-center py-6 h-[139px]"
+                                    className="rounded-[60px] text-center border-2 border-black items-center p-3 py-6 h-[139px]"
                                     placeholder="What do you want to talk about"
                                 />
                                 <button

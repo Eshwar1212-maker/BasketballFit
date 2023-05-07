@@ -11,11 +11,11 @@ export const NewsWidget = () => {
                     className="w-[299px] h-[299px] rounded-md"
                     src="https://www.rollingstone.com/wp-content/uploads/2023/03/GettyImages-1463499694.jpg"
                 />
-                <p className="text-sm">Grizzlies drop Dillion Brooks, the whole team will need to be humbled in order to be contenders. Their superstar Morant is especailly included.</p>
+                <p className="text-[10px]">Grizzlies drop Dillion Brooks, the whole team will need to be humbled in order to be contenders. Their superstar Morant is especailly included.</p>
             </div>}
             <button
                 onClick={() => setShowWidget(!showWidget)}
-                className="text-sm underline font-light">{showWidget ? <>Hide</> : <>Unhide</>}</button>
+                className="text-sm underline font-light flex justify-center">{showWidget ? <>Hide</> : <>Unhide</>}</button>
         </div>
     )
 }

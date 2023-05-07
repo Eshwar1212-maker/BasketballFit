@@ -4,6 +4,14 @@ import dayjs from "dayjs";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Label } from 'recharts';
 
 
+type MonthToMax = {
+  [key: string]: number;
+};
+
+interface MonthData {
+  month: string;
+  days: number;
+}
 
  const MonthlyWorkouts = () => {
   const { currentUser } = useContext(AuthContext);
@@ -20,7 +28,9 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
   const [october, setOctober] = useState(0);
   const [november, setNovember] = useState(0);
   const [december, setDecember] = useState(0);
-  const [volumeFeedback, setvolumeFeedback] = useState(false)
+  const [maxMonth, setmaxMonth] = useState(0)
+  const [intenseMonth, setIntenseMonth] = useState("")
+  const [highestMonth, setHighestMonth] = useState("")
 
   useEffect(() => {
     fetch(`http://localhost:4000/workouts/user/${currentUser?.uid}/`)
@@ -39,12 +49,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
         let octoberCount = 0;
         let novemberCount = 0;
         let decemberCount = 0;
-        console.log(dayjs(workouts[30].date).format("MM/DD//YYYY"));
-        console.log("starting loop ");
+        
 
         let uniqueDays = new Set();
         for (let i = 0; i < workouts.length; i++) {
-          console.log(dayjs(workouts[i].date).format("MM/DD/YYYY"));
           let workoutDate = dayjs(workouts[i].date).format("MM/DD/YYYY");
           if (!uniqueDays.has(workoutDate)) {
             uniqueDays.add(workoutDate);
@@ -101,11 +109,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 
       })
   }, []);
-  console.log(january);
-  console.log(february);
-  console.log(march);
-  console.log(april);
-  console.log(may);
+
   
 
   const data = [
@@ -164,7 +168,47 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
     stroke: "#4d4d4d",
     line: "#82ca9d",
   };
+  let mapMonthToMax: MonthToMax = {
+    "january": january,
+    "february": february,
+    "march": march,
+    "april": april,
+    "may": may,
+    "june": june,
+    "july": july,
+    "august": august,
+    "september": september,
+    "october": october,
+    "november": november,
+    "december": december
+  }
+
+  let maxMonthCount = Math.max(january, february, march, april, may, june, july, august, september, october, november, december)
+
+  useEffect(() => {
+    setmaxMonth(maxMonthCount)
+  }, [maxMonthCount])
+
+  let highestMonthCount = '';
+  let highestValue = 0;
+
+  useEffect(() => {
+    function getHighestMonth() {
+      for (const month in mapMonthToMax) {
+        if (mapMonthToMax[month] > highestValue) {
+          highestMonthCount = month;
+          highestValue = mapMonthToMax[month];
+          setIntenseMonth(highestMonthCount); 
+        }
+      }
+      setIntenseMonth(highestMonthCount); 
+    }
+    getHighestMonth();
+  }, [mapMonthToMax]);
   
+
+
+  console.log(intenseMonth);
   
   
   return (
@@ -215,7 +259,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
       <Line type="monotone" dataKey="month" stroke={theme.line} />
     </LineChart>
   </ResponsiveContainer>
-  <p className="text-center">You have hit the gym 18 times in may!</p>
+  <p className="text-center">You have hit the gym {maxMonth} times in {intenseMonth}!</p>
     </>
     
   )

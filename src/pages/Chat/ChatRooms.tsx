@@ -24,17 +24,6 @@ const ChatRooms = () => {
         className="w-1/6
          group p-1 rounded-xl flex items-center border-black border-left-2 text-[25px]">Enter </button>
       </div>
-      
-        <button 
-        onClick={() => setSendLink(!sendLink)}
-        className="bottom-3 fixed m-auto rounded-xl font-medium underline">Send Room link to friend</button>
-    { sendLink && <><input placeholder="Email... " className="rounded-2xl w-[300px] h-[45px]  m-auto text-center text-xl"/>
-                <button 
-                onClick={() => setSendLink(!sendLink)}
-                className="text-md bg-slate-400 w-[110px] rounded-xl font-medium 
-                 mx-auto py-2transition ease-in-out delay-150 hover:scale-80 duration-300 hover:text-white ...">Send</button></> 
-      }
-
       </div>
     </div>
     }
