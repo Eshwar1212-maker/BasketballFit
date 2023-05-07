@@ -108,8 +108,6 @@ const UsersWorkouts = () => {
     // setDescription("");
   };
 
-  console.log(selectDate.toDate().toDateString());
-
   const updateDelete = (workoutId: string) => {
     const updatedWorkouts = selectedWorkouts.filter((workout) => workout._id !== workoutId);
     setSelectedWorkouts(updatedWorkouts);

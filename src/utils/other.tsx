@@ -15,6 +15,7 @@ export default CommunityImage
 
 const exercises = [
   "Push-ups",
+  "Barbell rows",
   "Squats",
   "Lunges",
   "Plank",

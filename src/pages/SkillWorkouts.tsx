@@ -101,9 +101,9 @@ const SkillWorkouts = () => {
   };
 
   return (
-    <div className="h-[100vh] items-center py-[150px]">
-      <h1 className='flex justify-center'>Create your weekly program for your skill workouts</h1>
-      <div className='flex gap-0 justify-center h-full cursor-pointer'>
+    <div className="h-[100vh] items-center py-[110px]">
+      <h1 className='flex justify-center pb-3 text-xl'>Create your weekly program for your skill workouts</h1>
+      <div className='flex gap-0 justify-center cursor-pointer h-[88%]'>
         <div
           onClick={() => setCurrentDay("Monday")}
           onClickCapture={(e) => {
@@ -112,11 +112,11 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll '
         >
           <h1 className='border-b-2 border-b-black'>Monday</h1>
-          <div className='py-1 flex flex-col '>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Monday")}</div>
+          <div className=' flex flex-col bg-[#d8effc] text-black'>
+            <div className="flex flex-col ">{renderWorkoutsForDay("Monday")}</div>
           </div>
         </div>
         <div
@@ -127,19 +127,27 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Monday</h1>
-          <div className='py-1 flex flex-col '>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Monday")}</div>
+          <h1 className='border-b-2 border-b-black'>Tuesday</h1>
+          <div className='flex flex-col bg-[#d8effc] text-black'>
+            <div className="flex flex-col ">{renderWorkoutsForDay("Tuesday")}</div>
           </div>
         </div>
         <div
           onClick={() => setCurrentDay("Wednesday")}
-          className='border-2 border-black w-[159px]'>
+          onClickCapture={(e) => {
+            // Check if the user clicked on the empty space inside the div
+            if (e.target === e.currentTarget) {
+              setModalOpen(!modalOpen);
+            }
+          }}
+          className='border-2 border-black w-[159px] overflow-y-scroll'
+        >
           <h1 className='border-b-2 border-b-black'>Wednesday</h1>
-          <div className="py-3 flex flex-col ">{renderWorkoutsForDay("Wednesday")}</div>
-
+          <div className=' flex flex-col bg-[#d8effc] text-black'>
+            <div className=" flex flex-col ">{renderWorkoutsForDay("Wednesday")}</div>
+          </div>
         </div>
         <div
           onClick={() => setCurrentDay("Thursday")}
@@ -149,11 +157,11 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll'
         >
           <h1 className='border-b-2 border-b-black'>Thursday</h1>
-          <div className='py-1 flex flex-col '>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Thursday")}</div>
+          <div className=' flex flex-col bg-[#d8effc] text-black'>
+            <div className="flex flex-col ">{renderWorkoutsForDay("Thursday")}</div>
           </div>
         </div>
         <div
@@ -164,10 +172,10 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll'
         >
           <h1 className='border-b-2 border-b-black'>Friday</h1>
-          <div className='py-1 flex flex-col '>
+          <div className='flex flex-col bg-[#d8effc] text-black'>
             <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Friday")}</div>
           </div>
         </div>
@@ -179,11 +187,11 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll'
         >
           <h1 className='border-b-2 border-b-black'>Saturday</h1>
-          <div className='py-1 flex flex-col '>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Saturday")}</div>
+          <div className='flex flex-col bg-[#d8effc] text-black'>
+            <div className="flex flex-col ">{renderWorkoutsForDay("Saturday")}</div>
           </div>
         </div>
         <div
@@ -194,11 +202,11 @@ const SkillWorkouts = () => {
               setModalOpen(!modalOpen);
             }
           }}
-          className='border-2 border-black w-[159px]'
+          className='border-2 border-black w-[159px] overflow-y-scroll'
         >
           <h1 className='border-b-2 border-b-black'>Sunday</h1>
-          <div className='py-1 flex flex-col '>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Sunday")}</div>
+          <div className='flex flex-col bg-[#d8effc] text-black'>
+            <div className="flex flex-col ">{renderWorkoutsForDay("Sunday")}</div>
           </div>
         </div>
       </div>
@@ -215,7 +223,7 @@ const SkillWorkouts = () => {
           >
             <form onSubmit={handleSubmit} className="flex text-black flex-col w-[400px] p-7 rounded-xl gap-3 text-xl text-center font-bold bg-slate-200">
               <p className='underline text-[26px]'>Add a drill for {currentDay}</p>
-              <label>Workout type</label>
+              <label>Drill</label>
               <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -245,7 +253,7 @@ const SkillWorkouts = () => {
               <label>Notes(optional)</label>
               <input
                 className="rounded-md text-center h-20 border-2 border-black"
-                placeholder="Example: Make sure form is good"
+                placeholder="Ex: Make sure form is good"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
@@ -257,7 +265,7 @@ const SkillWorkouts = () => {
             </form>
           </motion.div>
         </Backdrop>}
-      <p className='flex justify-center'>Click on a day to add a workout for that specific day!</p>
+      <p className='flex justify-center'>Click on a day to add a drill for that specific day!</p>
     </div>
   )
 }
