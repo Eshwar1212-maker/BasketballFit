@@ -33,7 +33,8 @@ const Register = () => {
     const { displayName, email, password } = data;
     
     const fileInput = document.querySelector("#file");
-    const file = fileInput?.files && fileInput?.files.length > 0 ? fileInput?.files[0] : null;
+    const file = (fileInput as HTMLInputElement)?.files?.[0] ?? null;
+
     try {
       //Create user
       const res = await createUserWithEmailAndPassword(auth, email, password);

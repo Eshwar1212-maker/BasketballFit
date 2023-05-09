@@ -9,11 +9,7 @@ import { Index } from "./components/carousel";
 
 const Home = lazy(() => import("./pages/Home"));
 const Gyms = lazy(() => import("./pages/Gyms/Gyms"));
-const Workouts = lazy(() =>
-  new Promise<{ default: React.ComponentType }>((resolve) => {
-    setTimeout(() => resolve(import("./pages/Workouts/Workouts")), 1000);
-  })
-);
+
 const SkillWorkouts = lazy(() => import("./pages/SkillWorkouts"))
 const MonthlyWorkouts = lazy(() => import("./components/MonthlyWorkouts"));
 const ChatRooms = lazy(() => import("./pages/Chat/ChatRooms"));
