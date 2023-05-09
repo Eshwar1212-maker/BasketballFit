@@ -213,6 +213,7 @@ interface MonthData {
   
   return (
     <>
+    <div className="hidden md:block">
     <ResponsiveContainer width={677} height={450}>
     <LineChart
       data={data}
@@ -259,6 +260,57 @@ interface MonthData {
       <Line type="monotone" dataKey="month" stroke={theme.line} />
     </LineChart>
   </ResponsiveContainer>
+    </div>
+
+    <div className="md:hidden">
+    <ResponsiveContainer width={360} height={450}>
+    <LineChart
+      data={data}
+      margin={{
+        top: 5,
+        right: 30,
+        left: 20,
+        bottom: 5,
+      }}
+      style={{ background: theme.background }}
+    >
+      <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
+      <XAxis dataKey="name" stroke={theme.text} />
+      <YAxis stroke={theme.text}>
+        <Label
+          value="Days Worked Out"
+          position="insideLeft"
+          angle={-90}
+          style={{
+            textAnchor: "middle",
+            fontSize: "16px",
+            fontWeight: "bold",
+            fill: theme.text,
+          }}
+        />
+      </YAxis>
+      <Label
+        angle={-90}
+        value="Exercises"
+        position="insideLeft"
+        style={{ textAnchor: "middle", fill: theme.text }}
+      />
+
+      <Tooltip
+        contentStyle={{ background: theme.background, borderColor: theme.stroke }}
+        itemStyle={{ color: theme.text }}
+        labelStyle={{ color: theme.text }}
+      />
+      <Legend
+        wrapperStyle={{
+          color: theme.text,
+        }}
+      />
+      <Line type="monotone" dataKey="month" stroke={theme.line} />
+    </LineChart>
+  </ResponsiveContainer>
+    </div>
+    
   <p className="text-center">You have hit the gym {maxMonth} times in {intenseMonth}!</p>
     </>
     

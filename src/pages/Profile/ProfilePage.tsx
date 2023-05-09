@@ -235,11 +235,11 @@ const ProfilePage = () => {
 
 
   return (
-    <div className="flex flex-wrap justify-center">
+    <div className="flex flex-wrap justify-center h-screen">
       <div 
       className={"w-full md:w-auto py-[100px] my-9 flex items-center flex-col gap-11 justify-center border-2border-black p-4 rounded-2xl px-[70px]"}
       >
-        <div className="rounded-2xl border-4 border-slate-500 flex flex-col md:flex-row gap-4 w-full md:w-[600px] shadow-lg">
+        <div className="rounded-2xl border-4 border-slate-500 flex flex-col text-center md:flex-row gap-4 w-full md:w-[600px] shadow-lg">
           <div className="flex items-center flex-col p-3 text-center">
             <img
               className="w-[42px] h-[42px] rounded-3xl"
@@ -270,7 +270,7 @@ const ProfilePage = () => {
             <h1 className="text-2xl">Monthly workouts</h1>
             <h1 className="underline">Days you hit the gym each month this year</h1>
           </div>
-       <div className="hidden lg:flex flex-col justify-center rounded-xl gap-11">
+       <div className=" flex-col justify-center rounded-xl gap-11">
         <div>
         <MonthlyWorkouts />
 
@@ -285,6 +285,54 @@ const ProfilePage = () => {
           </div>
           <div className="hidden lg:flex justify-center rounded-xl">
             <ResponsiveContainer width={677} height={450}>
+              <LineChart
+                data={data}
+                margin={{
+                  top: 5,
+                  right: 30,
+                  left: 20,
+                  bottom: 5,
+                }}
+                style={{ background: theme.background }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
+                <XAxis dataKey="name" stroke={theme.text} />
+                <YAxis stroke={theme.text}>
+                  <Label
+                    value="Total Excericses"
+                    position="insideLeft"
+                    angle={-90}
+                    style={{
+                      textAnchor: "middle",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      fill: theme.text,
+                    }}
+                  />
+                </YAxis>
+                <Label
+                  angle={-90}
+                  value="Exercises"
+                  position="insideLeft"
+                  style={{ textAnchor: "middle", fill: theme.text }}
+                />
+
+                <Tooltip
+                  contentStyle={{ background: theme.background, borderColor: theme.stroke }}
+                  itemStyle={{ color: theme.text }}
+                  labelStyle={{ color: theme.text }}
+                />
+                <Legend
+                  wrapperStyle={{
+                    color: theme.text,
+                  }}
+                />
+                <Line type="monotone" dataKey="month" stroke={theme.line} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="md:hidden">
+          <ResponsiveContainer width={360} height={450}>
               <LineChart
                 data={data}
                 margin={{

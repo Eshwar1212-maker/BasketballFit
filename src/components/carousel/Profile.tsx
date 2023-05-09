@@ -4,7 +4,7 @@ import profile from "../../assets/profile.png"
 const Profile = () => {
   return (
     <div>
-    <div className="">
+    <div className="h-screen">
       <img className="h-[590px] mx-auto w-[400px]" src={profile}/>
       <p className=" text-sm w-[700px]">
         Navigate to your profile page, and you will see how consistent you have been. We track 

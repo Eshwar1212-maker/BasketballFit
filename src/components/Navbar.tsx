@@ -112,7 +112,9 @@ export const Navbar = () => {
             )}
           </ul>
         </div>
-        {currentUser && <div className="gap-7 list-none hidden lg:flex">
+  
+            <div>
+            {currentUser && <div className="gap-7 list-none hidden lg:flex">
           <li className="flex flex-col">
 
 
@@ -139,8 +141,21 @@ export const Navbar = () => {
             <p className="text-sm">Account</p>
           </Link>
         </div>}
-        <div onClick={() => setNav(!nav)} className="">
-          <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={26} />
+            </div>
+        <div className="lg:hidden">
+          <div className="flex flex-row gap-4 ">
+            <div className="m-auto pb-5">
+              <li onClick={toggleTheme} className=" border-gray-600 ">
+                <BsFillMoonStarsFill size={21} />
+              </li>
+
+            </div>
+            <div onClick={() => setNav(!nav)} className="m-auto">
+              <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={25} />
+
+            </div>
+          </div>
+
           {nav && (
             <motion.ul
               variants={variants}
@@ -181,13 +196,6 @@ export const Navbar = () => {
                   >
                     My Workouts
                   </Link>
-                  {/* <Link
-                    className="p-4 border-b border-gray-600"
-                    to="/ChatPage"
-                  >
-                    Individual Chats
-                  </Link> */}
-
                   <Link
                     className="p-4 border-b border-gray-600"
                     to="/ChatRooms"
@@ -197,7 +205,10 @@ export const Navbar = () => {
                   <Link className="p-4 border-b border-gray-600" to="/ProfilePage">
                     Profile
                   </Link>
-                  
+                  <Link className="p-4 border-b border-gray-600" to="/skills">
+                    Seven day program
+                  </Link>
+
                 </>
               )}
             </motion.ul>
