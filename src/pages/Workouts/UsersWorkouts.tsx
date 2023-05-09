@@ -51,6 +51,7 @@ const UsersWorkouts = () => {
   const [workoutReps, setWorkoutReps] = useState<number | null>(null);
   const [workoutSets, setWorkoutSets] = useState<number | null>(null);
   const [weight, setWeight] = useState<number | null>(null);
+  const [hideCalender, setHideCalender] = useState(false)
   const [modalOpen, setModalIsOpen] = useState(false)
   const [description, setDescription] = useState("")
   const [completedWorkoutsDays, setCompletedWorkoutsDays] = useState<Set<string>>(new Set());
@@ -125,8 +126,8 @@ const UsersWorkouts = () => {
 
 
   return (
-    <div className='flex sm:flex-col py-[120px] md:flex md:flex-row gap-20 cursor-pointer justify-center h-screen'>
-      <div className=''>
+    <div className='py-[120px] md:flex md:flex-row gap-20 cursor-pointer justify-center h-screen'>
+      <div className='hidden lg:block'>
         <h1 className='text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
         <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[800px] h-fit'>
           {true &&
@@ -193,6 +194,77 @@ const UsersWorkouts = () => {
             )}
           </div>x
         </div>
+      </div>
+      <div>
+      <div className=''>
+        <h1 className='hidden md:text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
+{ hideCalender &&       <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[370px] mx-auto h-fit'>
+          {true &&
+            <div className='flex justify-between pb-3'>
+              <h1 className='text-sm underline'>
+                <GrFormPrevious
+                  onClick={() => {
+                    setToday(today.month(today.month() - 1));
+                  }}
+                  size={25}
+                  className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
+                /></h1>
+              <h1 className="select-none font-semibold">
+                {months[today.month()]}, {today.year()}
+              </h1>            <h1 className='text-sm underline'>
+                <GrFormNext
+                  onClick={() => {
+                    setToday(today.month(today.month() + 1));
+                  }}
+                  size={25}
+                  className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
+
+                />
+              </h1>
+            </div>
+          }
+
+          <div className='w-full grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
+            {days.map((day, index) => {
+              return <h1 key={index}>{day}</h1>;
+            })}
+          </div>
+          <div className='grid grid-cols-7 gap-6 py-3'>
+            {generateDate(today.month(), today.year()).map(
+              ({ date, currentMonth, today }, index) => {
+                return (
+                  <div
+                    key={index}
+                    className="p-2 text-center h-14 grid place-content-center text-sm border-t"
+                  >
+                    <h1
+                      className={cn(
+                        currentMonth ? "" : "text-gray-400",
+                        today
+                          ? "bg-blue-300"
+                          : "",
+                        selectDate
+                          .toDate()
+                          .toDateString() ===
+                          date.toDate().toDateString()
+                          ? "bg-black"
+                          : "",
+                        "h-10 w-10 rounded-full grid place-content-center hover:bg-black hover:text-white  transition-all cursor-pointer select-none"
+                      )}
+                      onClick={() => {
+                        setSelectDate(date);
+                      }}
+                    >
+                      {date.date()}
+                    </h1>
+                  </div>
+                );
+              }
+            )}
+          </div>x
+        </div>}
+        <button onClick={() => setHideCalender(!hideCalender)} className='underline m-auto flex mb-2'>{!hideCalender ? "Show calender" : "Hide calender"}</button>
+      </div>
       </div>
       <div className=' px-5'>
         <h1 className='underline pb-2 text-center text-blue-900 font-bold text-xl'>{selectDate.toDate().toDateString()}</h1>
