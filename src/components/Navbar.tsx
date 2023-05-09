@@ -112,36 +112,36 @@ export const Navbar = () => {
             )}
           </ul>
         </div>
-  
-            <div>
-            {currentUser && <div className="gap-7 list-none hidden lg:flex">
-          <li className="flex flex-col">
+
+        <div>
+          {currentUser && <div className="gap-7 list-none hidden lg:flex">
+            <li className="flex flex-col">
 
 
-            <Link
-              className=" border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
-              to="/"
-            >
-              <AiOutlineHome size={39} />
+              <Link
+                className=" border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                to="/"
+              >
+                <AiOutlineHome size={39} />
 
-              <p>Home</p>
-            </Link>
-          </li>
-          <Link to="/ProfilePage" className="">
-            <div className={" border-gray-600 "}>
-              <div>
-                {" "}
-                <img
-                  className="w-[42px] h-[42px] rounded-3xl"
-                  src={currentUser?.photoURL ?? ""}
-                  referrerPolicy="no-referrer"
-                />
+                <p>Home</p>
+              </Link>
+            </li>
+            <Link to="/ProfilePage" className="">
+              <div className={" border-gray-600 "}>
+                <div>
+                  {" "}
+                  <img
+                    className="w-[42px] h-[42px] rounded-3xl"
+                    src={currentUser?.photoURL ?? ""}
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
               </div>
-            </div>
-            <p className="text-sm">Account</p>
-          </Link>
-        </div>}
-            </div>
+              <p className="text-sm">Account</p>
+            </Link>
+          </div>}
+        </div>
         <div className="lg:hidden">
           <div className="flex flex-row gap-4 ">
             <div className="m-auto pb-5">
@@ -166,7 +166,7 @@ export const Navbar = () => {
               }
             >
               {!currentUser &&
-                <ul className="">
+                <ul onClick={() => setNav(!nav)} className="">
                   <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
                     <BsFillMoonStarsFill size={27} />
                   </li>
@@ -185,27 +185,31 @@ export const Navbar = () => {
               {currentUser && (
                 <>
                   <Link
+                    onClick={() => setNav(!nav)}
                     className="p-4 border-b border-gray-600"
                     to="/"
                   >
                     Home
                   </Link>
                   <Link
+                    onClick={() => setNav(!nav)}
+
                     className="p-4 border-b border-gray-600"
                     to="/UsersWorkouts"
                   >
                     My Workouts
                   </Link>
                   <Link
+                    onClick={() => setNav(!nav)}
                     className="p-4 border-b border-gray-600"
                     to="/ChatRooms"
                   >
                     Chat Rooms
                   </Link>
-                  <Link className="p-4 border-b border-gray-600" to="/ProfilePage">
+                  <Link onClick={() => setNav(!nav)} className="p-4 border-b border-gray-600" to="/ProfilePage">
                     Profile
                   </Link>
-                  <Link className="p-4 border-b border-gray-600" to="/skills">
+                  <Link onClick={() => setNav(!nav)} className="p-4 border-b border-gray-600" to="/skills">
                     Seven day program
                   </Link>
 
