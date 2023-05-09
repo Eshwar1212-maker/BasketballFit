@@ -197,7 +197,7 @@ export const Navbar = () => {
                   <Link className="p-4 border-b border-gray-600" to="/ProfilePage">
                     Profile
                   </Link>
-
+                  
                 </>
               )}
             </motion.ul>
