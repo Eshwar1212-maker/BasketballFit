@@ -266,9 +266,9 @@ const ProfilePage = () => {
           <div>
             
           </div>
-        <div className="flex justify-center gap-11">
+        <div className=" justify-center gap-11 text-center">
+            <h1 className="text-2xl">Monthly workouts</h1>
             <h1 className="underline">Days you hit the gym each month this year</h1>
-            <p className=""><BsFillQuestionCircleFill size={25} /></p>
           </div>
        <div className="hidden lg:flex flex-col justify-center rounded-xl gap-11">
         <div>
@@ -279,9 +279,9 @@ const ProfilePage = () => {
           <div>
 
 
-          <div className="flex justify-center gap-11">
-            <h1 className="underline">Intensity/Volume of your workouts each month</h1>
-            <p className=""><BsFillQuestionCircleFill size={25} /></p>
+          <div className="text-center justify-center gap-11">
+            <h1 className="text-2xl">Workout intensity</h1>
+            <h1 className="">Total exercises each month</h1>
           </div>
           <div className="hidden lg:flex justify-center rounded-xl">
             <ResponsiveContainer width={677} height={450}>

@@ -1,19 +1,38 @@
 import { AuthContext } from "../context/AuthContext";
 import { auth } from "../firebase";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import HomeScience from "../components/HomeScience";
 import Community from "../components/Community";
 import { motion } from "framer-motion";
 import { signOut } from "firebase/auth";
-import { Backdrop } from "../components/Backdrop";
 import Typewriter from "typewriter-effect";
+import { Index } from "../components/carousel";
+
 
 const Home = () => {
+  const [showTutorial, setShowTutorial] = useState(false)
   const { currentUser } = useContext(AuthContext);
   const [Backdrop, setBackdrop] = useState(false)
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const createdAt = currentUser?.metadata?.creationTime;
+      if (createdAt) { // Check if createdAt is defined
+        const createdTimestamp = new Date(createdAt).getTime(); // Convert to Unix timestamp
+        const currentTimestamp = Date.now(); // Get current Unix timestamp
+        const timeDiffSeconds = (currentTimestamp - createdTimestamp) / 1000; // Convert to seconds
+        console.log(timeDiffSeconds);
+        
+        if (timeDiffSeconds <= 5) { // Show tutorial if account created less than 60 seconds ago
+          setShowTutorial(true);
+        }
+      }
+    };
+    fetchUserData();
+  }, [currentUser]);
+  
   const navigate = useNavigate();
 
   const signIn = () => {
@@ -30,6 +49,9 @@ const Home = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  function hideBackDrop () {
+
+  }
   return (
     <div className="">
       <div className="m-auto py-[360px] md:max-w-[1000px] md:mt-[-60px] md:w-full h-screen md
@@ -53,6 +75,9 @@ const Home = () => {
               }}
             />
           </span>
+          {
+            showTutorial && <Index />
+          }
         </p>
         <p className="p-8 text-xs text-center lg:text-xl md:text-xl sm:text-sm">
           Log in to join our community of athletes who want to get better at the
@@ -70,6 +95,7 @@ const Home = () => {
           </span>
           Why us?
         </button>
+        
       </div>
         </div>
         <motion.div

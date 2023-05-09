@@ -61,7 +61,7 @@ export const ChatGroup = ({ room }: Props) => {
     scrollToBottom();
   };
   return (
-    <div className="w-[300px] flex flex-col items-center bg-gray-100 md:w-[800px] rounded-2xl h-[82vh] relative">
+    <div className="w-[300px] flex flex-col bg-gray-100 md:w-[800px] rounded-2xl h-[780px] relative py">
       <div className="w-full p-4 bg-white shadow-md">
         <h1 className="text-xl font-bold text-black text-center underline">
           {room}

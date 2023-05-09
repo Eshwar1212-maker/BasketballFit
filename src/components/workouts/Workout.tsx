@@ -31,29 +31,28 @@ export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight,
       });
   }
   return (
+<div className={"flex justify-between gap-1 border-black border-b-2 flex-col relative"}>
+  <div>
     <div>
- <div className={"flex justify-between gap-1 border-black border-b-2 flex-col"}>
-      <div>
-        <div>
-          <p className=''>{title}</p>
-        </div>
-        <div className="flex flex-col">
-          <div className='flex gap-7'>
-            <p className='text-sm pb-1'>Weight:{weight}</p>
-            <p className='text-sm pb-1'>Reps:{reps}</p>
-            <p className='text-sm pb-1'>Sets:{sets}</p>
-            <AiOutlineDelete onClick={handleDelete} size={24} />
-            <input type='checkbox' />
-          </div>
+      <p className=''>{title}</p>
+    </div>
+    <div className="flex flex-col">
+      <div className='flex gap-7'>
+        <p className='text-sm pb-1'>Weight:{weight}</p>
+        <p className='text-sm pb-1'>Reps:{reps}</p>
+        <p className='text-sm pb-1'>Sets:{sets}</p>
+        <div className='flex absolute right-0 top-0'>
+          <input type='checkbox' className="mr-2" />
+          <AiOutlineDelete onClick={handleDelete} size={24} />
         </div>
       </div>
-      <div>
-        <p className='text-sm pb-2'>{description}</p>
-      </div>
-   
     </div>
-    <div></div>
-    </div>
+  </div>
+  <div>
+    <p className='text-sm pb-2'>{description}</p>
+  </div>
+</div>
+
    
   )
 }

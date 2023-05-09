@@ -176,7 +176,7 @@ const SkillWorkouts = () => {
         >
           <h1 className='border-b-2 border-b-black'>Friday</h1>
           <div className='flex flex-col bg-[#d8effc] text-black'>
-            <div className="py-1 flex flex-col ">{renderWorkoutsForDay("Friday")}</div>
+            <div className=" flex flex-col ">{renderWorkoutsForDay("Friday")}</div>
           </div>
         </div>
         <div

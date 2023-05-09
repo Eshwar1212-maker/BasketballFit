@@ -114,35 +114,35 @@ const Register = () => {
           Create an account!
         </span>
 
-        <form onSubmit={handleSubmit(handleSubmitRegister)} className="border-2 p-3 rounded-lg bg-white w-[400px] h-[300px] flex flex-col justify-between">
+        <form onSubmit={handleSubmit(handleSubmitRegister)} className="border-2 px-8 pb-4 mb-5 rounded-lg bg-white w-[400px] h-[490px] flex flex-col justify-between">
           <h2 className="flex start">Username:</h2>
-          <h1 className="text-black font-bold text-sm text-[11px] ">Username</h1>
+          <h1 className="text-black font-bold text-[20px] ">Username</h1>
           <input
             required
             type="text"
             placeholder="username"
             {...register("displayName")}
-            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black text-sm"
+            className="w-full px-3 p-5 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black"
           />{errors.displayName && <p className="text-orange-900 text-sm">Please make a username with more than one character</p>}
-          <h1 className="text-black font-bold text-sm text-[11px] " >Email</h1>
+          <h1 className="text-black font-bold text-[20px] " >Email</h1>
 
           <input
             required
             type="email"
             placeholder="email"
             {...register("email")}
-            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black text-sm"
+            className="w-full px-3 p-3 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black"
           />
           {errors.email && <p className="text-orange-900">Please use a valid email </p>}
 
-          <h1 className="text-black text-[14px] font-bold">Password</h1>
+          <h1 className="text-black font-bold text-[20px]">Password</h1>
 
           <input
             required
             type="password"
             placeholder="password"
             {...register("password")}
-            className="w-full px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black text-sm"
+            className="w-full px-3 p-5 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 text-black"
           />
           {errors.password && <p className="text-orange-900 text-sm">Please use a password with more than 6 characters</p>}
           <input
@@ -161,7 +161,7 @@ const Register = () => {
           </label>
           <button
             disabled={loading}
-            className="bg-blue-900 text-white block w-full font-first h-[46px] rounded-xl"
+            className="bg-blue-900 text-white block w-full font-first h-[46px] rounded-xl mb-3"
           >
             Sign up
           </button>

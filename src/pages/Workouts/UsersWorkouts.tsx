@@ -101,11 +101,11 @@ const UsersWorkouts = () => {
     }
     setSelectedWorkouts([...selectedWorkouts, { title: workoutName, reps: workoutReps, sets: workoutSets, weight: weight, description: description }]);
     setModalIsOpen(false);
-    // setWorkoutName("");
-    // setWorkoutReps(0);
-    // setWorkoutSets(0);
-    // setWeight(null);
-    // setDescription("");
+    setWorkoutName("");
+    setWorkoutReps(0);
+    setWorkoutSets(0);
+    setWeight(null);
+    setDescription("");
   };
 
   const updateDelete = (workoutId: string) => {
@@ -125,10 +125,10 @@ const UsersWorkouts = () => {
 
 
   return (
-    <div className='flex sm:flex-col py-[140px] md:flex md:flex-row gap-20 cursor-pointer justify-center'>
+    <div className='flex sm:flex-col py-[120px] md:flex md:flex-row gap-20 cursor-pointer justify-center h-screen'>
       <div className=''>
         <h1 className='text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
-        <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl h-fit p-4'>
+        <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[800px] h-fit'>
           {true &&
             <div className='flex justify-between pb-3'>
               <h1 className='text-sm underline'>
@@ -191,7 +191,7 @@ const UsersWorkouts = () => {
                 );
               }
             )}
-          </div>
+          </div>x
         </div>
       </div>
       <div className=' px-5'>
@@ -199,8 +199,8 @@ const UsersWorkouts = () => {
         {selectedWorkouts.length === 0 &&
           (
             <div className='text-gray-400 text-lg py-[59px]'>
-              Rest is important, take all of it need today {currentUser?.displayName}
-              <img className='w-[370px] h-[380px] py-10 rounded-[270px]' src='https://i0.wp.com/sportsmedicineweekly.com/wp-content/uploads/2021/07/tips-for-better-sleep.png?fit=1080%2C600&ssl=1' />
+             <p className=''>Rest is important, take all of it need today {currentUser?.displayName}</p> 
+              <img className=' mx-auto w-[370px] h-[380px] py-5 rounded-[10px]' src='https://i0.wp.com/sportsmedicineweekly.com/wp-content/uploads/2021/07/tips-for-better-sleep.png?fit=1080%2C600&ssl=1' />
             </div>
           )
         }        <div>

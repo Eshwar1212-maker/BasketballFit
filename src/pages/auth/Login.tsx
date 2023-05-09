@@ -37,31 +37,31 @@ const Login = () => {
         <span className="text-2xl font-bold block mb-4">
           Login
         </span>
-        <form onSubmit={handleSubmit} className="border-2 p-2 rounded-lg bg-white text-black w-[400px] h-[260px] flex justify-center flex-col">
-          <h1 className="text-black font-bold text-sm text-[11px] ">Email</h1>
+        <form onSubmit={handleSubmit} className="border-2 gap-2 p-2 px-6 rounded-lg bg-white text-black w-[400px] h-[340px] flex justify-center flex-col">
+          <h1 className="text-black font-bold text-[20px] ">Email</h1>
 
           <input
             type="email"
             placeholder="email"
-            className="block w-full rounded-xl mb-1 border text-black h-[40px] text-sm"
+            className="block w-full p-3 rounded-xl mb-1 border text-black h-[40px] text-sm"
           />
-          <h1 className="text-black font-bold text-sm text-[11px] ">Password</h1>
+          <h1 className="text-black font-bold text-[20px] ">Password</h1>
           <input
             type="password"
             placeholder="password"
-            className="block w-full rounded-xl mb-1 border text-black h-[40px] text-sm"
+            className="block w-full p-3 rounded-xl mb-1 border text-black h-[40px] text-sm"
           />
           <button className="bg-blue-900 text-white block w-full font-first h-[43px] rounded-xl">
             <Link to="/register">Login</Link>
           </button>
-          <p className="text-[12px] py-2">
+          <p className="text-[16px] py-2">
             Dont have an account?
             <span className="cursor-pointer underline">
               <Link to="/register">Register</Link>
             </span>
           </p>
         </form>
-        <p className="text-[12px]">Or sign in with google</p>
+        <p className="text-[16px]">Or sign in with google</p>
         <a
           onClick={signIn}
           href="#_"

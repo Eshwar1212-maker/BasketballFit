@@ -4,7 +4,7 @@ import { lazy, Suspense, useContext, useEffect, useState } from "react";
 import { AuthContext } from "./context/AuthContext";
 import LazyLoader from "./components/LazyLoader";
 import { ThemeContext } from "./context/ThemeContext";
-
+import { Index } from "./components/carousel";
 
 
 const Home = lazy(() => import("./pages/Home"));
@@ -70,6 +70,7 @@ function App() {
                   <Route path="/Forum" element={<Forum />} />
                   <Route path="/MonthlyWorkouts" element={<MonthlyWorkouts />} />
                   <Route path="/skills" element={<SkillWorkouts />} />
+                  <Route path="/slider" element={<Index />} />
                 </>
               )}
             </Routes>
