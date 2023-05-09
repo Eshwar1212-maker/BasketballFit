@@ -110,7 +110,7 @@ const Register = () => {
         loop
         muted
       />
-      <div className="py-[90px] bg-blue-50 flex items-center flex-col md:py-[160px] absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
+      <div className="py-[20px] bg-blue-50 flex items-center flex-col md:py-[160px] absolute w-full h-full top-0 left-0 bg-gray-900/30 text-center cursor-pointer">
         <span className="text-2xl font-bold block mb-4">
           Create an account!
         </span>
