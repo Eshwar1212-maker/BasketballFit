@@ -139,7 +139,7 @@ export const Navbar = () => {
             <p className="text-sm">Account</p>
           </Link>
         </div>}
-        <div onClick={() => setNav(!nav)} className="pl-[380px] lg:hidden">
+        <div onClick={() => setNav(!nav)} className="">
           <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={26} />
           {nav && (
             <motion.ul
