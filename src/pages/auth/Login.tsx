@@ -37,7 +37,7 @@ const Login = () => {
         <span className="text-2xl font-bold block mb-4">
           Login
         </span>
-        <form onSubmit={handleSubmit} className="border-2 gap-2 p-2 px-6 rounded-lg bg-white text-black w-[400px] h-[340px] flex justify-center flex-col">
+        <form onSubmit={handleSubmit} className="border-2 gap-2 p-2 px-6 rounded-lg bg-white text-black w-[330px] md:w-[400px] h-[340px] flex justify-center flex-col">
           <h1 className="text-black font-bold text-[20px] ">Email</h1>
 
           <input
@@ -67,7 +67,7 @@ const Login = () => {
           href="#_"
           className="relative inline-block text-lg group"
         >
-          <span className="w-[380px] h-[52px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+          <span className=" w-[330px] md:w-[380px] h-[52px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
             <span className="absolute left-0 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 w-[400px] bg-gray-900 group-hover:-rotate-180 ease"></span>
             <span className="relative text-xl">

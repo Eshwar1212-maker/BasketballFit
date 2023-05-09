@@ -115,7 +115,7 @@ const Register = () => {
           Create an account!
         </span>
 
-        <form onSubmit={handleSubmit(handleSubmitRegister)} className="border-2 px-8 pb-4 mb-5 rounded-lg bg-white w-[400px] h-[490px] flex flex-col justify-between">
+        <form onSubmit={handleSubmit(handleSubmitRegister)} className="border-2 px-8 pb-4 mb-5 rounded-lg bg-white w-[330px] md:w-[400px] h-[490px] flex flex-col justify-between">
           <h2 className="flex start">Username:</h2>
           <h1 className="text-black font-bold text-[20px] ">Username</h1>
           <input
@@ -183,7 +183,7 @@ const Register = () => {
           href="#_"
           className="relative inline-block text-lg group"
         >
-          <span className="w-[380px] h-[52px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
+          <span className=" w-[330px] md:w-[380px] h-[52px] relative z-10 block px-1 py-1 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-gray-900 rounded-lg group-hover:text-white">
             <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
             <span className="absolute left-0 h-48 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 w-[400px] bg-gray-900 group-hover:-rotate-180 ease"></span>
             <span className="relative text-xl">

@@ -36,12 +36,12 @@ export const Navbar = () => {
             : " flex justify-between m-auto p-4 py-8 h-[10px] font-thin text-md cursor-pointer"
         }
       >
-        <div className="text-3xl font-light flex flex-row gap-3">
+        <div className="text-xl md:text-3xl font-light flex flex-row gap-3">
           <div className="">
             <Link className=" border-gray-600" to="/">
-              <span className="text-orange-900 text-4xl border-b font-semibold">B</span>
+              <span className="text-orange-900 text-2xl md:text-4xl border-b font-semibold">B</span>
               asketball
-              <span className="text-orange-900 text-4xl border-b font-semiblack">F</span>it
+              <span className="text-orange-900ext-2xl md:text-4xl border-b font-semiblack">F</span>it
             </Link>
           </div>
 
@@ -150,15 +150,15 @@ export const Navbar = () => {
           </div>
         </div>}
 
-        <div className="lg:hidden">
-          <div className="flex flex-row gap-4 ">
-            <div className="m-auto pb-5">
-              <li onClick={toggleTheme} className=" border-gray-600 ">
-                <BsFillMoonStarsFill size={21} />
+        <div className="lg:hidden mt-[-14px]">
+          <div className="flex flex-row gap-4">
+            <div className="m-auto">
+              <li onClick={toggleTheme} className=" border-gray-600 pb-6">
+                <BsFillMoonStarsFill className="" size={20} />
               </li>
 
             </div>
-            <div onClick={() => setNav(!nav)} className="m-auto">
+            <div onClick={() => setNav(!nav)} className="m-auto pb-1">
               <RxHamburgerMenu className="" onClick={() => setNav(!nav)} size={25} />
 
             </div>
@@ -174,10 +174,7 @@ export const Navbar = () => {
               }
             >
               {!currentUser &&
-                <ul onClick={() => setNav(!nav)} className="">
-                  <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
-                    <BsFillMoonStarsFill size={27} />
-                  </li>
+                <ul onClick={() => setNav(!nav)} className="flex flex-col mx-auto w-full">
                   <Link className="p-4 border-b border-gray-600" to="/register">
                     Register
                   </Link>
