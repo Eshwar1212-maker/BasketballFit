@@ -235,7 +235,7 @@ const ProfilePage = () => {
 
 
   return (
-    <div className="flex flex-wrap justify-center h-screen">
+    <div className="flex flex-wrap justify-center h-full">
       <div 
       className={"w-full md:w-auto py-[100px] my-9 flex items-center flex-col gap-11 justify-center border-2border-black p-4 rounded-2xl px-[70px]"}
       >
