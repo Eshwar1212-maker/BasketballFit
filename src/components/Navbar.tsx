@@ -50,9 +50,11 @@ export const Navbar = () => {
             src="https://img.freepik.com/free-vector/hand-drawn-basket-ball_1034-756.jpg?w=1480&t=st=1681697574~exp=1681698174~hmac=8dfed6fc68ade2c3cdf9c06ed620f53c23f907846785c2e3951b191b3f083b96"
           />
         </div>
-        <div className="hidden lg:block">
-          <ul className="flex flex-row gap-6 px-[80px] rounded-lg text-xl">
-            {!currentUser && (
+
+        { !currentUser &&
+          <div className="hidden lg:block">
+            <ul className="flex flex-row gap-6 px-[80px] rounded-lg text-xl ">
+            
               <>
                 {theme !== "darkMode" ? <li onClick={toggleTheme} className="p-3 border-b border-gray-600">
                   <BsFillMoonStarsFill size={27} />
@@ -75,46 +77,51 @@ export const Navbar = () => {
                   </Link>
                 </li>
               </>
-            )}
+              
 
-            {currentUser && (
-              <ul className="flex gap-5 text-[16px]">
-                {<li onClick={toggleTheme} className="p-3 border-b border-gray-600">
-                  <BsFillMoonStarsFill size={27} />
-                </li>}
-                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                  <Link
-                    to="/Forum"
-                  >Forums
-                  </Link>
-                </li>
+
+            </ul>
+          </div>
+        }
+        {currentUser &&
+        <div className="hidden lg:block">
+            <ul className="flex gap-5 text-[16px]">
+              {<li onClick={toggleTheme} className="p-3 border-b border-gray-600">
+                <BsFillMoonStarsFill size={27} />
+              </li>}
+              <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                 <Link
-                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
-                  to="/ChatRooms"
-                >
-                  Messaging
+                  to="/Forum"
+                >Forums
                 </Link>
+              </li>
+              <Link
+                className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+                to="/ChatRooms"
+              >
+                Messaging
+              </Link>
 
 
-                <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
-                  <Link className="text-md" to="/UsersWorkouts">
-                    Workouts
-                  </Link>
-                </li>
-                <li
-                  className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
+              <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                <Link className="text-md" to="/UsersWorkouts">
+                  Workouts
+                </Link>
+              </li>
+              <li
+                className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ..."
 
-                >
-                  <Link to="/skills">Skill Workouts</Link>
-                </li>
+              >
+                <Link to="/skills">Skill Workouts</Link>
+              </li>
 
-              </ul>
-            )}
-          </ul>
+            </ul>
+          
         </div>
-
-        <div>
-          {currentUser && <div className="gap-7 list-none hidden lg:flex">
+          }
+          
+ {  currentUser &&    <div className="hidden lg:flex">
+         <div className="gap-7 list-none hidden lg:flex">
             <li className="flex flex-col">
 
 
@@ -140,8 +147,9 @@ export const Navbar = () => {
               </div>
               <p className="text-sm">Account</p>
             </Link>
-          </div>}
-        </div>
+          </div>
+        </div>}
+
         <div className="lg:hidden">
           <div className="flex flex-row gap-4 ">
             <div className="m-auto pb-5">
