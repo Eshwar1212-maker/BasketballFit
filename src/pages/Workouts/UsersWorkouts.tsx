@@ -60,7 +60,7 @@ const UsersWorkouts = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:4000/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
+    fetch(`https://basketballfit-production.up.railway.app/workouts/user/${currentUser?.uid}/date/${selectDate.toDate().toDateString()}`)
       .then((res) => res.json())
       .then((data) => {
         setSelectedWorkouts(data);
