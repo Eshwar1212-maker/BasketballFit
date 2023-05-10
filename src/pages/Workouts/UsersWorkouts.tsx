@@ -192,11 +192,11 @@ const UsersWorkouts = () => {
                 );
               }
             )}
-          </div>x
+          </div>
         </div>
       </div>
       <div>
-      <div className=''>
+      <div className=' flex flex-col'>
         <h1 className='hidden md:text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
 { hideCalender &&       <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[370px] mx-auto h-fit'>
           {true &&
@@ -263,7 +263,7 @@ const UsersWorkouts = () => {
             )}
           </div>x
         </div>}
-        <button onClick={() => setHideCalender(!hideCalender)} className='underline m-auto flex mb-2'>{!hideCalender ? "Show calender" : "Hide calender"}</button>
+        <button onClick={() => setHideCalender(!hideCalender)} className='underline m-auto flex mb-2 lg:hidden'>{!hideCalender ? "Show calender" : "Hide calender"}</button>
       </div>
       </div>
       <div className=' px-5'>

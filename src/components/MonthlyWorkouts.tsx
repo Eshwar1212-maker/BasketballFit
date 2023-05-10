@@ -33,7 +33,7 @@ interface MonthData {
   const [highestMonth, setHighestMonth] = useState("")
 
   useEffect(() => {
-    fetch(`http://localhost:4000/workouts/user/${currentUser?.uid}/`)
+    fetch(`https://basketballfit-production.up.railway.app/workouts/user/${currentUser?.uid}/`)
       .then((res) => res.json())
       .then((workouts) => {
         setAllWorkouts(workouts);
