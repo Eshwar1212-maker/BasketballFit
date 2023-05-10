@@ -43,7 +43,7 @@ const SkillWorkouts = () => {
   useEffect(() => {
     // Fetch workouts for the authenticated user
     const fetchWorkouts = async () => {
-      const response = await fetch(`http://localhost:4000/skill-workouts/user/${currentUser?.uid}`);
+      const response = await fetch(`https://basketballfit-production.up.railway.app/skill-workouts/user/${currentUser?.uid}`);
       const data = await response.json();
       setAllWorkouts(data);
     };
@@ -66,7 +66,7 @@ const SkillWorkouts = () => {
       userId: currentUser?.uid
     };
 
-    const response = await fetch(`http://localhost:4000/skill-workouts/${currentUser?.uid}`, {
+    const response = await fetch(`https://basketballfit-production.up.railway.app/skill-workouts/${currentUser?.uid}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

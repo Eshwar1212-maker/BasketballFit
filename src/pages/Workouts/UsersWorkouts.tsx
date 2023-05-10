@@ -87,7 +87,7 @@ const UsersWorkouts = () => {
     }
 
     try {
-      fetch(`http://localhost:4000/workouts/${currentUser?.uid}`, {
+      fetch(`https://basketballfit-production.up.railway.app/workouts/${currentUser?.uid}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(workoutData),
