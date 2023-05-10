@@ -32,7 +32,7 @@ export const Navbar = () => {
       <div
         className={
           currentUser
-            ? "flex justify-between m-auto p-5 py-8 h-[10px] cursor-pointer"
+            ? "flex justify-between m-auto p-5 py-8 h-[10px] cursor-pointer sticky top-0 z-50"
             : " flex justify-between m-auto p-4 py-8 h-[10px] font-thin text-md cursor-pointer"
         }
       >
