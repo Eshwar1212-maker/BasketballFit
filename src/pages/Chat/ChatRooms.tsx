@@ -46,7 +46,7 @@ const ChatRooms = () => {
   };
 
   return (
-    <div className="flex justify-center py-[70px] m-auto h-[100vh]">
+    <div className="w-[330px] md:w-full flex justify-center py-[70px] m-auto h-[100vh]">
     
       {room ? (
         <ChatGroup room={room} />
@@ -70,7 +70,7 @@ const ChatRooms = () => {
       <button 
         onClick={() => setRoom(roomInputRef.current?.value || "")}
         className="w-1/6
-         group p-1 rounded-xl flex items-center border-black border-left-2 text-[25px]">Enter </button>
+         group p-1 rounded-xl flex items-center border-black border-left-2 text-lg md:text-[25px]">Enter </button>
       </div>
        
         
@@ -90,7 +90,7 @@ const ChatRooms = () => {
           </div>
         </div>
       )}
-{ room &&     <p onClick={() => {location.reload()}} className="fixed bottom-4 mb-[1px] text-3xl underline p-1 cursor-pointer">Exit</p>
+{ room &&     <p onClick={() => {location.reload()}} className="hidden md:fixed bottom-4 mb-[1px] text-3xl underline p-1 cursor-pointer">Exit</p>
 }    </div>
   );
 };

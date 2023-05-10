@@ -401,17 +401,18 @@ const ProfilePage = () => {
               </p>
             </>
           }
-          {allworkouts.length < 100 ? (allworkouts.length &&
+          {allworkouts.length < 100 && allworkouts.length > 0 ? (allworkouts.length &&
             <>
               <p
-                className="text-md text-center max-w-[500px] mx-auto py-6 text-sm">Currently,{"        "}
+                className="text-md text-center max-w-[500px] mx-auto py-6 text-sm">Currently,
                 <span className="font-bold underline">{intenseMonth}</span> {"    "}
-                is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for that long yet<span className="underline font-semibold">(you have only added {allworkouts.length} {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
+                is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for that long yet<span className="underline font-semibold">(you have only added {allworkouts.length}  {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
                 see what months you have worked out the most. Use our workout  <span className="underline"><Link to="/UsersWorkouts">calender</Link> </span> for at least few months consistently, and based off of how you feel, you can see how much volume your body needs, and
                 what months you have been working out the most based off of this chart!
               </p>
             </>)
-            : <></>
+            : <>
+            </>
           }
         </div>
       </div>

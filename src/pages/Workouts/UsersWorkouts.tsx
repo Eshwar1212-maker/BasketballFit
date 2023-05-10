@@ -155,7 +155,7 @@ const UsersWorkouts = () => {
             </div>
           }
 
-          <div className='w-full grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
+          <div className=' grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
             {days.map((day, index) => {
               return <h1 key={index}>{day}</h1>;
             })}
@@ -196,9 +196,8 @@ const UsersWorkouts = () => {
         </div>
       </div>
       <div>
-      <div className=' flex flex-col'>
-        <h1 className='hidden md:text-2xl mb-1 text-center font-semibold'>Weight lifting tracker</h1>
-{ hideCalender &&       <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[370px] mx-auto h-fit'>
+      <div className='flex flex-col md:hidden'>
+{ !hideCalender &&       <div className='flex-basis-[100%] md:flex-basis-[33.33%] border-4 border-slate-200 rounded-2xl p-3 w-[310px] mx-auto h-[560px]'>
           {true &&
             <div className='flex justify-between pb-3'>
               <h1 className='text-sm underline'>
@@ -261,9 +260,9 @@ const UsersWorkouts = () => {
                 );
               }
             )}
-          </div>x
+          </div>
         </div>}
-        <button onClick={() => setHideCalender(!hideCalender)} className='underline m-auto flex mb-2 lg:hidden'>{!hideCalender ? "Show calender" : "Hide calender"}</button>
+        <button onClick={() => setHideCalender(!hideCalender)} className='underline m-auto flex mb-2 lg:hidden'>{!hideCalender ? "Hide calender" : "Show calender"}</button>
       </div>
       </div>
       <div className=' px-5'>
@@ -275,7 +274,7 @@ const UsersWorkouts = () => {
               <img className=' mx-auto w-[370px] h-[380px] py-5 rounded-[10px]' src='https://i0.wp.com/sportsmedicineweekly.com/wp-content/uploads/2021/07/tips-for-better-sleep.png?fit=1080%2C600&ssl=1' />
             </div>
           )
-        }        <div>
+        }        <div className=''>
           {selectedWorkouts.map((workout) => {
             if (workout && workout.title) {
               return (
