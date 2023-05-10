@@ -10,7 +10,7 @@ const Community = ({ toggleForm }: any) => {
   const { currentUser } = useContext(AuthContext)
 
   return (
-    <div className="w-full py-16 px-4 md:bg-black">
+    <div className="w-full py-16 px-4 md:bg-black text-neutral-50">
       <div
         className="max-w-[1240px] mx-auto grid md:grid-cols-2 gap-4
     "
