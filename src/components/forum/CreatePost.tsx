@@ -1,24 +1,23 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { Backdrop } from '../Backdrop';
-import { AiFillCloseCircle } from 'react-icons/ai'
+import { AiFillCloseCircle } from 'react-icons/ai';
 import { AuthContext } from '../../context/AuthContext';
 import { PostStatus } from '../../utils/FireStoreApi';
-import { useMemo } from 'react';
 import { PostCard } from './PostCard';
 import { getPosts } from '../../utils/FireStoreApi';
 import { getCurrentTimeStamp } from '../../utils/useMoment';
 import { getUniqueId } from '../../utils/useMoment';
 
 
-
 export const CreatePost = () => {
-    const [modalOpen, setModalOpen] = useState(false)
-    const [inputStatus, setInputStatus] = useState('')
-    const [allPosts, setAllPosts] = useState<any[]>([])
-    const {currentUser} = useContext(AuthContext)
+    const [modalOpen, setModalOpen] = useState(false);
+    const [inputStatus, setInputStatus] = useState('');
+    const [allPosts, setAllPosts] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true); // Add loading state
+    const {currentUser} = useContext(AuthContext);
 
     const handleSubmit = (e: any) => {
-        e.preventDefault()
+        e.preventDefault();
         let object = {
             status: inputStatus,
             timeStamp: getCurrentTimeStamp('LLL'),
@@ -26,16 +25,17 @@ export const CreatePost = () => {
             postID: getUniqueId(),
             userID: currentUser?.uid,
             photoURL: currentUser?.photoURL
-        }
-        PostStatus(inputStatus, object)
-        setModalOpen(!modalOpen)
-        setInputStatus('')
-    }
-    useMemo(() => {
-        getPosts(setAllPosts)
-        
-    }, [])
+        };
+        PostStatus(inputStatus, object);
+        setModalOpen(!modalOpen);
+        setInputStatus('');
+    };
 
+    useEffect(() => {
+        getPosts(setAllPosts); // Pass setLoading to getPosts
+        console.log(allPosts[0]);
+        
+    }, []);
     return (
         <div className="flex flex-col text-center">
             <div className=' rounded-full py-1 p-7 my-4'>
@@ -87,7 +87,7 @@ export const CreatePost = () => {
                 {allPosts.map((post) => {
                     return (
                         <div key={post.id} className="border-[1px] border-black rounded-md p-6 cursor-pointer m-11 max-h-[330px] h-fit overflow-y-scroll">
-                            <PostCard post={post}/>
+                            <PostCard id={post.id} key={post.id} post={post}/>
                         </div>
                     );
                 })}

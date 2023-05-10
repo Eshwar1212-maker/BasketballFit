@@ -28,20 +28,18 @@ export const PostStatus = (status: string, object: any) => {
       });
   };
 
-
-  // ...
-  
   export const getPosts = (setallPosts: any) => {
-    const orderedQuery = query(dbRef, orderBy("timeStamp", "desc"));
+    const orderedQuery = query(dbRef, orderBy("timeStamp", "asc"));
     onSnapshot(orderedQuery, (response) => {
       setallPosts(
-        response.docs.map((docs) => {
-          return { ...docs.data(), id: docs.id };
+        response.docs.map((doc) => {
+          return { ...doc.data(), id: doc.id };
         })
       );
     });
-  };
-  
+    
+};
+
 export const likePost = (userId: string | undefined, postId: string | undefined, liked: any) => {
   try{
     let doctoLike = doc(likesRef, `${userId}_${postId}`) 

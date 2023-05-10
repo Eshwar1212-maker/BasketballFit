@@ -217,6 +217,12 @@ export const Navbar = () => {
                   <Link onClick={() => setNav(!nav)} className="p-4 border-b border-gray-600" to="/skills">
                     Seven day program
                   </Link>
+                  <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
+                <Link
+                  to="/Forum"
+                >Forums
+                </Link>
+              </li>
 
                 </>
               )}

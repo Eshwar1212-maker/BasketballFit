@@ -72,7 +72,7 @@ export const LikeButton = ({ userId, postsId, currentUser }: LikeButton) => {
         <>
           <div className="mt-2 flex w-[490px] m-auto">
             <input
-              className="w-full rounded-lg bg-gray-200 p-2 px-8 h-11 text-center"
+              className="w-full rounded-lg p-2 px-8 h-11 text-center text-black"
               placeholder="Your thoughts?..."
               value={comment}
               onChange={(e) => setComment(e.target.value)}
