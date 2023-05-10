@@ -16,7 +16,7 @@ const ImageSlider = ({slides, onHide}: any) => {
     }
 
   return (
-    <div className="flex items-center justify-center mx-auto text-center py-[300px] bg-white h-[700px] w-[1000px] rounded-md">  
+    <div className="flex items-center justify-center mx-auto text-center py-[300px] bg-white h-[400px] w-[700px] md:h-[700px] md:w-[1000px] rounded-md">  
       <div className="flex mx-auto py-[300px] justify-between">  
         <div className="fixed left-0 bottom-0">
           <p onClick={goToPrev}><AiFillLeftCircle size={30}/></p>
