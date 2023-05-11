@@ -219,6 +219,7 @@ export const Navbar = () => {
                   </Link>
                   <li className="p-3 border-b border-gray-600 transition ease-in-out delay-150 hover:-translate-y-1 duration-300 ...">
                 <Link
+                onClick={() => setNav(!nav)}
                   to="/Forum"
                 >Forums
                 </Link>
