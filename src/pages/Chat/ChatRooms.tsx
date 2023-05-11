@@ -47,51 +47,54 @@ const ChatRooms = () => {
 
   return (
     <div className="w-[330px] md:w-full flex justify-center py-[70px] m-auto h-[100vh]">
-    
+
       {room ? (
         <ChatGroup room={room} />
       ) : (
         <div className="w-[800px] bg-cover border-black bg-center bg-no-repeat rounded-2xl">
-              <h1 className="text-3xl pb-6 text-center py-11">
+          <h1 className="text-3xl pb-6 text-center py-11">
             Create group chats with your friends or team
             <p className="text-xl py-4 font-light">
               Join an existing room or create a new room
             </p>
           </h1>
           <div className="flex flex-row border-4 border-black rounded-2xl my-2">
-      <input 
-       ref={roomInputRef}
-       className="m-auto rounded-2xl text-xl text-center w-5/6 p-0 h-16 text-black" 
-       placeholder="New room name..."
-       onChange={handleSearchInputChange} // add this line
+            <input
+              ref={roomInputRef}
+              className="m-auto rounded-2xl text-xl text-center w-5/6 p-0 h-16 text-black"
+              placeholder="New room name..."
+              onChange={handleSearchInputChange} // add this line
 
-        />
+            />
 
-      <button 
-        onClick={() => setRoom(roomInputRef.current?.value || "")}
-        className="w-1/6
+            <button
+              onClick={() => setRoom(roomInputRef.current?.value || "")}
+              className="w-1/6
          group p-1 rounded-xl flex items-center border-black border-left-2 text-lg md:text-[25px]">Enter </button>
-      </div>
-       
-        
+          </div>
+
+
           <div className="text-center flex flex-col max-w-[700px] m-auto bg-opacity-20">
             <h1 className="text-xl underline">Current Rooms</h1>
             <div className="h-[400px] overflow-y-scroll text-black">
-            {filteredRooms.map((roomName) => (
-              <button
-                key={roomName}
-                onClick={() => handleRoomClick(roomName)}
-                className="w-full p-2 my-1 bg-slate-200 rounded-xl  hover:bg-blue-100"
-              >
-                {roomName}
-              </button>
-            ))}
+              {filteredRooms.map((roomName) => (
+                <button
+                  key={roomName}
+                  onClick={() => handleRoomClick(roomName)}
+                  className="w-full p-2 my-1 bg-slate-200 rounded-xl  hover:bg-blue-100"
+                >
+                  {roomName}
+                </button>
+              ))}
             </div>
           </div>
         </div>
       )}
-{ room &&     <p onClick={() => {location.reload()}} className="hidden md:fixed bottom-4 mb-[1px] text-3xl underline p-1 cursor-pointer">Exit</p>
-}    </div>
+      {room &&
+       <>
+        <button onClick={() => { location.reload() }} className="fixed bottom-0 pb-11 mb-[1px] text-3xl underline p-1 cursor-pointer">Exit</button>
+       </>
+      }    </div>
   );
 };
 
