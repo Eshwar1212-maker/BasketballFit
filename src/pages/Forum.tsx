@@ -5,9 +5,8 @@ const Forum = () => {
   return (
     <div>
         <div className=" mt-[100px] md:flex justify-center items-center w-[89%] md:w-[40%] h-full m-auto rounded-xl">
-          <div className="hidden 2xl:block">
+          <div className="hidden 2xl:block p-9">
           <NewsWidget />
-
           </div>
           <CreatePost />
         </div>
