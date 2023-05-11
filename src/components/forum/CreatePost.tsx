@@ -48,7 +48,7 @@ export const CreatePost = () => {
                 {modalOpen && (
                     <Backdrop>
                         <div
-                            className="m-auto pb-0 pl-[2rem] flex flex-col items-center line-clamp-3"
+                            className="m-auto pb-0 pl-[2rem] flex flex-col items-center line-clamp-3 z-50"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <form
