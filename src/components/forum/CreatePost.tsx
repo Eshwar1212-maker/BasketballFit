@@ -41,7 +41,7 @@ export const CreatePost = () => {
             <div className=' rounded-full py-1 p-7 my-4'>
                 <button
                     onClick={() => setModalOpen(!modalOpen)}
-                    className="w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer p-5 items-center m-3 pb-9"
+                    className="w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer my-9 p-5 items-center m-3 pb-9 border-2 border-black"
                 >
                     Start a conversation...
                 </button>
