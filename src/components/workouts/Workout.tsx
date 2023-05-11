@@ -17,7 +17,7 @@ interface Workout {
 export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight, title }: Workout) => {
   console.log("this is the id " + _id);
   const handleDelete = () => {
-    fetch(`http://localhost:4000/workouts/${_id}`, {
+    fetch(`https://basketballfit-production.up.railway.app/workouts/${_id}`, {
       method: 'DELETE'
     })
       .then((res) => { res.json();

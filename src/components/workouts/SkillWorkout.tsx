@@ -16,7 +16,7 @@ const SkillWorkout = ({ reps, sets, _id, onDeleteWorkout, description, title }: 
   const handleDelete = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation(); // stop event propagation
 
-    fetch(`http://localhost:4000/skill-workouts/${_id}`, {
+    fetch(`https://basketballfit-production.up.railway.app/skill-workouts/${_id}`, {
       method: 'DELETE'
     })
       .then((res) => { res.json();
