@@ -50,7 +50,7 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetch(`https://basketballfit-production.up.railway.app/workouts/user/${currentUser?.uid}/`)
-    .then((res) => res.json())
+      .then((res) => res.json())
       .then((workouts) => {
         setAllworkouts(workouts);
 
@@ -236,8 +236,8 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-wrap justify-center h-full">
-      <div 
-      className={"w-full md:w-auto py-[100px] my-9 flex items-center flex-col gap-11 justify-center border-2border-black p-4 rounded-2xl px-[70px]"}
+      <div
+        className={"w-full md:w-auto py-[100px] my-9 flex items-center flex-col gap-11 justify-center border-2border-black p-4 rounded-2xl px-[70px]"}
       >
         <div className="rounded-2xl border-4 border-slate-500 flex flex-col text-center md:flex-row gap-4 w-full md:w-[600px] shadow-lg">
           <div className="flex items-center flex-col p-3 text-center">
@@ -264,159 +264,159 @@ const ProfilePage = () => {
         </div>
         <div>
           <div>
-            
+
           </div>
-        <div className=" justify-center gap-11 text-center">
+          <div className=" justify-center gap-11 text-center">
             <h1 className="text-2xl">Monthly workouts</h1>
-            <h1 className="underline">Days you hit the gym each month this year</h1>
+            <p className="underline">Days you hit the gym each month this year</p>
           </div>
-       <div className=" flex-col justify-center rounded-xl gap-11">
-        <div>
-        <MonthlyWorkouts />
+          <div className=" flex-col justify-center rounded-xl gap-11">
+            <div>
+              <MonthlyWorkouts />
 
-        </div>
+            </div>
 
-          <div>
+            <div>
 
 
-          <div className="text-center justify-center gap-11">
-            <h1 className="text-2xl">Workout intensity</h1>
-            <h1 className="">Total exercises each month</h1>
-          </div>
-          <div className="hidden lg:flex justify-center rounded-xl">
-            <ResponsiveContainer width={677} height={450}>
-              <LineChart
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-                style={{ background: theme.background }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
-                <XAxis dataKey="name" stroke={theme.text} />
-                <YAxis stroke={theme.text}>
-                  <Label
-                    value="Total Excericses"
-                    position="insideLeft"
-                    angle={-90}
-                    style={{
-                      textAnchor: "middle",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      fill: theme.text,
+              <div className="text-center justify-center gap-11">
+                <h1 className="text-2xl">Workout intensity</h1>
+                <p className="">Total exercises each month</p>
+              </div>
+              <div className="hidden lg:flex justify-center rounded-xl">
+                <ResponsiveContainer width={677} height={450}>
+                  <LineChart
+                    data={data}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
                     }}
-                  />
-                </YAxis>
-                <Label
-                  angle={-90}
-                  value="Exercises"
-                  position="insideLeft"
-                  style={{ textAnchor: "middle", fill: theme.text }}
-                />
+                    style={{ background: theme.background }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
+                    <XAxis dataKey="name" stroke={theme.text} />
+                    <YAxis stroke={theme.text}>
+                      <Label
+                        value="Total Excericses"
+                        position="insideLeft"
+                        angle={-90}
+                        style={{
+                          textAnchor: "middle",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                          fill: theme.text,
+                        }}
+                      />
+                    </YAxis>
+                    <Label
+                      angle={-90}
+                      value="Exercises"
+                      position="insideLeft"
+                      style={{ textAnchor: "middle", fill: theme.text }}
+                    />
 
-                <Tooltip
-                  contentStyle={{ background: theme.background, borderColor: theme.stroke }}
-                  itemStyle={{ color: theme.text }}
-                  labelStyle={{ color: theme.text }}
-                />
-                <Legend
-                  wrapperStyle={{
-                    color: theme.text,
-                  }}
-                />
-                <Line type="monotone" dataKey="month" stroke={theme.line} />
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-          <div className="md:hidden">
-          <ResponsiveContainer width={360} height={450}>
-              <LineChart
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-                style={{ background: theme.background }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
-                <XAxis dataKey="name" stroke={theme.text} />
-                <YAxis stroke={theme.text}>
-                  <Label
-                    value="Total Excericses"
-                    position="insideLeft"
-                    angle={-90}
-                    style={{
-                      textAnchor: "middle",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      fill: theme.text,
+                    <Tooltip
+                      contentStyle={{ background: theme.background, borderColor: theme.stroke }}
+                      itemStyle={{ color: theme.text }}
+                      labelStyle={{ color: theme.text }}
+                    />
+                    <Legend
+                      wrapperStyle={{
+                        color: theme.text,
+                      }}
+                    />
+                    <Line type="monotone" dataKey="month" stroke={theme.line} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="md:hidden">
+                <ResponsiveContainer width={360} height={450}>
+                  <LineChart
+                    data={data}
+                    margin={{
+                      top: 5,
+                      right: 30,
+                      left: 20,
+                      bottom: 5,
                     }}
-                  />
-                </YAxis>
-                <Label
-                  angle={-90}
-                  value="Exercises"
-                  position="insideLeft"
-                  style={{ textAnchor: "middle", fill: theme.text }}
-                />
+                    style={{ background: theme.background }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke={theme.stroke} />
+                    <XAxis dataKey="name" stroke={theme.text} />
+                    <YAxis stroke={theme.text}>
+                      <Label
+                        value="Total Excericses"
+                        position="insideLeft"
+                        angle={-90}
+                        style={{
+                          textAnchor: "middle",
+                          fontSize: "16px",
+                          fontWeight: "bold",
+                          fill: theme.text,
+                        }}
+                      />
+                    </YAxis>
+                    <Label
+                      angle={-90}
+                      value="Exercises"
+                      position="insideLeft"
+                      style={{ textAnchor: "middle", fill: theme.text }}
+                    />
 
-                <Tooltip
-                  contentStyle={{ background: theme.background, borderColor: theme.stroke }}
-                  itemStyle={{ color: theme.text }}
-                  labelStyle={{ color: theme.text }}
-                />
-                <Legend
-                  wrapperStyle={{
-                    color: theme.text,
-                  }}
-                />
-                <Line type="monotone" dataKey="month" stroke={theme.line} />
-              </LineChart>
-            </ResponsiveContainer>
+                    <Tooltip
+                      contentStyle={{ background: theme.background, borderColor: theme.stroke }}
+                      itemStyle={{ color: theme.text }}
+                      labelStyle={{ color: theme.text }}
+                    />
+                    <Legend
+                      wrapperStyle={{
+                        color: theme.text,
+                      }}
+                    />
+                    <Line type="monotone" dataKey="month" stroke={theme.line} />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+              {
+                allworkouts.length > 100 &&
+                <p
+                  className="text-md text-center max-w-[500px] mx-auto py-6">Currently,
+                  <span className="font-bold underline">{intenseMonth}</span> {" "}
+                  is when you had the most volume and intensity for your workouts for this year. You have a total of {allworkouts.length} workouts logged with us.
+                </p>
+              }
+              {intenseMonthValue === 0 &&
+                <>
+                  <p
+                    className="text-md text-center max-w-[500px] mx-auto py-6"
+                  >Welcome to Basketball fit {currentUser?.displayName}! Right now your chart is empty because you did not start using our calender yet!
+                    add workouts to your calender. You can go over there right now, add a workout for today, and come back here and see the chart change. Volume and intensity are calculated
+                    based off of how many workouts you totally do.
+                    You will see over time which months you workout the hardest, and based off of your performacne on the court,
+                    or just your performance in the gym, you can see what volume your body needs! Navigate here to our <span className="underline"><Link to="/UsersWorkouts">Calender</Link> </span>
+                    to get started!
+
+                  </p>
+                </>
+              }
+              {allworkouts.length < 100 && allworkouts.length > 0 ? (allworkouts.length &&
+                <>
+                  <p
+                    className="text-md text-center max-w-[500px] mx-auto py-6 text-sm">Currently,
+                    <span className="font-bold underline">{intenseMonth}</span> {"    "}
+                    is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for that long yet<span className="underline font-semibold">(you have only added {allworkouts.length}  {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
+                    see what months you have worked out the most. Use our workout  <span className="underline"><Link to="/UsersWorkouts">calender</Link> </span> for at least few months consistently, and based off of how you feel, you can see how much volume your body needs, and
+                    what months you have been working out the most based off of this chart!
+                  </p>
+                </>)
+                : <>
+                  </>
+              }
+            </div>
           </div>
-          {
-            allworkouts.length > 100 &&
-            <p
-              className="text-md text-center max-w-[500px] mx-auto py-6">Currently,
-              <span className="font-bold underline">{intenseMonth}</span> {" "}
-              is when you had the most volume and intensity for your workouts for this year. You have a total of {allworkouts.length} workouts logged with us. 
-            </p>
-          }
-          {intenseMonthValue === 0 &&
-            <>
-              <p
-                className="text-md text-center max-w-[500px] mx-auto py-6"
-              >Welcome to Basketball fit {currentUser?.displayName}! Right now your chart is empty because you did not start using our calender yet!
-                add workouts to your calender. You can go over there right now, add a workout for today, and come back here and see the chart change. Volume and intensity are calculated
-                based off of how many workouts you totally do.
-                You will see over time which months you workout the hardest, and based off of your performacne on the court,
-                or just your performance in the gym, you can see what volume your body needs! Navigate here to our <span className="underline"><Link to="/UsersWorkouts">Calender</Link> </span>
-                to get started!
-
-              </p>
-            </>
-          }
-          {allworkouts.length < 100 && allworkouts.length > 0 ? (allworkouts.length &&
-            <>
-              <p
-                className="text-md text-center max-w-[500px] mx-auto py-6 text-sm">Currently,
-                <span className="font-bold underline">{intenseMonth}</span> {"    "}
-                is when you had the most volume and intensity for your workouts. However, since you have not been using our platform for that long yet<span className="underline font-semibold">(you have only added {allworkouts.length}  {allworkouts.length === 1 ? "exercise" : "exercises"} with us)</span>, you wont be able to
-                see what months you have worked out the most. Use our workout  <span className="underline"><Link to="/UsersWorkouts">calender</Link> </span> for at least few months consistently, and based off of how you feel, you can see how much volume your body needs, and
-                what months you have been working out the most based off of this chart!
-              </p>
-            </>)
-            : <>
-            </>
-          }
         </div>
-      </div>
-      </div>
       </div>
 
     </div>

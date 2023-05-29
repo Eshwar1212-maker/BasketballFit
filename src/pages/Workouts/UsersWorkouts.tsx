@@ -125,14 +125,14 @@ const UsersWorkouts = () => {
         <div className='flex-basis-[100%] md:flex-basis-[33.33%] h-97 border-4 border-slate-200 rounded-2xl p-4 w-[800px] h-fit'>
           {true &&
             <div className='flex justify-between pb-3'>
-              <h1 className='text-sm underline'>
+              <h2 className='text-sm underline'>
                 <GrFormPrevious
                   onClick={() => {
                     setToday(today.month(today.month() - 1));
                   }}
                   size={25}
                   className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
-                /></h1>
+                /></h2>
               <h1 className="select-none font-semibold">
                 {months[today.month()]}, {today.year()}
               </h1>            <h1 className='text-sm underline'>
@@ -161,7 +161,7 @@ const UsersWorkouts = () => {
                     key={index}
                     className="p-2 text-center h-14 grid place-content-center text-sm border-t"
                   >
-                    <h1
+                    <h2
                       className={cn(
                         currentMonth ? "" : "text-gray-400",
                         today
@@ -180,7 +180,7 @@ const UsersWorkouts = () => {
                       }}
                     >
                       {date.date()}
-                    </h1>
+                    </h2>
                   </div>
                 );
               }
@@ -201,9 +201,10 @@ const UsersWorkouts = () => {
                   size={25}
                   className={theme === "darkMode" ? 'bg-white rounded-full' : ''}
                 /></h1>
-              <h1 className="select-none font-semibold">
+              <h3 className="select-none font-semibold">
                 {months[today.month()]}, {today.year()}
-              </h1>            <h1 className='text-sm underline'>
+              </h3>           
+               <h1 className='text-sm underline'>
                 <GrFormNext
                   onClick={() => {
                     setToday(today.month(today.month() + 1));
@@ -259,14 +260,14 @@ const UsersWorkouts = () => {
       </div>
       </div>
       <div className=' px-5'>
-        <h1
+        <h2
          className=
          {theme === "lightMode" ?
           'underline pb-2 text-center text-blue-900 font-bold text-xl' 
          : "underline pb-2 text-center font-bold text-xl text-white"}
          >
           {selectDate.toDate().toDateString()}
-        </h1>
+        </h2>
         {selectedWorkouts.length === 0 &&
           (
             <div className='text-gray-400 text-lg py-[59px]'>
@@ -310,6 +311,12 @@ const UsersWorkouts = () => {
             >
 
               <form onSubmit={handleSubmit} className="flex text-black flex-col w-[400px] p-7 rounded-xl gap-3 text-xl text-center font-bold bg-slate-200">
+                  <div className='flex pl-[300px]'>
+                  <AiOutlineCloseCircle
+                  className='cursor-pointer'
+                  onClick={close}
+                  size={40} />
+                  </div>
                 <label>Workout Name</label>
                 <input
                   value={workoutName}
@@ -362,10 +369,6 @@ const UsersWorkouts = () => {
                   onChange={(e) => setDescription(e.target.value)}
                 />
                 <button className="p-3 rounded-md bg-slate-600 hover:bg-slate-400 text-white ">Add workout</button>
-                <AiOutlineCloseCircle
-                  className='mx-auto h-[30px] rounded-full w-fit hi-fit cursor-pointer'
-                  onClick={close}
-                  size={0} />
               </form>
             </motion.div>
 
@@ -379,7 +382,7 @@ const UsersWorkouts = () => {
                 className={selectedWorkouts.length === 0 ? 'cursor-pointer ml-[159px]' : 'cursor-pointer ml-[159px]'}
                 onClick={close}
                 size={40} />
-              <h1 className=' cursor-pointer ml-[99px]'>Add a workout for today</h1>
+              <p className=' cursor-pointer ml-[99px]'>Add a workout for today</p>
             </div>
 
           }

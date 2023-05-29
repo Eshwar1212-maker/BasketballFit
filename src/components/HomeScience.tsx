@@ -18,7 +18,7 @@ const Science = () => {
         "
       >
         <img
-          className="rounded-3xl w-[500px] h-[367px] mx-auto my-4"
+          className="w-[500px] h-[367px] mx-auto my-4"
           src={chart}
           alt=""
         />

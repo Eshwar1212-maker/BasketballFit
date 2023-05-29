@@ -114,7 +114,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll '
         >
-          <h1 className='border-b-2 border-b-black'>Monday</h1>
+          <h2 className='border-b-2 border-b-black'>Monday</h2>
           <div className=' flex flex-col bg-[#d8effc] text-black'>
             <div className="flex flex-col ">{renderWorkoutsForDay("Monday")}</div>
           </div>
@@ -129,7 +129,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Tuesday</h1>
+          <h2 className='border-b-2 border-b-black'>Tuesday</h2>
           <div className='flex flex-col bg-[#d8effc] text-black'>
             <div className="flex flex-col ">{renderWorkoutsForDay("Tuesday")}</div>
           </div>
@@ -144,7 +144,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Wednesday</h1>
+          <h2 className='border-b-2 border-b-black'>Wednesday</h2>
           <div className=' flex flex-col bg-[#d8effc] text-black'>
             <div className=" flex flex-col ">{renderWorkoutsForDay("Wednesday")}</div>
           </div>
@@ -159,7 +159,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Thursday</h1>
+          <h2 className='border-b-2 border-b-black'>Thursday</h2>
           <div className=' flex flex-col bg-[#d8effc] text-black'>
             <div className="flex flex-col ">{renderWorkoutsForDay("Thursday")}</div>
           </div>
@@ -174,7 +174,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Friday</h1>
+          <h2 className='border-b-2 border-b-black'>Friday</h2>
           <div className='flex flex-col bg-[#d8effc] text-black'>
             <div className=" flex flex-col ">{renderWorkoutsForDay("Friday")}</div>
           </div>
@@ -189,7 +189,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Saturday</h1>
+          <h2 className='border-b-2 border-b-black'>Saturday</h2>
           <div className='flex flex-col bg-[#d8effc] text-black'>
             <div className="flex flex-col ">{renderWorkoutsForDay("Saturday")}</div>
           </div>
@@ -204,7 +204,7 @@ const SkillWorkouts = () => {
           }}
           className='border-2 border-black w-[159px] overflow-y-scroll'
         >
-          <h1 className='border-b-2 border-b-black'>Sunday</h1>
+          <h2 className='border-b-2 border-b-black'>Sunday</h2>
           <div className='flex flex-col bg-[#d8effc] text-black'>
             <div className="flex flex-col ">{renderWorkoutsForDay("Sunday")}</div>
           </div>
@@ -222,6 +222,12 @@ const SkillWorkouts = () => {
             exit="exit"
           >
             <form onSubmit={handleSubmit} className="flex text-black flex-col w-[400px] p-7 rounded-xl gap-3 text-xl text-center font-bold bg-slate-200">
+            <div className='flex pl-[300px]'>
+                  <AiOutlineCloseCircle
+                  className='cursor-pointer'
+                  onClick={close}
+                  size={40} />
+                  </div>
               <p className='underline text-[26px]'>Add a drill for {currentDay}</p>
               <label>Drill</label>
               <input
@@ -258,10 +264,6 @@ const SkillWorkouts = () => {
                 onChange={(e) => setDescription(e.target.value)}
               />
               <button className="p-3 rounded-md bg-slate-600 hover:bg-slate-400 text-white ">Add workout</button>
-              <AiOutlineCloseCircle
-                className='mx-auto h-[30px] rounded-full w-fit hi-fit cursor-pointer'
-                onClick={() => setModalOpen(!modalOpen)}
-                size={0} />
             </form>
           </motion.div>
         </Backdrop>}
