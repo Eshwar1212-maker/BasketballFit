@@ -225,7 +225,7 @@ const SkillWorkouts = () => {
             <div className='flex pl-[300px]'>
                   <AiOutlineCloseCircle
                   className='cursor-pointer'
-                  onClick={close}
+                  onClick={() => setModalOpen(false)}
                   size={40} />
                   </div>
               <p className='underline text-[26px]'>Add a drill for {currentDay}</p>

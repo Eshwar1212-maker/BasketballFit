@@ -7,15 +7,15 @@ import { PostCard } from './PostCard';
 import { getPosts } from '../../utils/FireStoreApi';
 import { getCurrentTimeStamp } from '../../utils/useMoment';
 import { getUniqueId } from '../../utils/useMoment';
+import { ThemeContext } from '../../context/ThemeContext';
 
 
 export const CreatePost = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    const {theme} = useContext(ThemeContext)
     const [inputStatus, setInputStatus] = useState('');
     const [allPosts, setAllPosts] = useState<any[]>([]);
-    const [loading, setLoading] = useState(true); // Add loading state
     const {currentUser} = useContext(AuthContext);
-
     const handleSubmit = (e: any) => {
         e.preventDefault();
         let object = {
@@ -38,10 +38,16 @@ export const CreatePost = () => {
     }, []);
     return (
         <div className="flex flex-col text-center">
-            <div className=' rounded-full py-1 p-7 my-4'>
+            <div className=' rounded-full'>
                 <button
                     onClick={() => setModalOpen(!modalOpen)}
-                    className="w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer my-9 p-5 items-center m-3 pb-9 border-2 border-black"
+                    className=
+                    {theme === "lightMode" ?
+                 "w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer p-5 items-center m-3 pb-9 border-2 border-black"
+                 : 
+                 "w-[300px] md:w-[800px] h-[40px] text-left rounded-3xl cursor-pointer p-5 items-center m-3 pb-9 border-2 border-white"
+
+                }
                 >
                     Start a conversation...
                 </button>
@@ -65,7 +71,7 @@ export const CreatePost = () => {
                                 </div>
                                 <textarea
                                     onChange={(e) => setInputStatus(e.target.value)}
-                                    className="rounded-[60px] text-center border-2 border-black items-center p-3 py-6 h-[139px]"
+                                    className="rounded-[60px] text-center border-2 border-black items-center h-[139px] py-11"
                                     placeholder="What do you want to talk about"
                                 />
                                 <button
@@ -86,7 +92,12 @@ export const CreatePost = () => {
             <div className="">
                 {allPosts.map((post) => {
                     return (
-                        <div key={post.id} className="border-[1px] border-black rounded-md p-6 cursor-pointer m-11 max-h-[330px] h-fit overflow-y-scroll">
+                        <div key={post.id} className={theme === "lightMode" ?
+                         "border-[1px] border-black rounded-md p-6 cursor-pointer m-11 max-h-[330px] h-fit overflow-y-scroll"
+                         : "border-white border-[1px] rounded-md p-6 cursor-pointer m-11 max-h-[330px] h-fit overflow-y-scroll"
+
+                        }
+                         >
                             <PostCard id={post.id} key={post.id} post={post}/>
                         </div>
                     );

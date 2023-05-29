@@ -46,7 +46,7 @@ const ChatRooms = () => {
   };
 
   return (
-    <div className="w-[330px] md:w-full flex justify-center py-[70px] m-auto h-[100vh]">
+    <div className="w-[330px] md:w-full flex justify-center py-[70px] h-[100vh]">
 
       {room ? (
         <ChatGroup room={room} />
@@ -58,10 +58,10 @@ const ChatRooms = () => {
               Join an existing room or create a new room
             </p>
           </h1>
-          <div className="flex flex-row border-4 border-black rounded-2xl my-2">
+          <div className="flex flex-row border-4 border-black rounded-2xl my-2 w-[800px] bg-white">
             <input
               ref={roomInputRef}
-              className="m-auto rounded-2xl text-xl text-center w-5/6 p-0 h-16 text-black"
+              className="m-auto rounded-2xl text-xl text-center h-16 text-black w-5/6"
               placeholder="New room name..."
               onChange={handleSearchInputChange} // add this line
 
@@ -69,8 +69,12 @@ const ChatRooms = () => {
 
             <button
               onClick={() => setRoom(roomInputRef.current?.value || "")}
-              className="w-1/6
-         group p-1 rounded-xl flex items-center border-black border-left-2 text-lg md:text-[25px]">Enter </button>
+              className="
+              w-1/6 group rounded-xl border-black border-2 flex justify-center py-3
+               text-black text-lg md:text-[25px]text-black"
+              >
+                Enter
+          </button>
           </div>
 
 
