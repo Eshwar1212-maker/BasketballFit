@@ -1,4 +1,6 @@
 import { AiFillEdit, AiOutlineDelete } from 'react-icons/ai';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
 
 interface Workout {
   title: string,
@@ -15,6 +17,7 @@ interface Workout {
 
 
 export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight, title }: Workout) => {
+  const {theme} = useContext(ThemeContext)
   console.log("this is the id " + _id);
   const handleDelete = () => {
     fetch(`https://basketballfit-production.up.railway.app/workouts/${_id}`, {
@@ -31,10 +34,13 @@ export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight,
       });
   }
   return (
-<div className={"flex justify-between gap-1 border-black border-b-2 flex-col relative"}>
+<div
+ className={theme === "lightMode" ? "flex justify-between gap-1 border-black border-b-2 flex-col relative" : 
+      "flex justify-between gap-1 border-black border-b-2 flex-col relative border-b-white"}
+>
   <div>
     <div>
-      <p className=''>{title}</p>
+      <h2 className='text-lg'>{title}</h2>
     </div>
     <div className="flex flex-col">
       <div className='flex gap-7'>
@@ -42,7 +48,6 @@ export const Workout = ({ reps, sets, _id, onDeleteWorkout, description, weight,
         <p className='text-sm pb-1'>Reps:{reps}</p>
         <p className='text-sm pb-1'>Sets:{sets}</p>
         <div className='flex absolute right-0 top-0'>
-          <input type='checkbox' className="mr-2" />
           <AiOutlineDelete onClick={handleDelete} size={24} />
         </div>
       </div>

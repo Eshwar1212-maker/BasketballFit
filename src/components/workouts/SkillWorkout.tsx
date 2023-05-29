@@ -37,10 +37,10 @@ const SkillWorkout = ({ reps, sets, _id, onDeleteWorkout, description, title }: 
       <div className={"flex justify-between border-black border-b-2 flex-col"}>
         <div>
           <div>
-            <p className='text-[13px] underline'>{title}</p>
+            <h2 className='text-[13px] underline'>{title}</h2>
           </div>
           <div className="flex flex-col">
-            <div className='flex gap-2 underline'>
+            <div className='flex gap-2 '>
               <p className='text-[12px]'>Reps:{reps}</p>
               <p className='text-[12px]'>Sets:{sets}</p>
             </div>

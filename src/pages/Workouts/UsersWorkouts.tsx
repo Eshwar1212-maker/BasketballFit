@@ -12,8 +12,6 @@ import { motion } from 'framer-motion';
 import { ThemeContext } from '../../context/ThemeContext';
 import { ExerciseDropdown } from "../../components/ExerciseDropDown"
 import {exercises} from "../../utils/excercises"
-import SkillWorkouts from '../SkillWorkouts';
-
 
 
 const dropIn = {
@@ -39,9 +37,9 @@ const dropIn = {
 
 const UsersWorkouts = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
   const { currentUser } = useContext(AuthContext);
-  console.log(generateDate());
+  console.log(theme);
+  
   const [selectedWorkouts, setSelectedWorkouts] = useState<any[]>([])
   const days = ["S", "M", "T", "W", "T", "F", "S"];
   const currentDate = dayjs();
@@ -65,8 +63,6 @@ const UsersWorkouts = () => {
       .then((data) => {
         setSelectedWorkouts(data);
       })
-    console.log("Workouts from this user: " + selectedWorkouts);
-    console.log("Date in fetch " + selectDate.toDate().toDateString());
 
 
   }, [selectDate]);
@@ -93,9 +89,6 @@ const UsersWorkouts = () => {
         body: JSON.stringify(workoutData),
       })
         .then((res) => res.json())
-        .then((data) => {
-          console.log('Workout posted successfully:', data);
-        })
         .catch((error) => console.error('Error posting workout:', error));
     } catch (error) {
       console.log(error);
@@ -155,7 +148,7 @@ const UsersWorkouts = () => {
             </div>
           }
 
-          <div className=' grid grid-cols-7 mb-2 gap-9 pl-4 font-semibold text-[18px]'>
+          <div className=' grid grid-cols-7 mb-2 gap-9 ml-10 font-semibold text-[18px]'>
             {days.map((day, index) => {
               return <h1 key={index}>{day}</h1>;
             })}
@@ -178,7 +171,7 @@ const UsersWorkouts = () => {
                           .toDate()
                           .toDateString() ===
                           date.toDate().toDateString()
-                          ? "bg-black"
+                          ? "bg-slate-700 text-white"
                           : "",
                         "h-10 w-10 rounded-full grid place-content-center hover:bg-black hover:text-white  transition-all cursor-pointer select-none"
                       )}
@@ -266,7 +259,14 @@ const UsersWorkouts = () => {
       </div>
       </div>
       <div className=' px-5'>
-        <h1 className='underline pb-2 text-center text-blue-900 font-bold text-xl'>{selectDate.toDate().toDateString()}</h1>
+        <h1
+         className=
+         {theme === "lightMode" ?
+          'underline pb-2 text-center text-blue-900 font-bold text-xl' 
+         : "underline pb-2 text-center font-bold text-xl text-white"}
+         >
+          {selectDate.toDate().toDateString()}
+        </h1>
         {selectedWorkouts.length === 0 &&
           (
             <div className='text-gray-400 text-lg py-[59px]'>
